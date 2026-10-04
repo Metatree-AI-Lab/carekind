@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# careKind pre-commit
+#   1. 代码文件不能超过 1000 行（rules/02-code-rules.md 核心要求 16）
+#   2. 每层目录都要有 README.md + CLAUDE.md + AGENTS.md 软链接（rules/00-company-rules.md §4.1）
+# 启用方法（每个 clone 执行一次）：git config core.hooksPath .githooks
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+"$ROOT/scripts/check-file-length.sh" --staged
+"$ROOT/scripts/check-context-docs.sh"

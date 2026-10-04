@@ -1,0 +1,22 @@
+# careKind — 编辑器统一格式（见 rules/02-code-rules.md §1）
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 4
+tab_width = 4
+
+# YAML 语法禁止 Tab
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown：行尾两个空格有换行含义；列表缩进按渲染器习惯
+[*.md]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2

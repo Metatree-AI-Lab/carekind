@@ -1,0 +1,22 @@
+# CLAUDE.md — Marketing & Ops: operations
+
+> 层级：子部门 / 功能区 · 路径：`07-marketing-ops/operations/` · 上级上下文：[`../CLAUDE.md`](../CLAUDE.md)（根目录规则见 `AGENTS.md`）
+> 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
+
+## 这里是什么
+工具栈、供应商管理、行政。
+
+## 在这里通常要做的事
+- 维护本目录文档
+
+## 本目录特有的规则（在根目录规则之外）
+- 新工具接触客户数据时先走子处理方评估
+
+## 关键文件
+- operations-handbook.md
+
+## 不要做
+- 不要编造客户、案例或数字
+
+## 相关
+- rules/01-operations-rules.md

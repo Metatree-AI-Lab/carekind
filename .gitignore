@@ -1,0 +1,13 @@
+# 密钥：只提交 .env.example（rules/02-code-rules.md 核心要求 03）
+.env
+.env.*
+!.env.example
+
+# 系统文件
+.DS_Store
+
+# 运行日志
+11-workflows/runs/logs/
+
+# AI changelog 的 hook 临时标记
+changelog/.pending/
