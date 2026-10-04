@@ -9,6 +9,8 @@ Owner: Lightman · Last reviewed: 04/10/2026
 - [ ] 采购设备并加入 MDM
 
 ## 第 1 天
+- [ ] 开通 GitHub 权限：`Metatree-AI-Lab/carekind` 和 `Metatree-AI-Lab/carekind-app` **两个仓库**
+- [ ] 按根目录 README 的 **Setup** 一节操作：`git clone --recurse-submodules …`，然后运行 `scripts/setup.sh`（会安装 git submodule、启用 pre-commit）
 - [ ] 账号：邮箱、聊天、代码库（按角色最小权限）、密码管理器、MFA 已开启
 - [ ] 阅读：`README.md`、`00-company/mission-vision-values.md`、`00-company/glossary.md`、`rules/00-company-rules.md`、`docs/PRD.md`
 - [ ] 按角色阅读规范：开发 → `rules/02-code-rules.md`（编辑器开启 EditorConfig，Tab 缩进宽度 4）；产品 → `rules/03`、`rules/04`；运营 → `rules/01`

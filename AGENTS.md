@@ -36,7 +36,7 @@
 - 规则见 `rules/00-company-rules.md` §4.1。
 
 ## App 代码仓库（submodule）
-`06-app-development/app/` 是 git submodule（`Metatree-AI-Lab/carekind-app`）。修改 App 代码要分两步：先在 submodule 里提交并推送，再回到 meta repo 提交 submodule 指针。不要在 meta repo 里直接提交 App 代码文件。共用工具（`.editorconfig`、`scripts/check-*.sh`）以 meta repo 为准，修改后运行 `scripts/sync-app-tooling.sh` 同步。
+`06-app-development/app/` 是 git submodule（`Metatree-AI-Lab/carekind-app`）。**如果这个目录是空的，先运行 `scripts/setup.sh`（或 `git submodule update --init --recursive`），不要在空目录里新建文件。**修改 App 代码要分两步：先在 submodule 里提交并推送，再回到 meta repo 提交 submodule 指针。不要在 meta repo 里直接提交 App 代码文件。共用工具（`.editorconfig`、`scripts/check-*.sh`）以 meta repo 为准，修改后运行 `scripts/sync-app-tooling.sh` 同步。
 
 ## 产品文档
 产品做什么、怎么做以 `docs/PRD.md` 为准；功能 PRD 在 `docs/prds/`。写代码、写文案、做运营之前先读主 PRD 的 §6 产品逻辑和 §9 护栏。

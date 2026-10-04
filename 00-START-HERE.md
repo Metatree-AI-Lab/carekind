@@ -4,6 +4,9 @@ Owner: Lightman · Status: Active · Last reviewed: 04/10/2026
 
 按顺序做。每完成一项打勾，并把结果（编号、日期、文件链接）写回对应文档。
 
+## Week 0 — 拿到仓库
+- [ ] 按 `README.md` 的 **Setup** 一节 clone 仓库并运行 `scripts/setup.sh`（本仓库有 git submodule，必须安装）
+
 ## Week 1 — 公司实体 & 基础身份
 - [ ] 确定创始人、股权比例、vesting（4 年 / 1 年 cliff 是常见做法）→ 记入 ADR-0002
 - [ ] 申请 **Director ID**（每位董事，必须在任命前完成，ABRS）

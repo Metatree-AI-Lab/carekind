@@ -10,8 +10,8 @@ careKind AI 的 Company OS：Markdown + Git 管理的公司文档、规范、AI 
 ## 常用命令
 ```bash
 git clone --recurse-submodules git@github.com:Metatree-AI-Lab/carekind.git   # 连同 App submodule 一起 clone
-git submodule update --init --recursive              # 已经 clone 但 app/ 是空的时候
-git config core.hooksPath .githooks                  # 每个 clone 执行一次，启用 pre-commit（App 仓库里也要执行一次）
+scripts/setup.sh                                     # 第一次使用：初始化 submodule、两个仓库启用 pre-commit、submodule.recurse、检查工具
+git submodule update --init --recursive              # 06-app-development/app/ 是空的时候
 scripts/sync-app-tooling.sh                          # 把共用工具（.editorconfig、检查脚本）同步到 App 仓库
 scripts/check-file-length.sh <file>...               # 代码文件 ≤ 1000 行；也支持 --all / --staged / --hook
 scripts/check-context-docs.sh [--fix-links]          # 每层目录都要有 README.md + CLAUDE.md + AGENTS.md 软链接

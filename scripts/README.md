@@ -6,6 +6,7 @@ Owner: Lin (Tech Lead) · Last reviewed: 04/10/2026
 自动化脚本。
 
 ## 内容
+- setup.sh — **第一次使用必跑**：初始化 git submodule、两个仓库启用 pre-commit、开启 submodule.recurse、检查工具
 - run-workflow.sh — 无人值守运行 workflow（claude / codex）
 - check-file-length.sh — 代码文件 ≤ 1000 行检查（hook / pre-commit / CI）
 - sync-app-tooling.sh — 把共用工具（.editorconfig、check-file-length.sh、check-context-docs.sh）同步到 App submodule

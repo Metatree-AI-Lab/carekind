@@ -61,12 +61,34 @@ changelog/             📝 AI 修改记录：任务摘要（YYYY-MM.md）+ 自�
 99-inbox/              随手记，定期整理进上面各目录
 ```
 
-## 获取仓库
+## Setup（第一次使用必读）
+
+> ⚠️ **本仓库包含 git submodule**：`06-app-development/app/` 是独立的私有仓库 [Metatree-AI-Lab/carekind-app](https://github.com/Metatree-AI-Lab/carekind-app)。普通的 `git clone` **不会**下载它，这个目录会是空的，必须安装 submodule。
+
+### 前提
+- 有 `Metatree-AI-Lab/carekind` 和 `Metatree-AI-Lab/carekind-app` **两个仓库**的访问权限（找 Lightman 开通）
+- SSH key 已添加到 GitHub（submodule 用 SSH 地址）
+- 工具：`git`、`jq`（Claude Code hook 必需）、`pdftotext`（读法律 PDF）、`gh`（可选）。macOS：`brew install jq poppler gh`
+
+### 步骤
 ```bash
+# 1. 连同 submodule 一起 clone
 git clone --recurse-submodules git@github.com:Metatree-AI-Lab/carekind.git
-cd carekind && git config core.hooksPath .githooks
-(cd 06-app-development/app && git config core.hooksPath .githooks)
+cd carekind
+
+# 2. 一键设置：初始化 submodule、两个仓库都启用 pre-commit、git 自动处理 submodule、检查工具
+scripts/setup.sh
 ```
+如果 clone 时忘了加 `--recurse-submodules`（`06-app-development/app/` 是空的），直接运行 `scripts/setup.sh` 即可，它会执行 `git submodule update --init --recursive`。
+
+### 日常使用 submodule
+| 场景 | 命令 |
+|---|---|
+| 拉取 meta repo 和 App 的最新代码 | `git pull`（setup 已开启 `submodule.recurse`，会自动更新 submodule） |
+| App 目录是空的或版本不对 | `git submodule update --init --recursive` |
+| 把 App 更新到 carekind-app 的最新 main | `git submodule update --remote 06-app-development/app`，然后在 meta repo 提交指针 |
+| 修改 App 代码 | ① 在 `06-app-development/app/` 里提交并 `git push` ② 回到 meta repo：`git add 06-app-development/app && git commit && git push` |
+| 推送前检查 | setup 已开启 `push.recurseSubmodules=check`：如果 submodule 的提交还没推送，meta repo 会拒绝推送 |
 
 ## 三条铁律
 
