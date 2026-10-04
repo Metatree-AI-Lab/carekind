@@ -9,7 +9,7 @@ engineering/       架构、技术栈、开发规范、发布流程
   └─ adr/          技术架构决策记录
 design/            UX 原则、设计系统、无障碍
 research/          用户研究：访谈脚本与记录（去标识化）
-app/               App 源码（或指向独立代码仓库）
+app/               App 源码：git submodule → Metatree-AI-Lab/carekind-app
 ```
 
 ## 每个功能从想法到上线

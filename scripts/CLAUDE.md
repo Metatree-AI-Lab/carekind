@@ -4,7 +4,7 @@
 > 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
 
 ## 这里是什么
-自动化脚本：run-workflow.sh（无人值守运行 workflow）、check-file-length.sh（单文件 ≤ 1000 行检查）、check-context-docs.sh（检查 CLAUDE.md / README.md 是否齐全）、ai-changelog.sh（AI 修改记录的 hook 和手动记录）。
+自动化脚本：run-workflow.sh（无人值守运行 workflow）、check-file-length.sh（单文件 ≤ 1000 行检查）、check-context-docs.sh（检查 CLAUDE.md / README.md 是否齐全）、ai-changelog.sh（AI 修改记录的 hook 和手动记录）、sync-app-tooling.sh（把共用工具同步到 App submodule）。
 
 ## 在这里通常要做的事
 - 修改或新增脚本

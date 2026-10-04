@@ -42,7 +42,7 @@ docs/                  📘 产品文档：主 PRD + 功能 PRD（所有运营�
   ├─ engineering/        架构、技术栈、开发规范、发布流程、技术 ADR
   ├─ design/             设计系统、UX 原则、无障碍
   ├─ research/           用户研究、访谈记录
-  └─ app/                App 源码（或指向独立代码仓库）
+  └─ app/                App 源码（git submodule → Metatree-AI-Lab/carekind-app）
 
 07-marketing-ops/      📣 Marketing 与运营
   ├─ brand/              品牌、语气、视觉
@@ -59,6 +59,13 @@ docs/                  📘 产品文档：主 PRD + 功能 PRD（所有运营�
 scripts/               无人值守运行脚本（run-workflow.sh）
 changelog/             📝 AI 修改记录：任务摘要（YYYY-MM.md）+ 自动编辑明细（ai-edits/）
 99-inbox/              随手记，定期整理进上面各目录
+```
+
+## 获取仓库
+```bash
+git clone --recurse-submodules git@github.com:Metatree-AI-Lab/carekind.git
+cd carekind && git config core.hooksPath .githooks
+(cd 06-app-development/app && git config core.hooksPath .githooks)
 ```
 
 ## 三条铁律

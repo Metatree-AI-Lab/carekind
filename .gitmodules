@@ -1,0 +1,3 @@
+[submodule "06-app-development/app"]
+	path = 06-app-development/app
+	url = git@github.com:Metatree-AI-Lab/carekind-app.git

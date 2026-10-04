@@ -4,7 +4,7 @@
 > 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
 
 ## 这里是什么
-产品原则与路线图、临床安全（危害日志、评测）、工程（架构、规范、发布、技术 ADR）、设计、用户研究，以及 App 代码仓库 app/。产品做什么以 docs/PRD.md 为准。
+产品原则与路线图、临床安全（危害日志、评测）、工程（架构、规范、发布、技术 ADR）、设计、用户研究，以及 App 代码仓库 app/（**git submodule**，独立私有仓库 `Metatree-AI-Lab/carekind-app`；改代码要先在 submodule 里提交推送，再在 meta repo 提交指针）。产品做什么以 docs/PRD.md 为准。
 
 ## 在这里通常要做的事
 - 实现功能：先读 docs/PRD.md §6 产品逻辑和 §9 护栏

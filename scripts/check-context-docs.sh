@@ -9,7 +9,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 # 不需要上下文文档的目录：原始数据、下载资料、运行记录、单个 skill、个人清单、工具目录
-EXCLUDE_REGEX='^\./(\.git|\.claude|\.agents|\.githooks|node_modules)(/|$)|/(ai-edits|\.pending|law-library|paperwork-templates|profiles|runs|logs|weekly|archive|members|prompts|evaluations|notes)(/|$)|^\./10-feedback/.+|^\./99-inbox/.+|^\./12-skills/.+'
+EXCLUDE_REGEX='(^|/)(\.git|\.claude|\.agents|\.githooks|node_modules)(/|$)|/(ai-edits|\.pending|law-library|paperwork-templates|profiles|runs|logs|weekly|archive|members|prompts|evaluations|notes)(/|$)|^\./10-feedback/.+|^\./99-inbox/.+|^\./12-skills/.+'
 
 missing=0
 fix_links=false
