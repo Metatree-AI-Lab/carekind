@@ -85,6 +85,11 @@ last_standup_date() { # 成员最近一次 standup 的 YYYY-MM-DD；没有则空
 	ls "$STANDUP_DIR/$1" 2>/dev/null | sed -n 's/^\([0-9-]\{10\}\)\.md$/\1/p' | sort | tail -1 || true
 }
 
+# 登记表里 PRD 当前的 assignee 是不是该成员（已撤销、已转给别人的旧分配不再提醒）
+is_current_assignee() {
+	registry_rows | awk -F'\t' -v p="$1" -v m="$2" '$1 == p && $3 == m { found = 1 } END { exit !found }'
+}
+
 # 变更历史里"分配给 <成员>"的行（日期晚于上次 standup；没有 standup 记录则看最近 3 天）
 new_assignments() {
 	local member="$1" since d prd change iso
@@ -99,10 +104,10 @@ new_assignments() {
 		iso="${BASH_REMATCH[3]}-${BASH_REMATCH[2]}-${BASH_REMATCH[1]}"
 		[[ "$iso" > "$since" ]] || continue
 		# prd-assign 写的格式：assignee: A → B；首次登记：assignee = B
-		if grep -qE "assignee[: ]*(.*→|=) *${member}( |$|，|,|（)" <<< "$change"; then
+		if grep -qE "assignee[: ]*(.*→|=) *${member}( |$|，|,|；|;|（)" <<< "$change" && is_current_assignee "$prd" "$member"; then
 			echo "${prd}（${d}）"
 		fi
-	done
+	done | awk -F'（' '{ if (!($1 in pos)) { pos[$1] = ++n; key[n] = $1 } last[$1] = $0 } END { for (i = 1; i <= n; i++) print last[key[i]] }'
 }
 
 report_member() { # 返回：输出提醒文本；有内容时 exit 状态 0，没有内容 1
@@ -133,7 +138,7 @@ report_member() { # 返回：输出提醒文本；有内容时 exit 状态 0，�
 			lines+="    最近 agent 记录：${last:-无}"$'\n'
 			printed=1
 		elif [[ "$rev" == "$member" ]]; then
-			case "$stage" in in_review|in_progress|verifying)
+			case "$stage" in draft|in_review|in_progress|verifying)
 				lines+="• [评审] ${prd}  阶段 ${stage}，负责人 ${who}"$'\n'
 				printed=1 ;;
 			esac

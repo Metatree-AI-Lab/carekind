@@ -13,15 +13,19 @@ PROFILES="05-hr-teams/member-profiles.md"
 
 # 成员姓名：画像表第一列（去掉 ** 和空格），跳过表头和分隔行
 MEMBERS="$(awk -F'|' '/^\| *(\*\*)?[A-Za-z]/ && !/姓名/ && !/日期/ { n=$2; gsub(/[ *]/, "", n); print n }' "$PROFILES" | sort -u | paste -sd, -)"
+# 按 level 分组（画像表第 4 列）：junior 超出级别、R3 的 PRD 需要 senior 以上的 reviewer
+LEVELS="$(awk -F'|' '/^\| *(\*\*)?[A-Za-z]/ && !/姓名/ && !/日期/ { n=$2; l=$4; gsub(/[ *]/, "", n); gsub(/ /, "", l); print n ":" l }' "$PROFILES" | paste -sd, -)"
 
 # 磁盘上的 PRD（不含 registry/README/CLAUDE/AGENTS）
 FILES="$(find docs/prds -maxdepth 1 -name '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*.md' -exec basename {} .md \; | sort | paste -sd, -)"
 
-awk -F'|' -v members="$MEMBERS" -v files="$FILES" '
+awk -F'|' -v members="$MEMBERS" -v files="$FILES" -v levels="$LEVELS" '
 function trim(s) { gsub(/^[ \t]+|[ \t]+$/, "", s); return s }
 function err(msg) { print "❌ " msg > "/dev/stderr"; bad = 1 }
 BEGIN {
 	split(members, m, ","); for (i in m) isMember[m[i]] = 1
+	split(levels, lv, ","); for (i in lv) { split(lv[i], kv, ":"); level[kv[1]] = kv[2] }
+	review["in_review"] = review["approved"] = review["in_progress"] = review["verifying"] = review["released"] = review["done"] = 1
 	split(files, f, ","); for (i in f) if (f[i] != "") onDisk[f[i]] = 1
 	n = split("idea draft in_review approved in_progress verifying released done cancelled superseded", s, " ")
 	for (i = 1; i <= n; i++) validStage[s[i]] = 1
@@ -47,8 +51,13 @@ inTable && /^\|/ {
 	else if (tolower(who) ~ /claude|codex|agent|^ai$/) err(prd ": AI agent 不能当 assignee")
 	else if (!(who in isMember)) err(prd ": assignee \"" who "\" 不在 05-hr-teams/member-profiles.md")
 	if (rev != "" && rev != "—" && rev == who) err(prd ": reviewer 不能等于 assignee")
-	if (risk == "R3" && (stage in late) && (rev == "" || rev == "—" || rev ~ /TBD|需外部评审/))
-		err(prd ": R3 的 PRD 进入 " stage " 前必须指定 reviewer")
+	# 需要 senior 以上 reviewer：R3，或 junior 负责 S 以外的 PRD（rules/06-adlc-rules.md §5.1），从 in_review 起
+	cx = trim($7)
+	needSenior = (risk == "R3") || (level[who] == "junior" && cx != "S")
+	if (needSenior && (stage in review)) {
+		if (rev == "" || rev == "—" || rev ~ /TBD|需外部评审/) err(prd ": " stage " 阶段必须指定 senior 以上的 reviewer（R3 或超出级别的 PRD）")
+		else if (!(level[rev] == "senior" || level[rev] == "lead")) err(prd ": reviewer \"" rev "\" 不是 senior 以上")
+	}
 }
 END {
 	for (p in onDisk) err(p ": 有 PRD 文件但没有登记（请加到 " "docs/prds/registry.md" "）")

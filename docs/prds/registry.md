@@ -14,13 +14,7 @@ Parent: [`docs/PRD.md`](../PRD.md) · 规则：[`rules/06-adlc-rules.md`](../../
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-04-shift-capture-and-resident-records | Shift Capture + 按老人分配 + 老人档案 | draft | Lin | — | {{TBD}} | R3 | — | — | 11/10/2026 |
 | 2026-10-11-adlc-prd-lifecycle | ADLC：PRD 生命周期、分配与状态管理 | draft | Lightman | — | M | R1 | — | — | 11/10/2026 |
-| 2026-10-11-carekind-design-system | careKind AI 设计系统（总 PRD · 任务拆分与分配） | draft | Lightman | — | M | R1 | — | — | 11/10/2026 |
-| 2026-10-11-ds-foundations | DS-1 视觉基础与 design tokens | idea | Gary | — | S | R1 | 2026-10-11-carekind-design-system | 品牌视觉（Logo/主色/字体）未定 · 等 Lightman · 18/10/2026 | 11/10/2026 |
-| 2026-10-11-ds-component-specs | DS-2 通用组件规格 | idea | Gary | — | S | R1 | 2026-10-11-carekind-design-system | Gary WIP 上限 1 · 等 ds-foundations 完成 · DS-1 完成后 | 11/10/2026 |
-| 2026-10-11-ds-content-guidelines | DS-3 内容与语言规范 | idea | Lightman | — | S | R2 | 2026-10-11-carekind-design-system | Lightman WIP 已满 · 等 Lightman 确认例外或 ADLC PRD 进入 in_review · 18/10/2026 | 11/10/2026 |
-| 2026-10-11-ds-clinical-patterns | DS-4 临床确认与 AI 内容模式 | idea | — | — | M | R3 | 2026-10-11-carekind-design-system | 无满足条件的 senior 容量、缺第二位评审人 · 等 Lightman（总 PRD Q3、Q6）· 18/10/2026 | 11/10/2026 |
-| 2026-10-11-ds-component-library | DS-5 代码组件库 | idea | — | — | L | R3 | 2026-10-11-carekind-design-system | 等 ADR-0001 技术栈 · 等 Lin · ADR 完成后 | 11/10/2026 |
-| 2026-10-11-ds-tooling | DS-6 设计系统工程与质量工具 | idea | — | — | L | R2 | 2026-10-11-carekind-design-system | 等 ADR-0001 + Windston 的 level · 等 Lightman/Lin · ADR 完成后 | 11/10/2026 |
+| 2026-10-11-carekind-design-system | careKind AI 设计系统（含 DS-1…DS-6 六个工作包） | draft | Gary | Lin | L | R3 | — | 品牌视觉（Logo/主色/字体）未定 · 等 Lightman · 18/10/2026 | 11/10/2026 |
 
 列说明：
 - **PRD**：`docs/prds/` 下的文件名（不含 `.md`）。
@@ -42,3 +36,5 @@ Parent: [`docs/PRD.md`](../PRD.md) · 规则：[`rules/06-adlc-rules.md`](../../
 | 11/10/2026 | 2026-10-11-ds-clinical-patterns | 登记：idea，assignee = —（无推荐） | M、R3：junior 不可；Lin 是唯一 senior，但 primary_tracks 未填、可能无 WIP 容量、且没有第二位 senior 评审；规则不允许放宽 | — |
 | 11/10/2026 | 2026-10-11-ds-component-library | 登记：idea，assignee = —（无推荐） | L、R3，只有 senior 可接；依赖 ADR-0001 技术栈 | — |
 | 11/10/2026 | 2026-10-11-ds-tooling | 登记：idea，assignee = —（无推荐） | 方向最匹配 Windston，但 level 未填，规则不允许猜；依赖 ADR-0001 | — |
+| 11/10/2026 | 2026-10-11-carekind-design-system | 合并：DS-1…DS-6 不再单独登记，作为 6 个工作包并入同一个 PRD；删除登记表里 6 个 idea 行（上面的历史行保留不动） | Lightman 要求"整个任务分配给一个人，整个 PRD 分配给一个人" | Lightman |
+| 11/10/2026 | 2026-10-11-carekind-design-system | **指定覆盖** assignee: Lightman → Gary；reviewer: — → Lin | 覆盖的规则：junior × L（复杂度 7）、junior × R3（含临床确认与 AI 内容模式）、方向（含 frontend、DevOps 工作包，超出 product-ux）。Lightman 的原因：设计系统整体由 Gary 负责（产品思维、审美）。重新评分：范围 2 + 技术面 1 + 不确定性 2 + 依赖 2 = 7，L；R3。缓解：Lin（senior）为 reviewer，参与设计评审和每个 PR；Lin 同时负责 ADR-0001；DS-6 工具链由 Windston 协助（级别待确认）；品牌视觉与 DS-3 语言规范的业务确认由 Lightman 负责；卡点超过 2 个工作日升级给 Lin；Gary 的 WIP 1/1，未超限 | Lightman（对话中指定） |

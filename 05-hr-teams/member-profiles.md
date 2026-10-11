@@ -12,7 +12,7 @@ Owner: Lightman · Status: Draft · Last reviewed: 11/10/2026
 |---|---|---|---|---|---|---|---|---|---|---|
 | Lightman | {{TBD}} | — | docs-ops | — | 2 | 否 | — | — | 仅 docs-ops 类 PRD | PO / 审批人，不做开发类 assignee |
 | Lin | `lin-demo-ck`（示例） | senior | {{TBD}} | {{TBD}} | 2 | 是 | Tech Lead：架构、安全、AI 评测、技术决策 | {{TBD}} | 待填 primary_tracks 后启用 | 还要做 R3 评审；wip_limit 取默认值 |
-| Gary | `gary-demo-ck`（示例） | junior | product-ux | {{TBD}} | 1 | 否 | 产品思维、审美 | {{TBD}} | 是（S 复杂度、R1/R2；见规则 §5） | 具体写代码的方向（frontend / fullstack 等）待确认；wip_limit、r3_eligible 取 junior 默认值 |
+| Gary | `gary-demo-ck`（示例） | junior | product-ux | {{TBD}} | 1 | 否 | 产品思维、审美 | {{TBD}} | 是（S 复杂度、R1/R2；见规则 §5） | 具体写代码的方向（frontend / fullstack 等）待确认；wip_limit、r3_eligible 取 junior 默认值。**careKind AI 设计系统整体由 Gary 负责**（Lightman 指定覆盖，11/10/2026；reviewer Lin，见 registry 与规则 §5.1） |
 | Windston | `windston-demo-ck`（示例） | {{TBD}} | infra-security | {{TBD}} | {{TBD}} | {{TBD}} | 擅长 DevOps | {{TBD}} | 否（level 未填） | level 待确认；确认前不参与推荐 |
 
 > ⚠️ **`github` 列里标注"（示例）"的 handle 是演示用占位，不是真实账号**，只用来演示 PRD 分配到 GitHub 账号的效果。三位成员各有自己的真实 GitHub 账号，正式使用前请本人确认后替换。这一列只放公开的 GitHub 用户名，不放邮箱或其他账号信息。

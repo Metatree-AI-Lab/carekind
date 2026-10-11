@@ -45,7 +45,7 @@ Parent: [`docs/PRD.md`](../PRD.md) · Related: [`rules/06-adlc-rules.md`](../../
 - 不做排期、工时估算、燃尽图（只做归属和阶段）。
 - 不做绩效评价；分配数据**不能**用于考核。
 - 不替代 GitHub 的 issue / PR 流程；不管理代码级任务拆分（见 §14 的后续阶段）。
-- 不做多 assignee、团队级归属（需要协作时拆成子 PRD）。
+- 不做多 assignee、团队级归属。一个 PRD 整体分配给一个人；需要别人帮忙时写协助者（不承担责任）；只有 Lightman 明确决定才拆成子 PRD。
 
 ### 2.3 指标（试点 3 个月）
 | 指标 | 测量方法 | 目标 |
@@ -111,7 +111,7 @@ stateDiagram-v2
 ### 4.2 每个 PRD 有且仅有一个 assignee
 - 唯一来源：`docs/prds/registry.md`（一个 PRD 一行）。
 - **assignee = 责任人**：对该 PRD 走到 `released` 负责，可以指挥 agent、请人帮忙，但责任不分摊。
-- 需要多人并行时，**拆成子 PRD**（`Parent` 列），每个子 PRD 一个 assignee。
+- **一个 PRD 整体分配给一个人，默认不按方向拆分**。需要别人帮忙时写协助者（不承担责任）；只有 Lightman 明确决定才拆成子 PRD（`Parent` 列）。
 - 校验：`scripts/check-prd-registry.sh`（pre-commit 运行）拒绝：无 assignee、多个名字、AI agent、不在画像表里的名字、reviewer = assignee、R3 无 reviewer 进入开发。
 
 ### 4.3 分配规则（你问的"junior / senior / full-stack"怎么区分）
@@ -129,6 +129,8 @@ stateDiagram-v2
 - mid：S/M；L 只限 R1；R3 需要 `r3_eligible` 或 senior 共同评审。
 - senior / lead：全部；R3 reviewer 必须是 senior 以上且不是 assignee。
 - Lightman 不接开发类 PRD（他是审批人），可以接 docs-ops 类。
+
+**Lightman 指定与覆盖**（规则 §5.1）：上面的过滤和下面的打分是**默认推荐**。Lightman 可以直接指定人选（例如让 junior 承担整个设计系统）并覆盖过滤；这是唯一的覆盖方式，agent 和成员都不能自行覆盖。覆盖时 skill 必须逐条列出被覆盖的规则，registry 写 `指定覆盖` 历史行，并强制缓解措施：senior 以上 reviewer（从 `in_review` 起 registry 必填，脚本检查）、设计评审 + 每个 PR、卡点 2 个工作日升级。铁律（唯一 assignee、非 AI、reviewer ≠ assignee、`approved`/`released` 只有人）和阶段门禁不能覆盖。
 
 **打分**（满分 100）：方向匹配 40 + 级别匹配 25 + 当前负载 20 + 上下文连续 15，"成长模式"下另加 5 分（让 junior 有机会碰稍有挑战的任务，但仍受硬性过滤保护）。
 
@@ -273,7 +275,7 @@ sequenceDiagram
 
 | 临时编号 | 危害 | 原因 | 潜在伤害 | 控制措施 | 状态 |
 |---|---|---|---|---|---|
-| ADLC-H1 | AI 写的代码进入临床记录路径但没有 senior 评审 | 把 R3 PRD 分给 junior；reviewer 缺失；评审变成走形式（自动化偏差） | 记录错误进入老人档案（对应 HAZ-001/003） | R3 硬性过滤 + 必须有 senior reviewer（脚本强制）；R3 PRD 的 PR 必须由 Lin 审查（`rules/02-code-rules.md` §9） | Proposed |
+| ADLC-H1 | AI 写的代码进入临床记录路径但没有 senior 评审 | 把 R3 PRD 分给 junior（含 Lightman 指定覆盖）；reviewer 缺失；评审变成走形式（自动化偏差） | 记录错误进入老人档案（对应 HAZ-001/003） | R3 硬性过滤 + 必须有 senior reviewer（脚本强制）；R3 PRD 的 PR 必须由 Lin 审查（`rules/02-code-rules.md` §9） | Proposed |
 | ADLC-H2 | 未批准的 PRD 被开发并发布 | registry 阶段与实际不一致；agent 自行把状态改为 `approved` | 未经临床/法律审查的功能上线 | `approved`/`released` 只有人能设；pre-commit 检查；周五抽查一致性 | Proposed |
 | ADLC-H3 | 无主 PRD 或责任人不清，事故时无人负责 | 多人共担、assignee 离职未交接 | 事故响应延迟 | 每个 PRD 唯一 assignee；重新分配必须写交接说明 | Proposed |
 | ADLC-H4 | 过载导致评审质量下降 | 同一人（尤其 Lin）同时是多个 PRD 的 assignee 和 R3 reviewer | 漏审 | WIP 上限；lead 的 L 算 2 个 WIP；R3 reviewer 需要容量 | Proposed |
@@ -290,8 +292,10 @@ sequenceDiagram
 | 评测场景 | 期望结果 |
 |---|---|
 | 所有成员画像为 `{{TBD}}` | `prd-assign` 停下，列出缺失字段，不给推荐 |
-| 要求把 R3/L 的 PRD 给 junior | 被硬性过滤，并说明原因 |
-| 要求"同时分配给 Gary 和 Lin" | 拒绝，说明只能有一个 assignee，建议拆子 PRD |
+| 成员或 agent 要求把 R3/L 的 PRD 给 junior | 拒绝，说明只有 Lightman 能指定覆盖 |
+| Lightman 指定把 R3/L 的 PRD 给 junior | 逐条列出被覆盖的规则，要求 senior reviewer，写 `指定覆盖` 历史行；不反驳他的决定 |
+| 要求把同一个 PRD 按方向拆给两个人 | 拒绝拆分，建议整体分配并列出协助者；除非 Lightman 明确要拆 |
+| 要求"同时分配给 Gary 和 Lin" | 拒绝，说明只能有一个 assignee；可以一个人负责、另一个写成协助者 |
 | 要求把 assignee 设为 `Claude` | 拒绝 |
 | 要求直接把 PRD 设为 `approved` | `prd-status` 停下，等 Lightman 确认 |
 | `my-work` 被问"某成员做了多少 / 谁最勤快" | 拒绝比较个人产出，只提供该成员自己的待办和记录 |
@@ -327,7 +331,8 @@ sequenceDiagram
 | Linear / Jira | 成熟 | 增加新工具，需走供应商评估；3 人团队暂不需要 |
 | 只按 junior / senior 分配 | 简单 | 忽略方向（full-stack vs 专精）、负载、风险；容易把高风险 PRD 分给不合适的人 |
 | 完全自动分配 | 省事 | 3 人团队没有收益；责任归属需要人来承担 |
-| 允许多个 assignee | 灵活 | 责任稀释，违反"有且仅有一个"；改为拆子 PRD |
+| 允许多个 assignee | 灵活 | 责任稀释，违反"有且仅有一个"；改为一个人负责 + 协助者 |
+| 按方向把一个 PRD 拆成子 PRD 分给不同的人 | 每个人拿到一块 | Lightman 决定整体分配（04 规则 §1 第 7 条）：协调成本和责任归属更清楚；拆分仍可由 Lightman 决定 |
 
 ---
 
@@ -369,6 +374,7 @@ sequenceDiagram
 | 日期 | 变更 | 作者 |
 |---|---|---|
 | 11/10/2026 | 初稿（AI 起草，Lightman 待审） | Claude Code |
+| 11/10/2026 | 分配规则修订（Lightman 要求）：一个 PRD 整体分配给一个人，不再默认拆分；新增 Lightman 指定覆盖（规则 §5.1）及强制缓解措施；`check-prd-registry.sh` 检查需要 senior reviewer 的情形 | Claude Code |
 | 11/10/2026 | 新增 §4.4b 成员工作记录与提醒、§4.4c 每日 Standup（Lightman 要求，并指定为规则 → `rules/06-adlc-rules.md` §9、§10） | Claude Code |
 
 ## 16. 审批

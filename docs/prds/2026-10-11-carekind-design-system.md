@@ -1,9 +1,9 @@
-# PRD：careKind AI 设计系统（总 PRD · 任务拆分与分配）
+# PRD：careKind AI 设计系统
 
 Owner: Lightman (PO) · Status: **Draft** · Last reviewed: 11/10/2026
 Parent: [`docs/PRD.md`](../PRD.md) · Related: [`06-app-development/design/ux-principles.md`](../../06-app-development/design/ux-principles.md) · [`07-marketing-ops/brand/brand-guide.md`](../../07-marketing-ops/brand/brand-guide.md) · [`rules/06-adlc-rules.md`](../../rules/06-adlc-rules.md) · [`registry.md`](registry.md)
 
-> 一句话：为 careKind AI 建一套**护士能在单手、戴手套、被打断的真实场景里用对**的设计系统：视觉基础 → 通用组件 → 临床确认与 AI 内容模式 → 语言规范 → 代码组件库与工具。这份总 PRD 定义范围、拆成 6 个子 PRD，并按 ADLC 分配规则分配。
+> 一句话：为 careKind AI 建一套**护士能在单手、戴手套、被打断的真实场景里用对**的设计系统：视觉基础 → 通用组件 → 临床确认与 AI 内容模式 → 语言规范 → 代码组件库与工具。整个 PRD（含 6 个工作包 DS-1…DS-6）由一位 assignee 负责：Gary（Lightman 指定）。
 
 ---
 
@@ -50,7 +50,7 @@ Parent: [`docs/PRD.md`](../PRD.md) · Related: [`06-app-development/design/ux-pr
 | 触控目标尺寸达标率 | 按 DS-2 规定的最小尺寸，逐组件测量 | 100%；最小尺寸 {{TBD：DS-2 通过戴手套测试后设定}} |
 | 界面文字通过 TGA 检查 | `tga-boundary-check` 对组件库内所有文案 | 无 🔴；🟡 有书面结论 |
 | 临床模式的可用性 | 对 ≥ {{TBD：3}} 位 aged care 护士的原型测试：能否在不看提示的情况下分清 AI 内容并完成确认 | {{TBD：测试后设定，不预设数字}} |
-| 子 PRD 按阶段推进 | registry | 无超过 10 个工作日不动的子 PRD |
+| PRD 与工作包按阶段推进 | registry + 每日 standup | PRD 无超过 10 个工作日不动；卡点超过 2 个工作日已升级给 reviewer |
 
 ---
 
@@ -67,18 +67,20 @@ Parent: [`docs/PRD.md`](../PRD.md) · Related: [`06-app-development/design/ux-pr
 
 ## 4. 方案
 
-### 4.1 拆分为 6 个子 PRD
-| 编号 | 子 PRD（登记表里的 slug） | 内容 | 方向 | 复杂度 | 风险 |
-|---|---|---|---|---|---|
-| **DS-1** | `2026-10-11-ds-foundations` | 视觉基础与 design tokens：色彩（含状态色、深浅色）、字体、间距、圆角、图标、对比度检查；用中立格式（如 W3C design tokens JSON）以便任何技术栈使用 | product-ux | S | R1 |
-| **DS-2** | `2026-10-11-ds-component-specs` | 通用组件规格：按钮、表单、导航、列表 / 表格、反馈、空状态、加载、离线 / 同步状态；触控尺寸、焦点、屏幕阅读器 | product-ux | S | R1 |
-| **DS-3** | `2026-10-11-ds-content-guidelines` | 内容与语言规范：person-centred 语言、TGA 禁用词与安全替代、"AI 草稿"标注文案、错误 / 空状态文案库、澳式英语、界面语言与记录语言分离 | docs-ops | S | R2 |
-| **DS-4** | `2026-10-11-ds-clinical-patterns` | **临床确认与 AI 内容模式**：AI 标注、新增 / 改写高亮、原文并排、低置信度标记、老人归属选择与同名提示、敏感事件逐条确认、确认动作设计、安全失败 / 退回手动 | product-ux（+ 与 Lin 评审） | M | **R3**（触及 G1/G4/G5） |
-| **DS-5** | `2026-10-11-ds-component-library` | 代码组件库（按选定技术栈实现 DS-2、DS-4） | frontend / mobile | L | R3 |
-| **DS-6** | `2026-10-11-ds-tooling` | 文档站 / 组件预览、无障碍自动检查、视觉回归、tokens 构建与发布、CI | infra-security（DevOps） | 现在 L，技术栈确定后预计 M | R2 |
+### 4.1 六个工作包（同一个 PRD，不是独立的 PRD）
+| 工作包 | 内容 | 方向 | 复杂度 | 风险 |
+|---|---|---|---|---|
+| **DS-1** 视觉基础与 design tokens | 色彩（含状态色、深浅色）、字体、间距、圆角、图标、对比度检查；用中立格式（如 W3C design tokens JSON）以便任何技术栈使用 | product-ux | S | R1 |
+| **DS-2** 通用组件规格 | 按钮、表单、导航、列表 / 表格、反馈、空状态、加载、离线 / 同步状态；触控尺寸、焦点、屏幕阅读器 | product-ux | S | R1 |
+| **DS-3** 内容与语言规范 | person-centred 语言、TGA 禁用词与安全替代、"AI 草稿"标注文案、错误 / 空状态文案库、澳式英语、界面语言与记录语言分离 | product-ux / docs-ops | S | R2 |
+| **DS-4** 临床确认与 AI 内容模式 | AI 标注、新增 / 改写高亮、原文并排、低置信度标记、老人归属选择与同名提示、敏感事件逐条确认、确认动作设计、安全失败 / 退回手动 | product-ux | M | **R3**（触及 G1/G4/G5） |
+| **DS-5** 代码组件库 | 按选定技术栈实现 DS-2、DS-4 | frontend / mobile | L | R3 |
+| **DS-6** 工具链 | 文档站 / 组件预览、无障碍自动检查、视觉回归、tokens 构建与发布、CI | infra-security（DevOps） | M（栈定后） | R2 |
 
-前置决策（不是 PRD）：
-- **ADR-0001 技术栈选型**（Lin，`06-app-development/engineering/adr/`）：DS-5、DS-6 的前置，决定组件库是 Web、React Native 还是多端。
+整个 PRD 的评分（`rules/06-adlc-rules.md` §3）：范围 2 + 技术面 1 + 不确定性 2 + 依赖 2 = **7，L**；风险取最高的一项：**R3**。
+
+前置决策（不是工作包）：
+- **ADR-0001 技术栈选型**（Lin）：DS-5、DS-6 的前置，决定组件库是 Web、React Native 还是多端。
 - **品牌视觉决策**（Lightman）：Logo、主色、字体（`brand-guide.md` 现为 `{{TBD}}`），DS-1 的输入。
 
 ```mermaid
@@ -89,27 +91,34 @@ flowchart LR
 	DS2 --> DS4
 	SC["Shift Capture PRD"] -.-> DS4
 	DS3["DS-3 语言规范"] --> DS4
-	ADR["ADR-0001 技术栈<br/>(Lin)"] --> DS5["DS-5 组件库 L/R3"]
+	ADR["ADR-0001 技术栈<br/>(Lin)"] --> DS5["DS-5 组件库 R3"]
 	ADR --> DS6["DS-6 工具链"]
 	DS2 --> DS5
 	DS4 --> DS5
 	DS5 --> DS6
 ```
 
-### 4.2 分配结果（按 `rules/06-adlc-rules.md` §3–§6）
-**当前团队约束**：Gary = junior，wip_limit = 1，r3 不可；Lin = senior，tracks 未填；Windston = 级别未填；Lightman = 只能接 docs-ops，WIP 2 已有 2 个 PRD（ADLC、本总 PRD）。
-
-| 子 PRD | 评分结论 | 建议 assignee | 状态 |
-|---|---|---|---|
-| 总 PRD（本文） | docs-ops，M，R1 | **Lightman** | 已登记（draft） |
-| **DS-1** | 复杂度 S（范围 1、技术面 0、不确定性 1、依赖 0 = 2），R1。唯一通过过滤的是 Gary：方向匹配 40 + 级别匹配 25 + 负载 20 + 连续 0 = **85/100** | **Gary** | 已登记（idea，assignee = Gary） |
-| **DS-2** | S（1+0+0+1 = 2），R1。方向同 DS-1，但 Gary 的 WIP 上限 1，**DS-1 完成后**才能接 | **Gary（排队，接在 DS-1 之后）** | 登记，assignee = Gary，idea |
-| **DS-3** | S（1+0+0+0 = 1），R2，docs-ops。通过过滤的只有 Lightman，但他 WIP 已满（2）；要现在开始需要你明确"插队"，或等 ADLC PRD 进入 `in_review` | **Lightman（需你确认 WIP 例外）** | 登记，assignee = Lightman，idea |
-| **DS-4** | M（1+0+2+2 = 5），**R3**。junior 不可；唯一的 senior 是 Lin，但 ① Lin 的 primary_tracks 未填 ② 他已有 Shift Capture（若评为 L 则占满 WIP）③ R3 需要另一位 senior 评审，团队里没有第二位，要 `🧑 需外部评审` | **暂不分配**。候选：Lin（accountable），Gary 做视觉探索（不承担责任） | 登记，assignee = —，idea，Blocked 写明原因 |
-| **DS-5** | L（2+1+2+2 = 7），R3。只有 senior 可接；同上；且依赖 ADR-0001 | **暂不分配**。技术栈定后重新评分，按"基础组件 / 临床组件"拆分 | 登记，assignee = —，idea，Blocked |
-| **DS-6** | 现在 L（1+1+2+2 = 6）；技术栈定后 M（约 1+1+1+1 = 4），R2。方向最匹配 Windston（infra-security），但**他的级别未填**，规则不允许猜 | **候选 Windston**（条件：level ≥ mid 且栈已定） | 登记，assignee = —，idea，Blocked |
-
-**为什么现在能分出去的只有两个**：这是容量和级别的真实约束，不是规则太严。Gary 一次只能做 1 个；Lin 在 R3 评审和 ADR 上是瓶颈；Windston 的画像不全。按顺序推进见 §10。
+### 4.2 分配结果：整个 PRD → Gary（Lightman 指定）
+- **Assignee：Gary**（junior，product-ux，强项产品思维和审美）。**Reviewer：Lin**（senior）。
+- **这是一次指定覆盖**（`rules/06-adlc-rules.md` §5.1）。默认规则下 Gary 通不过过滤，被覆盖的规则：
+  | 被覆盖的规则 | 原因 |
+  |---|---|
+  | junior 只能接 S | 本 PRD 是 L（7 分） |
+  | junior 只能接 R1/R2 | 含 DS-4，触及护栏 G1/G4/G5，是 R3 |
+  | 方向匹配 | DS-5（frontend）、DS-6（DevOps）超出 Gary 的 product-ux |
+  Gary 的 WIP 是 1/1，没有超限。
+- **缓解措施（必须，不能省略）**
+  | 措施 | 谁 |
+  |---|---|
+  | senior 以上 reviewer，registry 从 `in_review` 起必填 | Lin（脚本强制） |
+  | 参与设计评审（进入 `in_review` 前）和开发期的每个 PR | Lin |
+  | 卡点超过 2 个工作日升级给 reviewer；每日 standup 报告卡点 | Gary → Lin |
+  | ADR-0001 技术栈 | Lin |
+  | DS-6 工具链协助 | Windston（level 待确认，不承担责任） |
+  | 品牌视觉决策；DS-3 的语言规范业务确认 | Lightman |
+  | R3 的临床评审（DS-4 的危害 DS-H1–H3） | 临床顾问（空缺）→ 见 §12 Q6 |
+- **协助者不承担责任**：Gary 对整个 PRD 能否走到 `released` 负责，可以请 Lin、Windston 协助具体工作包，也可以用 agent；但责任不分摊。
+- **之前的拆分方案已撤销**：不再按方向拆成 6 个子 PRD 分给不同的人（见 registry 变更历史）。
 
 ### 4.3 设计原则（继承，不重复定义）
 以 `ux-principles.md` 为准：单手 / 戴手套 / 被打断、审核并排、AI 透明、WCAG 2.2 AA、多语言界面、尊重语言、低带宽。DS-1 至 DS-4 要把这些原则变成**可检查的规格**。
@@ -169,13 +178,14 @@ flowchart LR
 - 文案：对外 / 界面用澳式英语；内部文档中文。
 
 ## 10. 上线计划与回滚
-**推进顺序（按团队容量，不是按理想顺序）**
-| 阶段 | 内容 | 谁 | 前置 |
+**推进顺序（一个人、一个 PRD，按依赖排序）**
+| 阶段 | 工作包 | 谁 | 前置 |
 |---|---|---|---|
-| 现在 | 总 PRD 评审；DS-1 开始；ADR-0001 开始 | Lightman / Gary / Lin | 品牌视觉决策（Lightman） |
-| DS-1 完成后 | DS-2；DS-3（可并行，Lightman） | Gary / Lightman | — |
-| 技术栈定后 | DS-6 重新评分；DS-5 拆分后分配 | Windston（待级别确认）/ 待定 | ADR-0001、Windston 画像 |
-| 视觉基础和 Shift Capture 评审进展后 | DS-4 | Lin 负责（建议）；需外部评审人 | Lin 容量、第二位评审人 |
+| 1 | DS-1 视觉基础（token 结构、比例、对比度规则可先做，颜色值等品牌决策） | Gary | 品牌视觉决策（Lightman） |
+| 2 | DS-2 组件规格；DS-3 语言规范（可并行） | Gary；Lightman 业务确认 | DS-1 |
+| 3 | DS-4 临床确认与 AI 内容模式（原型 + 可用性测试） | Gary；Lin 评审 | DS-1–DS-3；Shift Capture 评审进展 |
+| 4 | DS-5 组件库、DS-6 工具链 | Gary 统筹；Lin、Windston 协助 | ADR-0001 技术栈 |
+- 进入阶段 4 时，Lightman 和 Gary、Lin 一起重新评估：DS-5/DS-6 是否继续由 Gary 统筹，还是由 Lightman 决定拆出去（拆分只能由 Lightman 决定）。
 
 回滚：全部是文档、设计和代码，按版本管理；组件库用语义化版本，破坏性变更需要升主版本并通知使用方。
 
@@ -190,18 +200,18 @@ flowchart LR
 | # | 问题 | Owner | 影响 |
 |---|---|---|---|
 | Q1 | 品牌视觉：Logo、主色、字体由谁定、什么时候定？ | Lightman | **阻塞** DS-1 的最终 tokens |
-| Q2 | Windston 的 level？ | Lightman + 本人 | **阻塞** DS-6 的推荐 |
-| Q3 | Lin 的 primary_tracks？Shift Capture PRD 的复杂度（我的评分是 L：范围 2 + 技术面 2 + 不确定性 2 + 依赖 1 = 7，**待你确认**）？ | Lin / Lightman | 决定 Lin 是否有容量接 DS-4 |
-| Q4 | Gary 写代码的方向（frontend / fullstack）？ | Gary | DS-5 贡献者安排 |
-| Q5 | DS-3 要不要现在开始（需要 Lightman 的 WIP 例外），还是等 ADLC PRD 进入 review？ | Lightman | DS-3 时间 |
-| Q6 | R3 的第二位评审人：外部 senior？临床顾问？ | Lightman | DS-4、DS-5 |
-| Q7 | 目标平台：iOS / Android / Web PWA 都要，还是先 PWA？ | Lin + Lightman | ADR-0001、DS-5 范围 |
+| Q2 | 目标平台：iOS / Android / Web PWA 都要，还是先 PWA？ | Lin + Lightman | ADR-0001、DS-5 范围 |
+| Q3 | Lin 有没有容量同时做：本 PRD 的 reviewer、ADR-0001、Shift Capture（我的评分是 L：范围 2 + 技术面 2 + 不确定性 2 + 依赖 1 = 7，**待你确认**）？ | Lin / Lightman | reviewer 是缓解措施的核心，Lin 过载会让评审变形式 |
+| Q4 | Gary 写代码的方向（frontend / fullstack）？阶段 4 他是否承担 DS-5 实现？ | Gary | 阶段 4 的安排 |
+| Q5 | Windston 的 level？（他协助 DS-6） | Lightman + 本人 | 画像 |
+| Q6 | 临床顾问空缺期间，DS-4 的临床评审（DS-H1–H3）由谁做？ | Lightman | R3 的评审完整性 |
 
 ## 13. 风险
-- **Gary 一人承担视觉与规格两个 PRD**，且是 junior：靠顺序推进和评审控制；DS-4 的 R3 部分不让他承担责任。
-- **Lin 是瓶颈**（ADR、R3 评审、Shift Capture）：已在分配里体现；需要第二位 senior 或外部评审。
-- **技术栈未定就开始组件设计**：所以 DS-1/DS-2 用中立格式，DS-5 推迟。
-- **品牌视觉未定**：DS-1 可以先做结构（token 命名、比例、对比度规则），颜色值待 Q1。
+- **Gary 是 junior，承担 L 和 R3 的 PRD**：这是 Lightman 的指定，风险由 §4.2 的缓解措施控制（senior reviewer、设计评审 + 每个 PR、2 个工作日升级、standup 报告卡点）。评审只是形式时风险最高，所以 Lin 的容量（Q3）是关键。
+- **一个人跨设计、语言、前端、DevOps 四个方向**：靠阶段排序和协助者缓解；阶段 4 重新评估是否拆分。
+- **Lin 是瓶颈**（reviewer、ADR-0001、Shift Capture）：Q3。
+- **技术栈未定就开始组件设计**：DS-1/DS-2 用中立格式，DS-5 推迟到栈定后。
+- **品牌视觉未定**：DS-1 先做结构（token 命名、比例、对比度规则），颜色值等 Q1。
 
 ## 14. 变更记录
 | 日期 | 变更 | 作者 |

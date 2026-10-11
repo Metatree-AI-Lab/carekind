@@ -8,7 +8,7 @@ paths:
 
 # ADLC 规范：PRD 生命周期与分配 (Agent Development Lifecycle Rules)
 
-Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所有 AI agent、所有被分配 PRD 的成员
+Owner: Lightman (PO) · Last reviewed: 11/10/2026（§1 第 7 条、§3.1、§5.1 修订：整体分配与指定覆盖）· 适用：所有 PRD、所有 AI agent、所有被分配 PRD 的成员
 规格来源：[`docs/prds/2026-10-11-adlc-prd-lifecycle.md`](../docs/prds/2026-10-11-adlc-prd-lifecycle.md)。**本文件是阶段、门禁、分配参数的唯一来源**，PRD 和 skill 引用这里，不重复写数值。
 
 > ADLC = AI agent 参与每个阶段（起草、实现、评测、复核）的开发生命周期；**人负责决定和签字，agent 负责执行**。
@@ -20,6 +20,7 @@ Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所�
 4. **reviewer ≠ assignee。**
 5. 状态和 assignee 的唯一来源是 [`docs/prds/registry.md`](../docs/prds/registry.md)。PRD 文件头部的 `Status:` 只表示**文档审批状态**（Draft / Review / Approved），不要在两处各记一份生命周期阶段。
 6. 分配建议由 `prd-assign` skill 给出，**最终分配必须由 Lightman 确认**（🧑）。重新分配同样要确认，并留下记录。
+7. **一个 PRD 整体分配给一个人**，不按技术方向把同一个 PRD 拆给多个 assignee。跨方向的 PRD 由 assignee 统一负责、统一协调；需要别人帮忙的部分写在备注里（协助者不承担责任）。只有 Lightman 明确决定拆分时才拆成子 PRD。
 
 ## 2. 生命周期阶段
 | 阶段 id | 含义 | 进入条件（门禁） | 谁能推进 |
@@ -49,7 +50,9 @@ Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所�
 | 不确定性 | 方案清楚 | 需要 spike 或 ADR | 需要新技术选型，或集成外部系统 |
 | 依赖 | 无 | 1–2 个 PRD 或外部依赖 | 3 个以上，或会阻塞其他 PRD |
 
-档位：**S = 0–2，M = 3–5，L = 6–8**。L 且需要 3 个以上技术方向（track）的 PRD，**应该先拆成子 PRD**，每个子 PRD 各有一个 assignee（registry 的 `Parent` 列记录父子关系）。
+档位：**S = 0–2，M = 3–5，L = 6–8**。
+
+**默认不拆分**：L 且需要 3 个以上方向（track）的 PRD，也整体交给一个人。`prd-assign` 只**提示**"跨方向多，建议安排协助者"，并列出可协助的成员；是否拆成子 PRD 由 Lightman 决定（拆了才用 registry 的 `Parent` 列，每个子 PRD 各有一个 assignee）。PRD 内部可以分成多个**工作包**，它们不是独立的 PRD，也不单独分配。
 
 ### 3.2 风险等级（Risk）：独立于复杂度，取最高的一项
 | 等级 | 触及什么 |
@@ -73,6 +76,8 @@ Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所�
 **`level`、`primary_tracks` 是 `{{TBD}}` 的成员不参与自动推荐**（`wip_limit`、`r3_eligible` 缺省时取默认值）。 不能替人猜 level 或方向；`prd-assign` 遇到这种情况要停下来，列出缺哪些字段，问 Lightman。
 
 ## 5. 分配规则：硬性过滤（先过滤，再打分）
+> 这是**默认推荐**的过滤。Lightman 可以按 §5.1 直接指定人选并覆盖它们。
+
 | 成员 level | 复杂度 | 风险 | 附加条件 |
 |---|---|---|---|
 | junior | 只能 S（M 需指定一位 senior 结对，并写进 registry 备注） | 只能 R1、R2 | 必须有 senior reviewer；WIP 上限 1 |
@@ -84,6 +89,23 @@ Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所�
 - 当前 WIP ≥ `wip_limit` 的成员**排除**（Lightman 明确要求"插队"时除外，要写进备注）。
 - **Lightman（PO / 审批人）不作为开发类 PRD 的 assignee**；他可以当 `docs-ops` 类（战略、运营、合规文档）PRD 的 assignee。
 - **R3 的 reviewer 必须是 senior 以上**，且不是 assignee。assignee 是 Lin 时，如果没有第二位 senior，就写 `🧑 需外部评审` 并交给 Lightman 决定，不能自审。
+
+### 5.1 Lightman 指定与覆盖
+Lightman（PO）可以**直接指定** assignee，覆盖 §5 的硬性过滤和 §6 的打分结果——例如让 junior 承担超出默认级别的 PRD（成长机会、团队只有少数人）。
+
+**可以覆盖**：级别 × 复杂度 × 风险的限制、WIP 上限、方向匹配、`r3_eligible`、"画像为 `{{TBD}}` 不参与推荐"。
+**不能覆盖**（铁律）：§1 的第 1–4 条（唯一 assignee、不能是 AI agent、reviewer ≠ assignee、`approved` / `released` 只有人能设）和所有阶段门禁（§2）。
+
+**覆盖只有 Lightman 本人能做**，必须是他明确说出的指定（不能是 agent 或成员自行判断）。覆盖时：
+1. `prd-assign` 照常跑一遍过滤和打分，**把被覆盖的规则逐条列出来**（"junior × L × R3""WIP 将超限"），不能省略，也不能替他反驳。
+2. 在 registry 变更历史写一行：`指定覆盖`、被覆盖的规则、Lightman 给的原因、采取的缓解措施。
+3. **缓解措施（必须）**：
+   - 超出默认级别的 PRD（junior 做 M 以上或 R3，mid 做 L 或 R3 等）和所有 R3：**必须指定 senior 以上的 reviewer**，从 `in_review` 起 registry 里就要填（`scripts/check-prd-registry.sh` 检查）；
+   - reviewer 参与**设计评审**（进入 `in_review` 前）和**开发期的每个 PR**；
+   - assignee 在每日 standup 里主动报告卡点（§10），卡住超过 2 个工作日要升级给 reviewer；
+   - 需要其他人协助的部分，在备注里写明协助者和范围。
+4. 覆盖不改变风险等级：R3 仍是 R3，涉及护栏的评审（Lin、临床顾问）一个都不能少。
+5. 被覆盖后，下一次 `prd-assign` 对同一个人不再重复提示覆盖，除非 PRD 的复杂度或风险变了。
 
 ## 6. 分配规则：打分（满分 100）
 对过滤后的候选人逐一打分，取前 3 名给 Lightman 选。
@@ -106,7 +128,7 @@ Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所�
 
 - **平分**：当前 WIP 少的优先；仍相同，取最久没有被分配 PRD 的人。
 - 输出必须说明每个因子的得分和扣分原因；候选人不足 3 个时，要说明被过滤掉的人为什么被过滤。
-- 一个人也找不到时，不要放宽规则硬分：给出"缺什么"（缺 senior、缺容量、缺画像），让 Lightman 决定拆 PRD、延后或调整画像。
+- 一个人也找不到时，不要放宽规则硬分：给出"缺什么"（缺 senior、缺容量、缺画像），让 Lightman 决定延后、调整画像，或按 §5.1 直接指定（不拆 PRD，除非他明确要拆）。
 
 ## 7. 参数调整
 本文件的阈值、权重是**初版默认值，没有数据支撑**（⚠️ 需用前 3 个月的分配结果校准）。调整要在 registry 的历史里记录原因；改动超过一个因子的权重，写 ADR（`02-operating-system/decisions/`）。
