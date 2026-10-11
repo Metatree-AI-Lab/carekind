@@ -14,6 +14,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | **数值**（颜色、字号、间距、圆角、阴影、尺寸、动效、对比度要求） | [`design-system/tokens.json`](design-system/tokens.json) | 改 `tokens.json` → 运行 `scripts/build-design-system.sh` → 一起提交（生成 `tokens.css` 和下面 §3 的表格；**不要手改**） |
 | **规则**（什么时候用什么、组件怎么用、不能做什么） | 本文件 §1–§2、§4–§10 | 直接改，PR 里写理由 |
 | **预览** | [`design-system/preview.html`](design-system/preview.html) | 用浏览器打开；它引用生成的 `tokens.css`，不另存数值 |
+| **给人看的版本** | [`DESIGN.html`](DESIGN.html)（由本文件生成，有目录、颜色色块、手机和打印样式） | 不要手改；改本文件后运行 `scripts/build-design-system.sh` 重新生成并一起提交 |
 
 - pre-commit 会运行 `scripts/build-design-system.sh --check`：生成文件过期、或任何前景 / 背景组合的对比度低于 WCAG 2.2 AA 的要求，都会拒绝提交。
 - **治理**：改 token 的数值由 Gary 提 PR；涉及临床确认和 AI 内容的规则（§7.4）由 Lin 评审，状态由 Lightman 批准。状态只能由人从 `Draft` 改为 `Approved`。

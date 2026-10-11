@@ -19,6 +19,7 @@ UX 原则、无障碍、设计系统。
 
 ## 关键文件
 - **DESIGN.md**（设计规范 SoT：做任何界面、组件、插画、文案之前先读）
+- DESIGN.html（**生成物**，给人看；改 DESIGN.md 后运行 scripts/build-design-system.sh，不要手改）
 - design-system/（tokens.json 是数值唯一来源；改完运行 scripts/build-design-system.sh）
 - ux-principles.md
 
