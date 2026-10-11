@@ -216,6 +216,7 @@ flowchart LR
 ## 14. 变更记录
 | 日期 | 变更 | 作者 |
 |---|---|---|
+| 11/10/2026 | DS-2 第一批：`COMPONENTS.md`（组件规格 SoT，25 类常用组件）、`components.css` 参考实现、`components.html` 交互样例；在浏览器里用键盘逐项测试 | Gary（演示）/ Claude Code |
 | 11/10/2026 | DS-1 首版产出：`DESIGN.md`（设计规范 SoT）、`design-system/tokens.json`、生成脚本 `scripts/build-design-system.sh`、预览页；视觉风格由 Lightman 选定 | Gary（演示）/ Claude Code |
 | 11/10/2026 | 初稿（AI 起草，Lightman 待审）；拆分 6 个子 PRD 并按 ADLC 规则评分 | Claude Code |
 

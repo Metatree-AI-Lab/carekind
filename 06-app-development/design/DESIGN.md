@@ -105,6 +105,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | `--color-amber-tint` | `#FFF4DB` | derived | 提醒状态的浅底 |
 | `--color-purple-tint` | `#F1ECFF` | derived | AI 内容的浅底（AI 新增 / 改写内容的高亮） |
 | `--color-danger-tint` | `#FCEBEB` | proposed | 错误状态的浅底 |
+| `--color-overlay` | `rgba(17, 17, 17, 0.5)` | proposed | 弹窗背后的遮罩 |
 
 #### 字体（`font`）
 
@@ -164,9 +165,36 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | `--size-target-min` | `48px` | proposed | 最小可点击区域。戴手套、单手场景的提议值，⚠️ 需在 DS-2 用实测验证；WCAG 2.2 AA 的最低要求需对照官方原文核实 |
 | `--size-control-height` | `48px` | proposed | 按钮、输入框的默认高度 |
 | `--size-control-height-lg` | `56px` | proposed | 主要操作按钮（如确认）的高度 |
+| `--size-control-height-sm` | `40px` | proposed | 紧凑控件。仅桌面端（指针精确）的密集表格里使用，触屏和戴手套场景不用 |
+| `--size-listbox-max-height` | `320px` | proposed | 下拉列表的最大高度，超出滚动 |
 | `--size-container` | `1200px` | measured | 营销页内容最大宽度（近似值） |
 | `--size-breakpoint-md` | `900px` | proposed |  |
 | `--size-breakpoint-lg` | `1200px` | proposed |  |
+| `--size-icon-sm` | `16px` | proposed | 小图标（标签、行内） |
+| `--size-icon-md` | `20px` | proposed | 默认图标（按钮内、输入框内） |
+| `--size-icon-lg` | `24px` | proposed | 大图标（空状态、提示） |
+| `--size-avatar-sm` | `32px` | proposed | 头像（列表） |
+| `--size-avatar-md` | `40px` | proposed | 头像（默认） |
+| `--size-avatar-lg` | `56px` | proposed | 头像（档案头部） |
+| `--size-checkbox` | `24px` | proposed | 复选框 / 单选框的可见方框；外面的点击区域仍是 size-target-min |
+| `--size-switch-width` | `52px` | proposed | 开关宽度 |
+| `--size-switch-height` | `32px` | proposed | 开关高度；点击区域由外层补足到 size-target-min |
+| `--size-toast-width` | `400px` | proposed | Toast 最大宽度（手机上占满宽度减边距） |
+| `--size-dialog-sm` | `440px` | proposed | 确认类对话框宽度 |
+| `--size-dialog-md` | `640px` | proposed | 表单类对话框宽度 |
+| `--size-menu-min` | `200px` | proposed | 下拉列表和菜单的最小宽度 |
+| `--size-field-max` | `480px` | proposed | 单个表单字段的最大宽度 |
+
+#### 层级（`z`）
+
+| Token | 值 | 来源 | 用途 |
+|---|---|---|---|
+| `--z-dropdown` | `1000` | proposed | 下拉列表、菜单、弹出层 |
+| `--z-sticky` | `1100` | proposed | 吸顶的导航、表头 |
+| `--z-overlay` | `1200` | proposed | 遮罩 |
+| `--z-modal` | `1300` | proposed | 对话框 |
+| `--z-toast` | `1400` | proposed | Toast（要盖住对话框，否则看不到） |
+| `--z-tooltip` | `1500` | proposed | Tooltip |
 
 #### 焦点（`focus`）
 
@@ -203,10 +231,22 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | AI 标记文字 / 白底 | `--color-purple-ink` | `--color-surface` | 7.15:1 | ≥ 4.5:1 | ✅ |
 | 错误状态文字 | `--color-danger-ink` | `--color-danger-tint` | 4.87:1 | ≥ 4.5:1 | ✅ |
 | 错误文字 / 白底 | `--color-danger-ink` | `--color-surface` | 5.62:1 | ≥ 4.5:1 | ✅ |
+| 占位符、次要文字 / 浅灰区 | `--color-ink-soft` | `--color-surface-subtle` | 5.85:1 | ≥ 4.5:1 | ✅ |
+| 悬停行、选中项的文字 | `--color-ink` | `--color-surface-subtle` | 17.32:1 | ≥ 4.5:1 | ✅ |
+| 浅灰区上的控件边界 | `--color-line-strong` | `--color-surface-subtle` | 4.16:1 | ≥ 3:1 | ✅ |
+| Toast、Tooltip 文字 | `--color-on-ink` | `--color-ink` | 18.88:1 | ≥ 4.5:1 | ✅ |
+| 浅灰区上的链接 | `--color-blue-ink` | `--color-surface-subtle` | 4.84:1 | ≥ 4.5:1 | ✅ |
+| 悬停的主按钮、Toast 按钮悬停 | `--color-on-ink` | `--color-ink-soft` | 6.38:1 | ≥ 4.5:1 | ✅ |
+| 危险主按钮文字 | `--color-on-ink` | `--color-danger-ink` | 5.62:1 | ≥ 4.5:1 | ✅ |
+| Toast 里的成功图标 | `--color-green` | `--color-ink` | 6.03:1 | ≥ 3:1 | ✅ |
+| Toast 里的信息图标 | `--color-blue` | `--color-ink` | 8.08:1 | ≥ 3:1 | ✅ |
+| Toast 里的提醒图标 | `--color-amber` | `--color-ink` | 10.58:1 | ≥ 3:1 | ✅ |
+| Toast 里的错误图标 | `--color-danger-ink` | `--color-ink` | 3.35:1 | ≥ 3:1 | ✅ |
+| 米色底上的次要文字 | `--color-ink-soft` | `--color-canvas` | 5.03:1 | ≥ 4.5:1 | ✅ |
 <!-- tokens:end -->
 
 ### 3.x 使用规则
-- **代码里只用 token 名**（如 `var(--color-ink)`），**不得写死十六进制、像素值**。设计稿里也只引用 token。
+- **代码里只用 token 名**（如 `var(--color-ink)`），**不得写死十六进制、像素值**。设计稿里也只引用 token。例外：1–3px 的边框 / 笔画粗细、图标线宽、`0`、百分比，可以直接写。
 - **成对使用**：文字用 `-ink` 版本，背景用 `-tint` 版本（例如 `--color-green-ink` 在 `--color-green-tint` 上）。`green`、`blue`、`amber`、`purple` 这几个原色只用于**图形、小圆点、进度条**，不用于小号文字。
 - 新增颜色必须先过对比度检查（在 `tokens.json` 的 `contrast` 里登记使用场景），不过就不能进。
 - `proposed` 来源的值是我们的提议，**在被 Lightman / Lin 确认前不要当作最终品牌色**（尤其是 `danger-ink`、`size-target-min`）。
@@ -229,7 +269,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 - 卡片：`color-surface` 底，`radius-md`（大卡片 `radius-lg`），描边 `color-line` 或 `shadow-1`，**二选一**，不要同时叠加。
 
 ## 6. 组件规格
-> 本节是 DS-2 的起点：先定形态和规则，尺寸细节、状态和代码在 DS-2 / DS-5 完成。预览见 `design-system/preview.html`。
+> 本节只列最基本的形态规则。**完整的组件规格**（用途、变体、状态、键盘与 ARIA、文案）在 [`COMPONENTS.md`](COMPONENTS.md)，参考 CSS 在 `design-system/components.css`，交互样例在 `design-system/components.html`。两者冲突时以本文件为准。
 
 ### 6.1 按钮
 | 类型 | 外观 | 用途 |
@@ -263,7 +303,8 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 导航：白底，品牌在左，链接居中，右侧登录 + 次按钮药丸。页脚：`color-ink` 底、`color-on-ink` 字，可用超大字母品牌名。工作层 App 的导航在 DS-2 设计。
 
 ### 6.9 待设计（不在本文件定稿）
-- **DS-2**：表单、列表 / 表格、空状态、加载、离线 / 同步状态、触控尺寸实测。
+- **DS-2 第一批已完成**（见 `COMPONENTS.md`）：按钮、表单字段、原生下拉与自定义 Dropdown、菜单、复选框 / 单选 / 开关、上传、标签页、分段控件、面包屑、分页、App bar、Tab bar、标签、徽标、头像、卡片、列表、表格、手风琴、Alert、Toast、对话框、Tooltip、进度、Spinner、骨架屏、空状态。
+- **DS-2 第二批**：可搜索下拉 Combobox、日期 / 时间选择、底部抽屉 / 侧边抽屉；触控尺寸的戴手套实测。
 - **DS-4（高风险，需 Lin 评审）**：AI 草稿标注、新增 / 改写内容高亮、原文并排、低置信度标记、老人归属选择与同名提示、敏感事件逐条确认、确认动作、安全失败。**这些在 DS-4 设计和可用性测试前，不要自行发明样式。**
 
 ## 7. 状态与 AI 内容

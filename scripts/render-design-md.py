@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""把 DESIGN.md 渲染成给人阅读的 HTML（只用 Python 标准库，输出稳定、无时间戳）。
+"""把 DESIGN.md / COMPONENTS.md 渲染成给人阅读的 HTML（只用 Python 标准库，输出稳定、无时间戳）。
 
 用法：python3 -I scripts/render-design-md.py <DESIGN.md> > DESIGN.html
 通常不要直接运行，而是用 scripts/build-design-system.sh（会同时生成 tokens.css，并在 --check 时检查是否过期）。
@@ -142,7 +142,7 @@ PAGE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%%TITLE%%</title>
-<!-- 由 scripts/build-design-system.sh 从 DESIGN.md 生成，仅供阅读，不要手工修改。要改内容请改 DESIGN.md 或 design-system/tokens.json。 -->
+<!-- 由 scripts/build-design-system.sh 从同名 .md 文件生成，仅供阅读，不要手工修改。要改内容请改 .md 文件或 design-system/tokens.json。 -->
 <link rel="stylesheet" href="design-system/tokens.css">
 <style>
 	* { box-sizing: border-box; }

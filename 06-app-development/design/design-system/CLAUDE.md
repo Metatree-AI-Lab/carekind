@@ -17,11 +17,14 @@
 - 参考图是第三方设计，不得存入仓库，也不得复制其照片、插画、Logo、文案
 - 预览页和示例只用合成数据，不出现真实住户或员工信息
 - 不新增评分、风险、趋势类组件（TGA 红灯，见 DESIGN.md §7.3）
+- 改组件样式先改 `../COMPONENTS.md` 的规格，再改 components.css 和样例；改完在浏览器里用键盘测一遍
 
 ## 关键文件
 - tokens.json
 - tokens.css（生成）
-- preview.html
+- preview.html（风格总览）
+- components.css（组件参考实现）
+- components.html（组件交互样例）
 
 ## 不要做
 - 不要在代码或设计稿里写死十六进制颜色或像素值

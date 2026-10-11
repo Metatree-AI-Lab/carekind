@@ -30,7 +30,7 @@ Owner: Lightman (PO) · Last reviewed: 04/10/2026
 | 8 | 老人或家属能不能退出？退出后怎么处理？ | Statement of Rights；APP |
 
 ## 2.1 设计规范（Source of Truth）
-- **必须**：做任何界面、组件、插画、界面文字之前，先读 [`06-app-development/design/DESIGN.md`](../06-app-development/design/DESIGN.md)；代码和设计稿里只引用 token 名，不写死颜色和像素值。
+- **必须**：做任何界面、组件、插画、界面文字之前，先读 [`06-app-development/design/DESIGN.md`](../06-app-development/design/DESIGN.md)，并在 [`COMPONENTS.md`](../06-app-development/design/COMPONENTS.md) 里找现成组件；代码和设计稿里只引用 token 名，不写死颜色和像素值。需要新组件时先补规格再实现。
 - 数值改动走 `design-system/tokens.json` 并运行 `scripts/build-design-system.sh`；对比度不达标（WCAG 2.2 AA）不能提交。
 
 ## 3. 设计原则（来自主 PRD）
