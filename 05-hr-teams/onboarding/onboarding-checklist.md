@@ -10,6 +10,7 @@ Owner: Lightman · Last reviewed: 04/10/2026
 
 ## 第 1 天
 - [ ] 开通 GitHub 权限：`Metatree-AI-Lab/carekind` 和 `Metatree-AI-Lab/carekind-app` **两个仓库**
+- [ ] 设置身份，让 agent 工作记录归到你名下：`git config user.name` 要包含名册里的名字（或设置 `CARE_MEMBER`）；了解 `rules/06-adlc-rules.md` §9–§10（工作记录只记元数据、不用于考核；每个工作日用 `/standup` 提交 standup）
 - [ ] 按根目录 README 的 **Setup** 一节操作：`git clone --recurse-submodules …`，然后运行 `scripts/setup.sh`（会安装 git submodule、启用 pre-commit）
 - [ ] 账号：邮箱、聊天、代码库（按角色最小权限）、密码管理器、MFA 已开启
 - [ ] 阅读：`README.md`、`00-company/mission-vision-values.md`、`00-company/glossary.md`、`rules/00-company-rules.md`、`docs/PRD.md`

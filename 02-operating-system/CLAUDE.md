@@ -20,6 +20,7 @@
 - decision-making.md
 - decisions/
 - metrics.md
+- standups/（每日 standup 记录，规则 rules/06-adlc-rules.md §10）
 
 ## 不要做
 - 不要修改已 Accepted 的 ADR 内容；要改就写新 ADR 并标注 Superseded

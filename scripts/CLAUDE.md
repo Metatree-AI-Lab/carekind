@@ -4,7 +4,7 @@
 > 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
 
 ## 这里是什么
-自动化脚本：setup.sh（第一次使用：安装 submodule 和 hooks）、run-workflow.sh（无人值守运行 workflow）、check-file-length.sh（单文件 ≤ 1000 行检查）、check-context-docs.sh（检查 CLAUDE.md / README.md 是否齐全）、check-prd-registry.sh（PRD 登记表：唯一 assignee、阶段合法）、ai-changelog.sh（AI 修改记录的 hook 和手动记录）、sync-app-tooling.sh（把共用工具同步到 App submodule）。
+自动化脚本：setup.sh（第一次使用：安装 submodule 和 hooks）、run-workflow.sh（无人值守运行 workflow）、check-file-length.sh（单文件 ≤ 1000 行检查）、check-context-docs.sh（检查 CLAUDE.md / README.md 是否齐全）、check-prd-registry.sh（PRD 登记表：唯一 assignee、阶段合法）、my-work.sh 与 lib-member.sh（成员提醒：待办、新分配、卡点、standup；成员识别）、ai-changelog.sh（AI 修改记录的 hook 和手动记录）、sync-app-tooling.sh（把共用工具同步到 App submodule）。
 
 ## 在这里通常要做的事
 - 修改或新增脚本

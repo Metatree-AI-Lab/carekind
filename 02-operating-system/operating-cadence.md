@@ -6,7 +6,7 @@ Owner: Lightman · Status: Active · Last reviewed: 04/10/2026
 
 | 频率 | 会议 / 动作 | 时长 | 产出 |
 |---|---|---|---|
-| 每天 | 异步站会（Slack/Teams 一条消息：昨天 / 今天 / 阻碍） | 5 min | — |
+| 每天（工作日） | 异步站会：开工前用 `/standup` 在 AI 里提交（昨天 / 今天 / 阻碍，并确认新分配的 PRD）；规则 `rules/06-adlc-rules.md` §10 | 5 min | `02-operating-system/standups/members/<姓名>/YYYY-MM-DD.md` |
 | 每周一 | 周计划：OKR 进度打分、本周 Top 3 | 45 min | 更新 `01-strategy/okrs.md` |
 | 每周五 | 周报（`09-templates/weekly-update.md`）+ 客户访谈洞察分享 | 30 min | `99-inbox/weekly/YYYY-WW.md` |
 | 每两周 | 产品/工程 sprint 评审 + 临床安全检查 | 60 min | 评测结果、风险登记更新 |

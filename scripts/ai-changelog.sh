@@ -12,6 +12,8 @@ LOG_DIR="$ROOT/changelog/ai-edits"
 PENDING_DIR="$ROOT/changelog/.pending"
 SUMMARY_REGEX='^changelog/[0-9]{4}-[0-9]{2}\.md$'
 mkdir -p "$LOG_DIR" "$PENDING_DIR"
+# shellcheck source=lib-member.sh
+source "$ROOT/scripts/lib-member.sh"
 
 now_iso() { TZ=Australia/Melbourne date +%Y-%m-%dT%H:%M:%S%z; }
 month() { TZ=Australia/Melbourne date +%Y-%m; }
@@ -26,8 +28,10 @@ relative_path() {
 
 append_edit() {
 	local agent="$1" session="$2" tool="$3" path="$4"
+	# member / prd：谁在操作、属于哪个 PRD（rules/06-adlc-rules.md §9）。只记元数据，不记提示词或文件内容
 	jq -cn --arg ts "$(now_iso)" --arg agent "$agent" --arg session "$session" --arg tool "$tool" --arg path "$path" \
-		'{ts: $ts, agent: $agent, session: $session, tool: $tool, path: $path}' >> "$LOG_DIR/$(month).jsonl"
+		--arg member "$(resolve_member)" --arg prd "$(current_prd)" \
+		'{ts: $ts, agent: $agent, member: $member, prd: $prd, session: $session, tool: $tool, path: $path}' >> "$LOG_DIR/$(month).jsonl"
 }
 
 run_post_tool() {
@@ -44,6 +48,8 @@ run_post_tool() {
 	append_edit "claude-code" "$session" "$tool" "$path"
 	if [[ "$path" =~ $SUMMARY_REGEX ]]; then
 		rm -f "$PENDING_DIR/$session"
+	elif [[ "$path" == 02-operating-system/standups/members/* ]]; then
+		: # standup 记录：编辑明细照常记录，但不要求写任务摘要（rules/06-adlc-rules.md §10）
 	else
 		echo "$path" >> "$PENDING_DIR/$session"
 	fi

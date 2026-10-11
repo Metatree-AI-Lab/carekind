@@ -3,6 +3,7 @@ paths:
   - "docs/**"
   - "12-skills/prd-*/**"
   - "05-hr-teams/member-profiles.md"
+  - "02-operating-system/standups/**"
 ---
 
 # ADLC 规范：PRD 生命周期与分配 (Agent Development Lifecycle Rules)
@@ -115,3 +116,63 @@ Owner: Lightman (PO) · Last reviewed: 11/10/2026 · 适用：所有 PRD、所�
 - `docs/PRD.md` §9 护栏优先于本文件；要改护栏必须写 ADR。
 - 所有对 registry 和画像的修改都按 `rules/05-changelog-rules.md` 记 changelog。
 - 分配结果**不能用于绩效考核**：registry 记录的是工作分派，不是评价。
+
+## 9. 成员工作记录与提醒（硬性要求）
+成员用 agent（Claude Code、Codex）操作本仓库时，工作要被自动记录；分配给每个人的工作要能随时提醒。
+
+### 9.1 自动记录
+- **必须**：每次文件编辑的明细（`changelog/ai-edits/YYYY-MM.jsonl`）都带 `member`（谁在操作）和 `prd`（属于哪个 PRD）。Claude Code 由 hook 自动写；Codex 用 `scripts/ai-changelog.sh --manual codex <文件>...`，同样会带上这两个字段。
+- **必须**：每位成员设置好身份，agent 才能把记录归到本人名下：`git config user.name` 需**包含**名册（`05-hr-teams/member-profiles.md`）里的名字，或设置环境变量 `CARE_MEMBER`。`scripts/setup.sh` 会检查。识别不了的记为 `unknown`，**不能**冒用别人的名字。
+- **必须**：做 PRD 的开发时用分支 `prd/<slug>`（`<slug>` 是 PRD 文件名去掉 `.md`），记录才能自动关联到 PRD。
+- 任务级的摘要仍按 `rules/05-changelog-rules.md` 写；摘要里的 `request` 写清楚是做哪个 PRD。
+
+### 9.2 随时提醒
+- **会话开始自动提醒**：`SessionStart` hook 运行 `scripts/my-work.sh --hook`，列出：我负责的未完成 PRD（含当前阶段、下一步）、待我评审的 PRD、卡点、登记表超过 7 天没更新、有进行中的 PRD 但最近 5 天没有任何记录。**agent 看到提醒后，在会话开头先告诉成员。**
+- **随时查看**：`/my-work` skill（会逐项核对下一阶段的门禁还缺什么），或 `scripts/my-work.sh [姓名]`。
+- **Lightman 的汇总**：`scripts/my-work.sh --all`，每周五 `weekly-operating-review` 时运行。
+- 提醒**只是提醒**：不改阶段、不改 assignee；要改走 `prd-status` / `prd-assign`。
+
+### 9.3 记录什么、不记录什么
+- **只记**：时间、成员、agent、PRD、文件路径、工具名、会话 ID。
+- **禁止记录**：提示词、对话内容、文件内容、录音或转写文本、住户信息、健康信息、成员的个人情况（原因栏同理）。
+- 数据只放本仓库（私有）。
+
+### 9.4 用途限制与成员权利
+- 这些记录**只用于**：任务跟进与提醒、事后复盘、审计追溯（谁在什么时候改了什么）。
+- **禁止**用于：绩效考核、衡量个人效率或工作时间、比较成员"产出"、监控个人行为（与护栏 G10 的精神一致）。需要把记录用于其他目的，必须先写 ADR 并告知全体成员。
+- 成员**可以随时查看自己的记录**，发现归属错误可以要求更正（按 `rules/05-changelog-rules.md` 追加 `type: correction`，不改历史）。
+- ⚠️ 本地没有关于员工工作记录 / 工作场所监控的法律资料（`legal-reference-map.md` 缺口表同样没有该主题）。**在律师或 HR 顾问确认前**，只对已知情并同意的成员启用，并在入职清单里写明本节内容。
+
+## 10. 每日 Standup（硬性要求）
+每位成员每个工作日都要通过 AI 提交 standup；AI 负责提醒、整理，成员本人负责内容。
+
+### 10.1 谁、何时、怎么交
+- **必须**：Lin、Gary、Windston（以及之后加入的开发者）在**每个工作日（周一到周五，墨尔本时间）开始工作前**，用 `/standup` skill 提交当天的 standup。Lightman（PO）可选。
+- 截止时间：{{TBD：Lightman 确定，例如 10:00 前}}。默认异步提交，不要求同时在线（`rules/00-company-rules.md` §5）。
+- 休假、不工作：提交 `休假 / 不工作`，**不写原因**。
+- 同一天需要补充，写在原记录的 `## 补充` 一节，不删除、不改写已提交的内容。
+
+### 10.2 内容（固定三问 + 自动部分）
+| 部分 | 来源 | 谁写 |
+|---|---|---|
+| 昨天完成 | 成员回答（agent 可用 `ai-edits` 记录给出**草稿提示**，成员确认或重写） | 成员 |
+| 今天计划 | 成员回答（关联 PRD slug） | 成员 |
+| Blockers | 成员回答 + registry 里的卡点；写清楚**卡在哪个 PRD、需要谁、影响什么** | 成员 |
+| 新分配（已确认看到） | registry 变更历史里上次 standup 之后分配给成员的 PRD，成员要确认看到 | 自动 + 成员确认 |
+| PRD 状态快照 | registry（阶段 → 下一步） | 自动 |
+
+- **agent 不得编造**成员没说过的完成事项、计划或 blocker；成员没回答的写 `（未填写）`。
+- **Blocker 必须有去向**：关联 PRD 的 blocker，经成员同意后用 `prd-status` 写入登记表的 Blocked 列；需要 Lightman 或临床顾问决策的，standup 里要点名。blocked 超过 5 个工作日按 §2 在周会提出。
+
+### 10.3 提醒
+- **没提交就提醒**：`SessionStart` hook（`scripts/my-work.sh --hook`）在工作日会话开始时，如果成员今天还没有 standup 记录，提醒 `/standup`；同时提醒**新分配的 PRD**、**未完成的 PRD**、**卡点**（§9.2）。
+- **agent 看到提醒后，在会话开头先告诉成员，并主动提出帮他走 `/standup`**；成员明确说先不做，不要反复追问。
+- **Lightman 的团队视图**：`scripts/my-work.sh --all` 显示今天谁已提交 / 未提交，以及所有 blockers 的汇总；`/standup` 的 digest 模式给出可读的汇总。
+
+### 10.4 记录与用途限制
+- 位置：`02-operating-system/standups/members/<姓名>/YYYY-MM-DD.md`（团队内可见，这是 standup 的本意）。
+- **只能写自己的记录**；agent 不能替别人提交，也不能改别人的记录。
+- 不得写：住户信息、健康信息、密钥、个人原因（病假、家庭情况等）。
+- **禁止**用于：绩效考核、比较成员、从记录推断努力程度；缺交只作提醒，不作评价。
+- 本节与 §9.4 同样受"⚠️ 本地无员工工作记录 / 工作场所监控资料，需律师或 HR 顾问确认"的限制。
+- 编辑 standup 记录**不要求**写 changelog 摘要（编辑明细仍自动记录，`ai-changelog.sh` 对该目录不标记"待写摘要"）。

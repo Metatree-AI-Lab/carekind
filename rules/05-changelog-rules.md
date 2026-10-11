@@ -17,6 +17,7 @@ Owner: Lightman · Last reviewed: 04/10/2026 · 适用：所有 AI agent（Claud
 4. 写真实情况：没有验证就写"未验证"；测试失败就写失败；被用户中途打断就写"部分完成"。
 5. `request` 写用户要求的摘要；**不能写入**住户信息、员工个人信息、密钥或任何健康信息。
 6. 只读不改的任务（回答问题、调研但没写文件）不需要记录。
+   - 成员的每日 standup 记录（`02-operating-system/standups/members/`）不需要写任务摘要；编辑明细照常自动记录，并带 `member`、`prd` 字段（`rules/06-adlc-rules.md` §9、§10）。
 7. Codex 没有 hook：每次修改文件后运行 `scripts/ai-changelog.sh --manual codex <改动的文件>`，任务结束时写摘要。
 
 ## 3. 自动执行（Claude Code）

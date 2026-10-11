@@ -36,4 +36,13 @@ if (( ${#missing_tools[@]} > 0 )); then
 fi
 scripts/check-context-docs.sh
 
+# 成员识别：agent 工作记录按 git user.name 归属到成员（rules/06-adlc-rules.md §9）
+# shellcheck source=lib-member.sh
+source "$ROOT/scripts/lib-member.sh"
+if [[ "$(resolve_member)" == "unknown" ]]; then
+	echo "⚠️  没能识别你是哪位成员：git config user.name 需要包含名册里的名字（$(member_names | paste -sd, -)），或设置环境变量 CARE_MEMBER。否则你的 agent 工作记录会记为 unknown。"
+else
+	echo "👤 当前成员：$(resolve_member)（查看待办：scripts/my-work.sh）"
+fi
+
 echo "✅ 设置完成。meta repo：$(git rev-parse --short HEAD) · App submodule：$(git -C "$APP_DIR" rev-parse --short HEAD)"

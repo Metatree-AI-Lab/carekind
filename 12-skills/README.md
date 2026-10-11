@@ -16,6 +16,8 @@ Owner: Lin (Tech Lead) · Last reviewed: 04/10/2026
 | [feedback-synthesis](feedback-synthesis/SKILL.md) | 分析 `10-feedback/`（只读）→ synthesis |
 | [prd-writer](prd-writer/SKILL.md) | 写 PRD（含 TGA、隐私、危害三项必填） |
 | [prd-assign](prd-assign/SKILL.md) | 把 PRD 分配给**唯一**的 assignee（按级别、方向、负载、风险打分，Lightman 确认） |
+| [standup](standup/SKILL.md) | 每日 standup：成员通过 AI 提交昨天 / 今天 / blockers，提醒新分配和未完成的 PRD，写入个人记录；PO 可看汇总 |
+| [my-work](my-work/SKILL.md) | 我的待办：分配给我的 PRD、待我评审的 PRD、下一阶段还缺什么、我的 agent 工作记录 |
 | [prd-status](prd-status/SKILL.md) | PRD 看板；按 ADLC 门禁推进 / 回退 / 阻塞 PRD 阶段 |
 | [refactor-large-file](refactor-large-file/SKILL.md) | 代码文件超过 1000 行时按职责拆分重构（hook / pre-commit / CI 自动触发） |
 | [legal-reference-check](legal-reference-check/SKILL.md) | 查阅本地法律文件，生成 PRD 和设计必需的"法律依据"一节 |
