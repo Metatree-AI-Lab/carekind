@@ -15,6 +15,8 @@ Owner: Lin (Tech Lead) · Last reviewed: 04/10/2026
 | [weekly-update](weekly-update/SKILL.md) | 生成周报 |
 | [feedback-synthesis](feedback-synthesis/SKILL.md) | 分析 `10-feedback/`（只读）→ synthesis |
 | [prd-writer](prd-writer/SKILL.md) | 写 PRD（含 TGA、隐私、危害三项必填） |
+| [prd-assign](prd-assign/SKILL.md) | 把 PRD 分配给**唯一**的 assignee（按级别、方向、负载、风险打分，Lightman 确认） |
+| [prd-status](prd-status/SKILL.md) | PRD 看板；按 ADLC 门禁推进 / 回退 / 阻塞 PRD 阶段 |
 | [refactor-large-file](refactor-large-file/SKILL.md) | 代码文件超过 1000 行时按职责拆分重构（hook / pre-commit / CI 自动触发） |
 | [legal-reference-check](legal-reference-check/SKILL.md) | 查阅本地法律文件，生成 PRD 和设计必需的"法律依据"一节 |
 | [tga-boundary-check](tga-boundary-check/SKILL.md) | 功能 / 文案的 TGA 边界检查 |

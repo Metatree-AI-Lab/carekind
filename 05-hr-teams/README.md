@@ -18,6 +18,7 @@ teams/         团队主页（使命、成员、职责、例会、当前重点�
 | 文件 | 内容 |
 |---|---|
 | [team-members.md](team-members.md) | **团队成员名册** |
+| [member-profiles.md](member-profiles.md) | **成员工作画像**（级别、方向、容量，供 PRD 分配用） |
 | [org-chart.md](org-chart.md) | 组织架构、角色职责、招聘计划 |
 | [policies/employment-compliance.md](policies/employment-compliance.md) | Fair Work / super / WHS / 承包商合规 |
 | [policies/code-of-conduct.md](policies/code-of-conduct.md) | 行为准则 |

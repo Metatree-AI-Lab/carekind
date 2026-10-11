@@ -24,6 +24,7 @@
 | 写或改代码 | `rules/02-code-rules.md`（**§0 的 16 条核心要求**；Tab 缩进宽度 4；SOLID / DRY / KISS；性能底线）。**每次修改代码文件后都要运行 `scripts/check-file-length.sh <改动的文件>`；超过 1000 行就立即运行 `refactor-large-file` skill**（Claude Code 有 hook 自动触发，Codex 必须手动执行这一步） |
 | 产品设计、界面文字、模板 | `rules/03-product-design-rules.md` + `rules/legal-reference-map.md` |
 | 修改了任何文件 | `rules/05-changelog-rules.md`（任务结束前写 changelog 摘要） |
+| 分配 / 推进 PRD、改成员画像 | `rules/06-adlc-rules.md`（每个 PRD 有且仅有一个 assignee；用 `prd-assign` / `prd-status`；`approved` / `released` 只有人能设） |
 | 写或改 PRD | `rules/04-prd-rules.md` + `rules/legal-reference-map.md`；**必须先跑 `legal-reference-check` skill** |
 
 ## AI 修改记录（changelog）

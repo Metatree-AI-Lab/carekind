@@ -8,6 +8,7 @@ Owner: Lightman (PO) + Lin (Tech Lead) · Trigger: 新功能想法 · Frequency:
 ## Steps
 | # | Step | Skill | Output | Gate |
 |---|---|---|---|---|
+| 0 | 登记并分配 | prd-assign | `docs/prds/registry.md` 一行，有且仅有一个 assignee | 🧑 Lightman 确认 assignee |
 | 1 | TGA 边界预检 | tga-boundary-check | 判定结果 | 🔴 → 停止；🟡 → 🧑 临床顾问 + 法规顾问 |
 | 1.5 | 查阅本地法律文件 | legal-reference-check | 法律依据表 + 资料缺口 | 有缺口 → 🧑 律师确认后才能上线 |
 | 2 | 写 PRD（必须包含法律依据） | prd-writer | `docs/prds/…` | 🧑 Lightman 审阅 |
@@ -17,6 +18,8 @@ Owner: Lightman (PO) + Lin (Tech Lead) · Trigger: 新功能想法 · Frequency:
 | 6 | AI 评测（涉及 AI 时） | （按 evaluation-plan） | 评测报告 | 🧑 临床顾问 + Lin 签字 |
 | 7 | 文案检查 | marketing-copy-check（release notes / App 内文字） | 审查表 | — |
 | 8 | 发布 | （按 release-process） | 发布说明 | 🧑 Lightman |
+
+每一步完成后用 `prd-status` 更新 registry 阶段（`draft → in_review → approved → in_progress → verifying → released → done`，规则见 `rules/06-adlc-rules.md`）。
 
 ## Done when
 PRD 状态改为 Approved，功能已发布，监控 48 小时无 P1。

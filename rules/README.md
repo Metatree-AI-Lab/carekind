@@ -17,6 +17,7 @@ Owner: Lightman · Last reviewed: 04/10/2026
 | [03-product-design-rules.md](03-product-design-rules.md) | 产品设计、UX、功能定义（**必须参考本地法律文件**） | 改 docs/、06-app-development/ 时 |
 | [04-prd-rules.md](04-prd-rules.md) | 写 PRD（**必须引用本地法律文件**） | 改 docs/ 时 |
 | [05-changelog-rules.md](05-changelog-rules.md) | **所有 AI agent**：每次修改都记录到 `changelog/`（编辑明细自动写，任务摘要 AI 必须写） | 始终 |
+| [06-adlc-rules.md](06-adlc-rules.md) | PRD 生命周期阶段与门禁；**每个 PRD 有且仅有一个 assignee**；按级别 / 方向 / 负载 / 风险分配 | 改 docs/、PRD 相关 skill、成员画像时 |
 | [legal-reference-map.md](legal-reference-map.md) | 主题 → 本地法律文件对照表（03、04 共用） | 改 docs/、06-app-development/、03-legal-compliance/ 时 |
 
 ## 怎么生效

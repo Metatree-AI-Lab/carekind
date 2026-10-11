@@ -18,6 +18,7 @@
 
 ## 关键文件
 - team-members.md（名册）
+- member-profiles.md（工作画像：级别、方向、容量；供 prd-assign 使用，只记工作能力，不记绩效）
 - org-chart.md
 - policies/employment-compliance.md
 - onboarding/onboarding-checklist.md

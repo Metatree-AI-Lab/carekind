@@ -20,7 +20,7 @@ paths:
 
 ## 关键文件
 - README.md
-- 00-company-rules.md … 04-prd-rules.md
+- 00-company-rules.md … 06-adlc-rules.md
 - legal-reference-map.md
 
 ## 不要做

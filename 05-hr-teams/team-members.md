@@ -7,13 +7,13 @@ Owner: Lightman · Status: Active · Last reviewed: 04/10/2026
 | 姓名 | 角色 | 团队 | 职责 | 雇佣类型 | 开始日期 | 入职清单 |
 |---|---|---|---|---|---|---|
 | **Lightman** | Founder · **Product Owner** | Leadership / Engineering | 产品愿景与路线图、需求优先级 (backlog)、PRD 审批、验收；暂兼公司运营、合规、HR、销售 | 创始人 / 董事 {{TBD}} | {{TBD}} | — |
-| **Lin** | Developer · **Tech Lead** | Engineering | App 开发；架构、安全、AI 评测、技术决策 (ADR) 负责人 | 员工 (Employee)，{{TBD: 全职/兼职}} | {{TBD}} | ☐ |
-| **Gary** | Developer | Engineering | App 开发 | 员工 (Employee)，{{TBD: 全职/兼职}} | {{TBD}} | ☐ |
-| **Windston** | Developer | Engineering | App 开发 | 员工 (Employee)，{{TBD: 全职/兼职}} | {{TBD}} | ☐ |
+| **Lin** | Developer · **Tech Lead**（senior） | Engineering | App 开发；架构、安全、AI 评测、技术决策 (ADR) 负责人 | 员工 (Employee)，{{TBD: 全职/兼职}} | {{TBD}} | ☐ |
+| **Gary** | Developer（junior） | Engineering | App 开发；强项：产品思维、审美（UI/UX 方向） | 员工 (Employee)，{{TBD: 全职/兼职}} | {{TBD}} | ☐ |
+| **Windston** | Developer | Engineering | App 开发；擅长 DevOps（CI/CD、基础设施） | 员工 (Employee)，{{TBD: 全职/兼职}} | {{TBD}} | ☐ |
 
 ## 待确认
 - [x] Tech Lead：Lin（04/10/2026）
-- [ ] Gary、Windston 的具体方向（如 Mobile / Backend / AI & 评测 / Infra）
+- [ ] Gary、Windston 的具体方向：已知 Gary = junior、产品思维 + 审美；Windston = DevOps（11/10/2026）。仍待确认：Windston 的级别、Gary 与 Lin 写代码的方向。详细画像见 `member-profiles.md`
 - [x] 雇佣类型：Lin、Gary、Windston 均为**员工**（04/10/2026 确认）
 - [ ] 员工入职前的法定事项（见 `policies/employment-compliance.md`）：
   - [ ] 书面雇佣合同（含保密 + IP 转让条款）、确认适用的 Modern Award 或是否属于 award-free

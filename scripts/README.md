@@ -12,6 +12,7 @@ Owner: Lin (Tech Lead) · Last reviewed: 04/10/2026
 - sync-app-tooling.sh — 把共用工具（.editorconfig、check-file-length.sh、check-context-docs.sh）同步到 App submodule
 - ai-changelog.sh — AI 修改记录（Claude Code hook 自动调用；Codex 用 --manual 手动调用）
 - check-context-docs.sh — 检查各层 CLAUDE.md 和 README.md 是否齐全
+- check-prd-registry.sh — 检查 docs/prds/registry.md：每个 PRD 一行、阶段合法、assignee 有且仅有一个人（pre-commit 运行）
 
 ## 怎么用
 - 新 clone 仓库后执行：git config core.hooksPath .githooks
