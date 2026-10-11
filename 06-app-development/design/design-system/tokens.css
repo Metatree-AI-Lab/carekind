@@ -1,6 +1,6 @@
 /* 由 scripts/build-design-system.sh 从 tokens.json 生成，不要手工修改。 */
 :root {
-	--color-canvas: #EAE6DE;
+	--color-canvas: #FFFFFF;
 	--color-surface: #FFFFFF;
 	--color-surface-subtle: #F7F7F7;
 	--color-ink: #111111;

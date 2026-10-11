@@ -33,7 +33,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 
 | 参考图的具体特征 | 标准实现 | 验收方式 |
 |---|---|---|
-| 米色外框 / 白色连续内页 / 浅灰分区 / 黑色页脚 | canvas / surface / surface-subtle / ink；只有最外画布是米色 | preview.html 一页展示四种底色；不得每节套米色圆角卡片 |
+| 白色全局画布 / 白色连续内页 / 浅灰分区 / 黑色页脚 | canvas 与 surface 均为白色；surface-subtle 区分章节，ink 用于页脚 | 页面的上方、两侧、底部留白均为白色；参考图外侧米色展示底板不用于产品 |
 | 高对比衬线大标题，正文是中性 sans | family-display / family-sans；标题 regular 400 | Hero、章节标题、字号样张、页脚都必须真实渲染衬线 |
 | Hero 左大标题、右小浮卡，标题有短行节奏 | ck-hero；桌面 2:1；标题 measure-hero；手机单列 | 不能改为全居中模板；不强制手机沿用桌面断行 |
 | 三联人物媒体，中间明显更宽 | ck-media-grid；比例 1:2.8:1；小圆角、窄间隔 | 原创线稿构图样张标明媒体位置；没有授权照片时不冒充成品照片 |
@@ -44,7 +44,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | 黑色页脚，衬线巨型字标 | ck-brand-footer / ck-wordmark | 手机完整显示；不裁切品牌名称 |
 
 ### 1.2.1 数值来源与保留内容
-- **实测仅四个颜色**：原始图像像素频次确认 canvas `#EAE6DE`、surface `#FFFFFF`、surface-subtle `#F7F7F7`、ink `#111111`。其余尺寸、字重、行高、圆角、阴影是推导或提议，不能称为截图实测。
+- **参考图采样**：主体白色 `#FFFFFF`、分区浅灰 `#F7F7F7`、黑色 `#111111`，以及外侧展示底板米色 `#EAE6DE`。按 Owner 的全局白底要求，canvas 与 surface 均采用 `#FFFFFF`；米色展示底板不作为页面背景。其余尺寸、字重、行高、圆角、阴影是推导或提议，不能称为截图实测。
 - **确切字体未知**：截图清楚显示衬线，但不能据此确定字体文件。采用 Times New Roman / Georgia 系统字体族复现形式；最终字体许可仍待确认。中文标题用宋体回退。
 - 采用构图、排版和控件形态；参考图的 Logo、照片、插画、文案不入库。预览使用原创线稿和明确标注的合成界面。
 - careKind 的内容仍为文书辅助；参考图的健康评分、改善百分比、效果证言不转为 careKind 功能或证据。任务进度组件可用于上传 / 同步。
@@ -82,7 +82,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 
 | Token | 值 | 来源 | 用途 |
 |---|---|---|---|
-| `--color-canvas` | `#EAE6DE` | measured | 两张原始参考图的米色外画布，RGB (234,230,222)，像素频次采样 |
+| `--color-canvas` | `#FFFFFF` | derived | 按 Owner 要求，全局画布采用参考图主体白色；与 surface 一致，不使用截图展示底板的米色 |
 | `--color-surface` | `#FFFFFF` | measured | 参考图白色主体，像素频次采样 |
 | `--color-surface-subtle` | `#F7F7F7` | measured | 参考图浅灰横向分区，RGB (247,247,247)，像素频次采样 |
 | `--color-ink` | `#111111` | measured | 参考图近黑按钮与页脚，RGB (17,17,17)，像素频次采样 |
@@ -194,7 +194,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | `--size-dialog-md` | `640px` | proposed | 表单类对话框宽度 |
 | `--size-menu-min` | `200px` | proposed | 下拉列表和菜单的最小宽度 |
 | `--size-field-max` | `480px` | proposed | 单个表单字段的最大宽度 |
-| `--size-shell` | `1328px` | derived | 白色连续页面的最大宽度，外框露出米色 |
+| `--size-shell` | `1328px` | derived | 白色连续页面的最大宽度，外侧与内容同为白色 |
 | `--size-page-inset` | `64px` | derived | 桌面白色主体左右内边距；移动端 space-5 |
 | `--size-hero-aside` | `320px` | derived | Hero 右侧悬浮信息卡最大宽度 |
 | `--size-media-height` | `360px` | derived | 桌面三联媒体的高度 |
@@ -232,10 +232,10 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | 用途 | 前景 | 背景 | 对比度 | 要求 | 结果 |
 |---|---|---|---|---|---|
 | 正文 / 白底 | `--color-ink` | `--color-surface` | 18.88:1 | ≥ 4.5:1 | ✅ |
-| 正文 / 米色底 | `--color-ink` | `--color-canvas` | 15.17:1 | ≥ 4.5:1 | ✅ |
+| 正文 / 全局白底 | `--color-ink` | `--color-canvas` | 18.88:1 | ≥ 4.5:1 | ✅ |
 | 正文 / 浅灰区 | `--color-ink` | `--color-surface-subtle` | 17.62:1 | ≥ 4.5:1 | ✅ |
 | 次要文字 / 白底 | `--color-ink-soft` | `--color-surface` | 6.38:1 | ≥ 4.5:1 | ✅ |
-| 次要文字 / 米色底 | `--color-ink-soft` | `--color-canvas` | 5.13:1 | ≥ 4.5:1 | ✅ |
+| 次要文字 / 全局白底 | `--color-ink-soft` | `--color-canvas` | 6.38:1 | ≥ 4.5:1 | ✅ |
 | 主按钮文字、页脚文字 | `--color-on-ink` | `--color-ink` | 18.88:1 | ≥ 4.5:1 | ✅ |
 | 控件边界 / 白底 | `--color-line-strong` | `--color-surface` | 4.54:1 | ≥ 3:1 | ✅ |
 | 绿色大字、图形（不用于小号文字） | `--color-green` | `--color-surface` | 3.12:1 | ≥ 3:1 | ✅ |
@@ -259,7 +259,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 | Toast 里的信息图标 | `--color-blue` | `--color-ink` | 8.08:1 | ≥ 3:1 | ✅ |
 | Toast 里的提醒图标 | `--color-amber` | `--color-ink` | 10.58:1 | ≥ 3:1 | ✅ |
 | Toast 里的错误图标 | `--color-danger-ink` | `--color-ink` | 3.35:1 | ≥ 3:1 | ✅ |
-| 米色底上的次要文字 | `--color-ink-soft` | `--color-canvas` | 5.13:1 | ≥ 4.5:1 | ✅ |
+| 全局白底上的次要文字 | `--color-ink-soft` | `--color-canvas` | 6.38:1 | ≥ 4.5:1 | ✅ |
 | 媒体暖底文字 | `--color-ink` | `--color-media-warm` | 12.97:1 | ≥ 4.5:1 | ✅ |
 | 媒体灰绿底文字 | `--color-ink` | `--color-media-sage` | 13.71:1 | ≥ 4.5:1 | ✅ |
 <!-- tokens:end -->
@@ -294,7 +294,7 @@ PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10
 
 
 ## 5. 布局与间距
-- **外画布** canvas；**内页** surface，最大 shell，无圆角。桌面外边距 space-6，内边距 page-inset；手机外边距 space-3，内边距 space-5。
+- **全局画布与内页** canvas / surface 均为白色，最大 shell，无圆角。桌面外边距 space-6，内边距 page-inset；手机外边距 space-3，内边距 space-5。
 - 连续章节上下留白 space-section；手机 space-7。只在章节边界使用 line 细线，浅灰分区占满白色主体宽度。
 - Hero 桌面为 2:1 文案 / 浮卡，三联媒体为 1:2.8:1；手机 Hero 和媒体改为单列，不裁掉必要信息。
 - 浮卡最大 hero-aside，媒体高度 media-height。图片和浮卡用 radius-lg，普通展示卡和字段用 radius-md，分段横条用 radius-sm，按钮和标签才用 pill。
@@ -412,7 +412,7 @@ careKind **不提供**健康评分、风险等级、趋势预测、"改善 x%" �
 ## 12. 待确认（`{{TBD}}`）
 | # | 事项 | Owner |
 |---|---|---|
-| 1 | Logo（本规范不含）与最终品牌主色是否沿用参考图的黑 + 米色 + 强调色 | Lightman |
+| 1 | Logo（本规范不含）与最终品牌强调色是否沿用参考图；全局白底与黑色主操作已按 Owner 要求确定 | Lightman |
 | 2 | 原图字体准确识别与授权；当前品牌衬线使用 Times New Roman / Georgia 系统字体 | Lightman / Gary |
 | 3 | `size-target-min`、`size-control-height*` 通过戴手套实测后确认 | Gary（DS-2）+ 护士测试 |
 | 4 | `danger-ink`、`shadow-2` 等 `proposed` 值的确认 | Lightman / Lin |

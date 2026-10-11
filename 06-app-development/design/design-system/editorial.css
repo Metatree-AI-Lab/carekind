@@ -1,5 +1,6 @@
 /* Brand composition, derived from the owner's references. Numeric source: tokens.json. */
 * { box-sizing: border-box; }
+html { background: var(--color-canvas); }
 body { margin: 0; background: var(--color-canvas); color: var(--color-ink); font-family: var(--font-family-sans); font-size: var(--font-size-body); line-height: var(--font-leading-body); }
 [hidden] { display: none !important; }
 a { color: inherit; }
