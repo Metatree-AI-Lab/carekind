@@ -10,6 +10,7 @@ Owner: Lightman (PO) · Last reviewed: 04/10/2026
 | [prds/](prds/) | 功能级 PRD（详细规格、法律与隐私影响、临床危害、评测） |
 | └ [registry.md](prds/registry.md) | **PRD 登记表**：每个 PRD 的阶段、唯一 assignee、reviewer、卡点 |
 | └ [2026-10-04-shift-capture-and-resident-records.md](prds/2026-10-04-shift-capture-and-resident-records.md) | 整班录音 + 按老人自动分配 + 老人档案 |
+| └ [2026-10-11-carekind-design-system.md](prds/2026-10-11-carekind-design-system.md) | careKind AI 设计系统：总 PRD，拆成 6 个子 PRD 并按 ADLC 规则分配 |
 | └ [2026-10-11-adlc-prd-lifecycle.md](prds/2026-10-11-adlc-prd-lifecycle.md) | ADLC：PRD 生命周期、分配与状态管理 |
 
 ## 规则

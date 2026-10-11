@@ -20,6 +20,7 @@
 ## 关键文件
 - registry.md（阶段与 assignee 的唯一来源）
 - 2026-10-11-adlc-prd-lifecycle.md
+- 2026-10-11-carekind-design-system.md（设计系统总 PRD；子 PRD DS-1…DS-6 先在 registry 登记为 idea，尚无文件）
 - 2026-10-04-shift-capture-and-resident-records.md
 
 ## 不要做

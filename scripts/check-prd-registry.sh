@@ -35,11 +35,14 @@ inTable && /^\|/ {
 	rows++
 	stage = trim($4); who = trim($5); rev = trim($6); risk = trim($8)
 	if (seen[prd]++) err(prd ": 在登记表里出现了多次（每个 PRD 只能一行）")
-	if (!(prd in onDisk)) err(prd ": docs/prds/ 里没有这个文件")
+	# idea = 还没有 PRD（rules/06-adlc-rules.md §2），其他阶段必须有文件
+	if (!(prd in onDisk) && stage != "idea") err(prd ": docs/prds/ 里没有这个文件")
 	delete onDisk[prd]
 	if (!(stage in validStage)) { err(prd ": 阶段 \"" stage "\" 不合法"); next }
-	if (stage == "idea") next
-	if (who == "" || who == "—" || who ~ /TBD/) { err(prd ": 阶段 " stage " 必须有 assignee"); next }
+	noOwner = (who == "" || who == "—" || who ~ /TBD/)
+	# idea 阶段可以还没有 assignee；一旦填了，就必须是且只能是一个名册里的人
+	if (noOwner && stage == "idea") next
+	if (noOwner) { err(prd ": 阶段 " stage " 必须有 assignee"); next }
 	if (who ~ /[,，、\/&+]|和| and /) err(prd ": assignee \"" who "\" 看起来不止一个人（有且仅有一个）")
 	else if (tolower(who) ~ /claude|codex|agent|^ai$/) err(prd ": AI agent 不能当 assignee")
 	else if (!(who in isMember)) err(prd ": assignee \"" who "\" 不在 05-hr-teams/member-profiles.md")
