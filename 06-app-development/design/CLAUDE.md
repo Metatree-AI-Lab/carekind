@@ -1,5 +1,7 @@
 # CLAUDE.md — 设计
 
+Owner: Lightman (PO) · Status: Draft · Last reviewed: 11/10/2026
+
 > 层级：子部门 / 功能区 · 路径：`06-app-development/design/` · 上级上下文：[`../CLAUDE.md`](../CLAUDE.md)（根目录规则见 `AGENTS.md`）
 > 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
 
@@ -19,9 +21,8 @@ UX 原则、无障碍、设计系统。
 
 ## 关键文件
 - **DESIGN.md**（设计规范 SoT：做任何界面、组件、插画、文案之前先读）
-- DESIGN.html（**生成物**，给人看；改 DESIGN.md 后运行 scripts/build-design-system.sh，不要手改）
-- **COMPONENTS.md**（组件规格 SoT：做界面前先找现成组件；新组件先补规格再实现）；COMPONENTS.html 是生成物
-- design-system/components.css（参考实现，ck- 前缀，只用 token）、components.html（交互样例）
+- **COMPONENTS.md**（组件规格 SoT：做界面前先找现成组件；新组件先补规格再实现）
+- design-system/components.css（参考实现，ck- 前缀，只用 token）；交互样例统一在 design-system/preview.html
 - design-system/（tokens.json 是数值唯一来源；改完运行 scripts/build-design-system.sh）
 - ux-principles.md
 
@@ -30,3 +31,12 @@ UX 原则、无障碍、设计系统。
 
 ## 相关
 - rules/03-product-design-rules.md
+
+## 11/10/2026 单页重制
+- 首先查看 `design-system/preview.html`：Hero、Typography、主背景色、组件状态与布局均在同一页面。
+- 品牌构图与标题共用 `design-system/editorial.css`；交互演示 `preview.js` 仅使用页面内存，不写入临床记录。
+- 背景四主色已对原始附件做像素采样；字号与布局尺寸为推导值。
+
+## 单页入口清理
+- 删除独立旧组件样例页与文档 HTML 生成路径；唯一视觉入口为 `design-system/preview.html`。
+- 保留 DESIGN.md / COMPONENTS.md 规格、tokens 和共享组件样式；生成脚本只更新 tokens.css 与 DESIGN.md 的 token 表格。

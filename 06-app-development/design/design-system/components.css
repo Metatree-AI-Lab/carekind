@@ -180,7 +180,7 @@
 .ck-pagination [aria-disabled="true"], .ck-pagination button:disabled { color: var(--color-ink-soft); cursor: not-allowed; }
 
 /* ---------- 标签 / 徽标 / 头像 ---------- */
-.ck-tag { display: inline-flex; align-items: center; gap: var(--space-2); min-height: calc(var(--size-target-min) - var(--space-4)); padding: 0 var(--space-3); border: 1px solid var(--color-line); border-radius: var(--radius-pill); background: var(--color-surface); font-size: var(--font-size-caption); }
+.ck-tag { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-badge-height); padding: 0 var(--space-3); border: 1px solid var(--color-line); border-radius: var(--radius-pill); background: var(--color-surface); font-size: var(--font-size-caption); }
 .ck-dot { width: var(--space-2); height: var(--space-2); flex: none; border-radius: var(--radius-pill); background: var(--color-ink-soft); }
 .ck-dot--success { background: var(--color-green); } .ck-dot--info { background: var(--color-blue); } .ck-dot--warning { background: var(--color-amber); } .ck-dot--ai { background: var(--color-purple); } .ck-dot--danger { background: var(--color-danger-ink); }
 .ck-tag--success { border-color: transparent; background: var(--color-green-tint); color: var(--color-green-ink); }
@@ -194,7 +194,7 @@
 .ck-avatar--lg { width: var(--size-avatar-lg); height: var(--size-avatar-lg); font-size: var(--font-size-title); }
 
 /* ---------- 卡片 / 列表 / 表格 / 手风琴 / 分割线 ---------- */
-.ck-card { padding: var(--space-5); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow-1); }
+.ck-card { padding: var(--space-5); border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow-none); }
 .ck-card--outlined { border: 1px solid var(--color-line); box-shadow: none; }
 .ck-card--interactive { display: block; color: inherit; text-decoration: none; cursor: pointer; transition: box-shadow var(--motion-duration-base) var(--motion-easing-standard); }
 .ck-card--interactive:hover { box-shadow: var(--shadow-2); }

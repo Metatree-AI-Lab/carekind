@@ -13,9 +13,9 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 |---|---|---|
 | 规格（用途、变体、状态、键盘、无障碍、文案） | 本文件 | 唯一来源 |
 | 参考实现（CSS） | [`design-system/components.css`](design-system/components.css) | 与框架无关；类名前缀 `ck-`；只引用 token。先引入 `tokens.css` 再引入它 |
-| 交互样例 | [`design-system/components.html`](design-system/components.html) | 每个组件的变体和状态，可用键盘试用；内容全部是合成示例 |
-| 数值 | [`design-system/tokens.json`](design-system/tokens.json) | 不在本文件写数值，只写 token 名 |
-| 给人看的版本 | [`COMPONENTS.html`](COMPONENTS.html) | 由本文件生成，不要手改 |
+| 交互样例 | [`design-system/preview.html#components`](design-system/preview.html#components) | 已展示组件的变体和状态，可用键盘试用；其余组件保留规格，内容全部是合成示例 |
+| 数值 | [`design-system/tokens.json`](design-system/tokens.json) | 规格引用 token 名；具体数值见 DESIGN.md Typography 与 tokens.json |
+| 唯一视觉入口 | [`design-system/preview.html`](design-system/preview.html) | 新版单页展示；本文件保留为组件规格源码 |
 
 - 选定技术栈（ADR-0001）后，DS-5 按本文件把组件实现到代码组件库；**规格变了先改这里**，再改代码。
 - 本文件不定义临床确认与 AI 内容的专用模式（AI 草稿标注、原文并排、老人归属选择、敏感事件逐条确认），那些属于 **DS-4（R3，需 Lin 评审）**，见 §13。
@@ -198,11 +198,12 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 - **标签 Tag** `ck-tag`：分类与状态（Draft、Confirmed、Needs review、AI draft、Failed）。状态变体 `ck-tag--success / info / warning / ai / danger`；小圆点 `ck-dot` **必须**配文字。标签不可点击；可点击的筛选用分段控件或复选框。
 - **徽标 Badge** `ck-badge`：数量。必须有可读的名称（`aria-label="3 unread"`）。不用于表示严重程度。
 - **头像 Avatar** `ck-avatar`（`--sm` / 默认 / `--lg`）：首字母或经授权的照片；旁边总有姓名文字，头像本身 `aria-hidden`。**住户照片只有在功能 PRD 允许且有同意时才显示。**
-- **卡片 Card** `ck-card`：阴影（默认）或描边（`--outlined`）二选一。整张可点击用 `ck-card--interactive`（一个链接或按钮包住整张卡片），卡片里不要再放其他可点击元素。
+- **卡片 Card** `ck-card`：默认细描边、无阴影；真正悬浮的品牌卡片用 `ck-floating-card`。整张可点击用 `ck-card--interactive`（一个链接或按钮包住整张卡片），卡片里不要再放其他可点击元素。
 - **列表 List** `ck-list` / `ck-list-item`：每行 ≥ `size-target-min`；主文字 + 次要文字（`ck-list-item-sub`）+ 右侧状态或操作。
 - **表格 Table** `ck-table`（外层 `ck-table-wrap` 负责横向滚动）：有 `caption`；表头 `th scope="col"`，吸顶；数字列右对齐并用等宽数字（`is-num`）；可排序列的表头是按钮，`th` 上标 `aria-sort`。手机上列多时改用列表，不要硬塞表格。
 - **手风琴 Accordion** `ck-accordion`：用原生 `details` / `summary`；用于 FAQ、次要信息。**关键临床信息不要折叠起来。**
 - **分割线** `ck-divider`：只在留白不够区分时使用。
+
 
 ## 11. 反馈：Alert · Toast · Dialog · Tooltip
 
@@ -263,3 +264,22 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 | 11/10/2026 | 初稿：通用组件规格（按钮、表单、下拉与菜单、选择、上传、导航、展示、反馈、弹层、加载与空状态），参考 CSS 与交互样例；在浏览器里用键盘逐项测试 | Gary（演示）/ Claude Code |
 
 > 运营参考，不是法律意见。
+
+## 14. 参考图对应的品牌组件（11/10/2026 重制）
+
+| 组件 / 类 | 形态与规格 | 响应式 / 状态 |
+|---|---|---|
+| Hero / ck-hero | 左侧衬线 display 标题 + CTA；右侧原创线稿与小浮卡；2:1 | 小屏单列；CTA 是有效页内导航 |
+| 连续章节 / ck-section | 白底或 full-width subtle；无圆角 wrapper；大留白 | 内边距响应式；完整保留内容 |
+| 三联媒体 / ck-media-grid | 1:2.8:1；小圆角、窄缝、白色标签、角落浮卡 | 小屏堆叠；浮卡回正常文档流 |
+| 悬浮信息卡 / ck-floating-card | 白底、line 边、radius-lg、shadow-1；品牌标题衬线 | 不承载真实住户信息；不将审核操作藏在覆盖图层 |
+| 分段套件条 / ck-segmented--bar | 外条 radius-sm；选中项黑底，正文字号；全宽等分 | 手机两列；button + aria-pressed；键盘 Tab / Enter / Space |
+| 横向类别条 / ck-feature-strip | 图标 + 文本，上下细分隔线 | 小屏两列；最后一项可占满 |
+| 标题 / ck-display、ck-section-heading、ck-brand-title | display font + regular；其余工作文字 sans | 按 DESIGN.md §4 的明确层级缩放 |
+| 页脚 / ck-brand-footer | ink 底、on-ink 字；巨型衬线 wordmark | 手机完整呈现；链接有焦点环 |
+| 文案状态样例 | unsaved / saved / loading / error 分开，保留文字与状态图标 | 合成输入只在当前页内存；保存按钮明确说明是设计演示 |
+
+
+品牌文字按钮 `ck-btn--editorial` 为黑字加箭头；工作层 `ck-btn--text` 的链接表现保留。普通 `ck-card` 默认细描边、无阴影；真正悬浮的卡片另用 `ck-floating-card`，避免所有卡片漂浮。
+
+法律依据：沿用 DESIGN.md §7、§9 及主 PRD §9，未新增临床功能。tga-boundary-check：🟢，仅设计构图与文书界面样例，无评分 / 诊断 / 疗效承诺。运营参考，不是法规意见；🟡/🔴 需要法规顾问确认。

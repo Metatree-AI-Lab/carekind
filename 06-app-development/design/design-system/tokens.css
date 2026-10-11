@@ -1,12 +1,12 @@
 /* 由 scripts/build-design-system.sh 从 tokens.json 生成，不要手工修改。 */
 :root {
-	--color-canvas: #E8E4DC;
+	--color-canvas: #EAE6DE;
 	--color-surface: #FFFFFF;
-	--color-surface-subtle: #F5F5F5;
+	--color-surface-subtle: #F7F7F7;
 	--color-ink: #111111;
 	--color-ink-soft: #5F5F5F;
 	--color-on-ink: #FFFFFF;
-	--color-line: #DAD6CE;
+	--color-line: #E6E6E3;
 	--color-line-strong: #767676;
 	--color-green: #00A84E;
 	--color-green-soft: #42A572;
@@ -24,7 +24,9 @@
 	--color-purple-tint: #F1ECFF;
 	--color-danger-tint: #FCEBEB;
 	--color-overlay: rgba(17, 17, 17, 0.5);
-	--font-family-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	--color-media-warm: #DDD5C8;
+	--color-media-sage: #D5DED6;
+	--font-family-sans: Arial, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
 	--font-size-caption: 0.875rem;
 	--font-size-body: 1rem;
 	--font-size-body-lg: 1.125rem;
@@ -39,7 +41,13 @@
 	--font-leading-tight: 1.05;
 	--font-leading-heading: 1.2;
 	--font-leading-body: 1.5;
-	--font-tracking-display: -0.02em;
+	--font-tracking-display: -0.035em;
+	--font-family-display: "Times New Roman", Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+	--font-size-hero: 4.5rem;
+	--font-size-section: 3.5rem;
+	--font-size-wordmark: clamp(2.5rem, 12vw, 11rem);
+	--font-measure: 64ch;
+	--font-measure-hero: 16ch;
 	--space-1: 4px;
 	--space-2: 8px;
 	--space-3: 12px;
@@ -49,12 +57,14 @@
 	--space-7: 48px;
 	--space-8: 64px;
 	--space-9: 96px;
-	--radius-sm: 8px;
-	--radius-md: 12px;
-	--radius-lg: 20px;
+	--space-section: 80px;
+	--radius-sm: 4px;
+	--radius-md: 8px;
+	--radius-lg: 12px;
 	--radius-pill: 999px;
-	--shadow-1: 0 1px 2px rgba(17, 17, 17, 0.06), 0 8px 24px rgba(17, 17, 17, 0.06);
+	--shadow-1: 0 4px 16px rgba(17, 17, 17, 0.04);
 	--shadow-2: 0 2px 4px rgba(17, 17, 17, 0.08), 0 16px 40px rgba(17, 17, 17, 0.10);
+	--shadow-none: none;
 	--size-target-min: 48px;
 	--size-control-height: 48px;
 	--size-control-height-lg: 56px;
@@ -77,6 +87,13 @@
 	--size-dialog-md: 640px;
 	--size-menu-min: 200px;
 	--size-field-max: 480px;
+	--size-shell: 1328px;
+	--size-page-inset: 64px;
+	--size-hero-aside: 320px;
+	--size-media-height: 360px;
+	--size-badge-height: 28px;
+	--size-status-dot: 8px;
+	--size-breakpoint-sm: 640px;
 	--z-dropdown: 1000;
 	--z-sticky: 1100;
 	--z-overlay: 1200;

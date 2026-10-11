@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 从设计 tokens 生成 tokens.css、DESIGN.md 里的 token 表格（含对比度检查），并把 DESIGN.md、COMPONENTS.md 渲染成给人看的 HTML。
+# 从设计 tokens 生成 tokens.css、DESIGN.md 里的 token 表格（含对比度检查）。
 # tokens.json 是所有数值的唯一来源（06-app-development/design/DESIGN.md §0）。
 # 用法：scripts/build-design-system.sh          生成（并检查对比度）
 #       scripts/build-design-system.sh --check  只检查：生成文件是否过期、对比度是否达标（pre-commit 使用）
@@ -12,17 +12,10 @@ DIR="06-app-development/design/design-system"
 TOKENS="$DIR/tokens.json"
 CSS="$DIR/tokens.css"
 DOC="06-app-development/design/DESIGN.md"
-HTML="06-app-development/design/DESIGN.html"
-COMP_DOC="06-app-development/design/COMPONENTS.md"
-COMP_HTML="06-app-development/design/COMPONENTS.html"
-RENDERER="scripts/render-design-md.py"
 MODE="${1:-build}"
 
 [[ -f "$TOKENS" ]] || { echo "❌ 缺少 $TOKENS" >&2; exit 1; }
 [[ -f "$DOC" ]] || { echo "❌ 缺少 $DOC" >&2; exit 1; }
-[[ -f "$RENDERER" ]] || { echo "❌ 缺少 $RENDERER" >&2; exit 1; }
-[[ -f "$COMP_DOC" ]] || { echo "❌ 缺少 $COMP_DOC" >&2; exit 1; }
-command -v python3 > /dev/null || { echo "❌ 需要 python3 来生成 DESIGN.html" >&2; exit 1; }
 grep -q '<!-- tokens:begin -->' "$DOC" && grep -q '<!-- tokens:end -->' "$DOC" ||
 	{ echo "❌ $DOC 里缺少 <!-- tokens:begin --> / <!-- tokens:end --> 标记" >&2; exit 1; }
 
@@ -90,8 +83,6 @@ trap 'rm -rf "$WORK"' EXIT
 build_css > "$WORK/tokens.css"
 build_tables > "$WORK/tables.md"
 render_doc "$WORK/tables.md" > "$WORK/DESIGN.md"
-python3 -I "$RENDERER" "$WORK/DESIGN.md" > "$WORK/DESIGN.html"
-python3 -I "$RENDERER" "$COMP_DOC" > "$WORK/COMPONENTS.html"
 
 status=0
 failures="$(contrast_failures)"
@@ -102,9 +93,8 @@ if [[ -n "$failures" ]]; then
 fi
 
 if [[ "$MODE" == "--check" ]]; then
-	if ! diff -q "$WORK/tokens.css" "$CSS" > /dev/null 2>&1 || ! diff -q "$WORK/DESIGN.md" "$DOC" > /dev/null 2>&1 \
-		|| ! diff -q "$WORK/DESIGN.html" "$HTML" > /dev/null 2>&1 || ! diff -q "$WORK/COMPONENTS.html" "$COMP_HTML" > /dev/null 2>&1; then
-		echo "❌ tokens.css、DESIGN.md 里的 token 表格、DESIGN.html 或 COMPONENTS.html 已过期，请运行 scripts/build-design-system.sh 并提交" >&2
+	if ! diff -q "$WORK/tokens.css" "$CSS" > /dev/null 2>&1 || ! diff -q "$WORK/DESIGN.md" "$DOC" > /dev/null 2>&1; then
+		echo "❌ tokens.css 或 DESIGN.md 里的 token 表格已过期，请运行 scripts/build-design-system.sh 并提交" >&2
 		status=1
 	fi
 	[[ "$status" -eq 0 ]] && echo "✅ 设计系统检查通过（tokens 与生成文件一致，对比度达标）"
@@ -113,7 +103,5 @@ fi
 
 cp "$WORK/tokens.css" "$CSS"
 cp "$WORK/DESIGN.md" "$DOC"
-cp "$WORK/DESIGN.html" "$HTML"
-cp "$WORK/COMPONENTS.html" "$COMP_HTML"
-[[ "$status" -eq 0 ]] && echo "✅ 已生成 ${CSS}、${DOC} 里的 token 表格、${HTML} 和 ${COMP_HTML}"
+[[ "$status" -eq 0 ]] && echo "✅ 已生成 ${CSS}、${DOC} 里的 token 表格"
 exit "$status"
