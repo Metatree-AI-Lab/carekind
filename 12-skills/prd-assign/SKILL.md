@@ -32,9 +32,12 @@ Every PRD has **exactly one** assignee (a human, never an AI agent). You recomme
 PRD: <file>   Complexity: M (scope 1, tech 1, uncertainty 1, deps 0)   Risk: R3 (reason)   Tracks: backend, ai-eval
 Excluded: Gary (level/tracks TBD), Lightman (PO, not a dev assignee)
 | Rank | Member | Track 40 | Level 25 | Load 20 | Context 15 | Growth | Total | Why |
-Recommended assignee: <name>   Reviewer: <name>
+Recommended assignee: <name> (@<github handle from member-profiles.md>)   Reviewer: <name> (@<handle>)
 🧑 Please confirm (or pick another).
 ```
+
+## GitHub handles
+`member-profiles.md` has a `github` column. The registry keeps the person's **name** (the single source of truth); show the handle next to it so it can be used for GitHub PR/issue assignment. Handles marked `（示例）` are demo placeholders, not real accounts: say so in the output and never run `gh` commands against them. Do not create or guess GitHub accounts.
 
 ## Reassignment
 Same flow. Ask for the reason (capacity, skill gap, leave, scope change). The old assignee must be told; note that in the history row. A PRD in `in_progress` or later should only be reassigned with an explicit handover note (what is done, open branches/PRs) in the history row.
