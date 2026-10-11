@@ -14,8 +14,12 @@ UX 原则、无障碍、设计系统。
 - 界面文字跑 tga-boundary-check
 - 目标 WCAG 2.2 AA
 - 为戴手套、单手、被打断、Wi-Fi 差、英语非母语的场景设计
+- **以 DESIGN.md 为准**；代码和设计稿里只引用 token 名；不提供评分、风险、趋势类组件
+- 参考图不入库（版权）；插画和照片只用自己创作 / 授权 / 合成的素材
 
 ## 关键文件
+- **DESIGN.md**（设计规范 SoT：做任何界面、组件、插画、文案之前先读）
+- design-system/（tokens.json 是数值唯一来源；改完运行 scripts/build-design-system.sh）
 - ux-principles.md
 
 ## 不要做

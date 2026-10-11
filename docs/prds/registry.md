@@ -14,7 +14,7 @@ Parent: [`docs/PRD.md`](../PRD.md) · 规则：[`rules/06-adlc-rules.md`](../../
 |---|---|---|---|---|---|---|---|---|---|
 | 2026-10-04-shift-capture-and-resident-records | Shift Capture + 按老人分配 + 老人档案 | draft | Lin | — | {{TBD}} | R3 | — | — | 11/10/2026 |
 | 2026-10-11-adlc-prd-lifecycle | ADLC：PRD 生命周期、分配与状态管理 | draft | Lightman | — | M | R1 | — | — | 11/10/2026 |
-| 2026-10-11-carekind-design-system | careKind AI 设计系统（含 DS-1…DS-6 六个工作包） | draft | Gary | Lin | L | R3 | — | 品牌视觉（Logo/主色/字体）未定 · 等 Lightman · 18/10/2026 | 11/10/2026 |
+| 2026-10-11-carekind-design-system | careKind AI 设计系统（含 DS-1…DS-6 六个工作包） | draft | Gary | Lin | L | R3 | — | Logo 与最终品牌主色待定（视觉风格已选定，见 DESIGN.md） · 等 Lightman · 18/10/2026 | 11/10/2026 |
 
 列说明：
 - **PRD**：`docs/prds/` 下的文件名（不含 `.md`）。
@@ -38,3 +38,4 @@ Parent: [`docs/PRD.md`](../PRD.md) · 规则：[`rules/06-adlc-rules.md`](../../
 | 11/10/2026 | 2026-10-11-ds-tooling | 登记：idea，assignee = —（无推荐） | 方向最匹配 Windston，但 level 未填，规则不允许猜；依赖 ADR-0001 | — |
 | 11/10/2026 | 2026-10-11-carekind-design-system | 合并：DS-1…DS-6 不再单独登记，作为 6 个工作包并入同一个 PRD；删除登记表里 6 个 idea 行（上面的历史行保留不动） | Lightman 要求"整个任务分配给一个人，整个 PRD 分配给一个人" | Lightman |
 | 11/10/2026 | 2026-10-11-carekind-design-system | **指定覆盖** assignee: Lightman → Gary；reviewer: — → Lin | 覆盖的规则：junior × L（复杂度 7）、junior × R3（含临床确认与 AI 内容模式）、方向（含 frontend、DevOps 工作包，超出 product-ux）。Lightman 的原因：设计系统整体由 Gary 负责（产品思维、审美）。重新评分：范围 2 + 技术面 1 + 不确定性 2 + 依赖 2 = 7，L；R3。缓解：Lin（senior）为 reviewer，参与设计评审和每个 PR；Lin 同时负责 ADR-0001；DS-6 工具链由 Windston 协助（级别待确认）；品牌视觉与 DS-3 语言规范的业务确认由 Lightman 负责；卡点超过 2 个工作日升级给 Lin；Gary 的 WIP 1/1，未超限 | Lightman（对话中指定） |
+| 11/10/2026 | 2026-10-11-carekind-design-system | 卡点更新：视觉风格已由 Lightman 选定；DS-1 产出 DESIGN.md、tokens.json、生成脚本和预览页（draft 状态，待 Lin 设计评审） | Lightman 提供两张参考图并要求保存为设计系统和 DESIGN.md 作为设计规范 SoT；颜色从参考图实测，标注 measured / derived / proposed；仍待定：Logo、最终品牌主色、品牌字体 | Lightman（对话中选定风格） |

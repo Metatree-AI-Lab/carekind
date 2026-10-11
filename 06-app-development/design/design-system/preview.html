@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>careKind AI Design System Preview</title>
+<!-- 预览页：只引用 tokens.css 里的变量，不写死数值（DESIGN.md §3.x）。内容全部是合成示例。 -->
+<link rel="stylesheet" href="tokens.css">
+<style>
+	* { box-sizing: border-box; }
+	body {
+		margin: 0;
+		background: var(--color-canvas);
+		color: var(--color-ink);
+		font-family: var(--font-family-sans);
+		font-size: var(--font-size-body);
+		line-height: var(--font-leading-body);
+	}
+	.page { max-width: var(--size-container); margin: 0 auto; padding: var(--space-6) var(--space-5) var(--space-9); }
+	.sheet { background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); }
+	h1 { font-size: var(--font-size-display-sm); font-weight: var(--font-weight-medium); line-height: var(--font-leading-tight); letter-spacing: var(--font-tracking-display); margin: 0 0 var(--space-3); }
+	h2 { font-size: var(--font-size-heading-sm); font-weight: var(--font-weight-semibold); line-height: var(--font-leading-heading); margin: 0 0 var(--space-4); }
+	h3 { font-size: var(--font-size-title); font-weight: var(--font-weight-semibold); margin: var(--space-5) 0 var(--space-3); }
+	p { margin: 0 0 var(--space-3); }
+	.soft { color: var(--color-ink-soft); }
+	.row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+	.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: var(--space-3); }
+
+	/* 色板 */
+	.swatch { border: 1px solid var(--color-line); border-radius: var(--radius-md); overflow: hidden; background: var(--color-surface); }
+	.swatch .chip-color { height: 64px; }
+	.swatch .meta { padding: var(--space-2) var(--space-3); font-size: var(--font-size-caption); }
+	.swatch code { display: block; overflow-wrap: anywhere; }
+
+	/* 按钮 */
+	.btn { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-control-height); padding: 0 var(--space-5); border-radius: var(--radius-pill); border: 1px solid var(--color-ink); font: inherit; font-weight: var(--font-weight-medium); cursor: pointer; background: var(--color-surface); color: var(--color-ink); transition: background var(--motion-duration-fast) var(--motion-easing-standard); }
+	.btn-primary { background: var(--color-ink); color: var(--color-on-ink); }
+	.btn-lg { min-height: var(--size-control-height-lg); padding: 0 var(--space-6); }
+	.btn-text { border-color: transparent; background: transparent; color: var(--color-blue-ink); text-decoration: underline; }
+	.btn-danger { border-color: var(--color-danger-ink); color: var(--color-danger-ink); }
+	.btn:disabled { border-color: var(--color-line-strong); color: var(--color-ink-soft); background: var(--color-surface-subtle); cursor: not-allowed; }
+	.btn:focus-visible, .field input:focus-visible, .seg button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+	.demo-focus { box-shadow: var(--focus-ring); }
+
+	/* 标签 */
+	.tag { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 32px; padding: 0 var(--space-3); border-radius: var(--radius-pill); border: 1px solid var(--color-line); background: var(--color-surface); font-size: var(--font-size-caption); }
+	.dot { width: 10px; height: 10px; border-radius: var(--radius-pill); }
+
+	/* 分段控件 */
+	.seg { display: inline-flex; padding: var(--space-1); border-radius: var(--radius-pill); background: var(--color-surface-subtle); }
+	.seg button { min-height: 40px; padding: 0 var(--space-4); border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--color-ink); font: inherit; cursor: pointer; }
+	.seg button[aria-selected="true"] { background: var(--color-ink); color: var(--color-on-ink); font-weight: var(--font-weight-semibold); }
+
+	/* 输入 */
+	.field { display: grid; gap: var(--space-2); max-width: 360px; }
+	.field label { font-weight: var(--font-weight-medium); }
+	.field input { min-height: var(--size-control-height); padding: 0 var(--space-4); border: 1px solid var(--color-line-strong); border-radius: var(--radius-md); font: inherit; background: var(--color-surface); color: var(--color-ink); }
+	.field .err { color: var(--color-danger-ink); font-size: var(--font-size-caption); }
+	.field.invalid input { border-color: var(--color-danger-ink); }
+
+	/* 卡片 */
+	.card { background: var(--color-surface); border-radius: var(--radius-md); box-shadow: var(--shadow-1); padding: var(--space-5); max-width: 380px; }
+	.card h3 { margin-top: 0; }
+
+	/* 进度 */
+	.progress { height: 12px; background: var(--color-surface-subtle); border-radius: var(--radius-pill); overflow: hidden; }
+	.progress > span { display: block; height: 100%; width: 70%; background: var(--color-green-soft); border-radius: var(--radius-pill); }
+
+	/* 提示 */
+	.alert { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-3); }
+	.alert strong { display: block; }
+	.alert-success { background: var(--color-green-tint); color: var(--color-green-ink); }
+	.alert-info { background: var(--color-blue-tint); color: var(--color-blue-ink); }
+	.alert-warn { background: var(--color-amber-tint); color: var(--color-amber-ink); }
+	.alert-danger { background: var(--color-danger-tint); color: var(--color-danger-ink); }
+	.alert-ai { background: var(--color-purple-tint); color: var(--color-purple-ink); }
+
+	/* 排版样例 */
+	.t-display { font-size: var(--font-size-display); font-weight: var(--font-weight-medium); line-height: var(--font-leading-tight); letter-spacing: var(--font-tracking-display); }
+	.t-heading { font-size: var(--font-size-heading); font-weight: var(--font-weight-medium); line-height: var(--font-leading-heading); }
+	.t-title { font-size: var(--font-size-title); font-weight: var(--font-weight-semibold); }
+	.t-body-lg { font-size: var(--font-size-body-lg); }
+	.t-caption { font-size: var(--font-size-caption); color: var(--color-ink-soft); }
+
+	/* 品牌层：导航与页脚 */
+	.nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); padding: var(--space-3) var(--space-5); background: var(--color-surface); border-bottom: 1px solid var(--color-line); border-radius: var(--radius-md) var(--radius-md) 0 0; flex-wrap: wrap; }
+	.nav ul { display: flex; gap: var(--space-5); list-style: none; margin: 0; padding: 0; }
+	.footer { background: var(--color-ink); color: var(--color-on-ink); padding: var(--space-6); border-radius: 0 0 var(--radius-md) var(--radius-md); }
+	.footer .wordmark { font-size: var(--font-size-display); font-weight: var(--font-weight-medium); letter-spacing: var(--font-tracking-display); line-height: var(--font-leading-tight); }
+
+	@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<main class="page">
+	<section class="sheet">
+		<span class="tag"><span class="dot" style="background: var(--color-amber)"></span>Draft · 11/10/2026</span>
+		<h1>careKind AI design system</h1>
+		<p class="soft">预览页。数值来自 <code>tokens.json</code>（唯一来源），规则见 <code>DESIGN.md</code>。所有内容都是合成示例，不含真实住户或员工信息。</p>
+	</section>
+
+	<section class="sheet" aria-labelledby="c">
+		<h2 id="c">颜色</h2>
+		<div class="grid">
+			<div class="swatch"><div class="chip-color" style="background: var(--color-canvas)"></div><div class="meta"><strong>canvas</strong><code>--color-canvas</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-surface)"></div><div class="meta"><strong>surface</strong><code>--color-surface</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-surface-subtle)"></div><div class="meta"><strong>surface-subtle</strong><code>--color-surface-subtle</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-ink)"></div><div class="meta"><strong>ink</strong><code>--color-ink</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-ink-soft)"></div><div class="meta"><strong>ink-soft</strong><code>--color-ink-soft</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-green)"></div><div class="meta"><strong>green</strong>（图形 / 大字）<code>--color-green</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-green-ink)"></div><div class="meta"><strong>green-ink</strong>（文字）<code>--color-green-ink</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-blue)"></div><div class="meta"><strong>blue</strong>（图形）<code>--color-blue</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-blue-ink)"></div><div class="meta"><strong>blue-ink</strong>（文字 / 链接）<code>--color-blue-ink</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-amber)"></div><div class="meta"><strong>amber</strong>（圆点）<code>--color-amber</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-amber-ink)"></div><div class="meta"><strong>amber-ink</strong>（文字）<code>--color-amber-ink</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-purple)"></div><div class="meta"><strong>purple</strong>（AI 装饰）<code>--color-purple</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-purple-ink)"></div><div class="meta"><strong>purple-ink</strong>（AI 文字）<code>--color-purple-ink</code></div></div>
+			<div class="swatch"><div class="chip-color" style="background: var(--color-danger-ink)"></div><div class="meta"><strong>danger-ink</strong>（提议）<code>--color-danger-ink</code></div></div>
+		</div>
+	</section>
+
+	<section class="sheet" aria-labelledby="t">
+		<h2 id="t">排版</h2>
+		<p class="t-display">Time back to care</p>
+		<p class="t-caption">display · 仅营销页 / 引导页</p>
+		<p class="t-heading">Review your shift notes</p>
+		<p class="t-caption">heading</p>
+		<p class="t-title">Progress note draft</p>
+		<p class="t-body-lg">Resident A was settled after morning tea and joined the group activity. (记录正文 body-lg，合成示例)</p>
+		<p>Body text is 16px at minimum in the app. 次要说明用 <span class="t-caption">caption（14px）</span>，不能承载必须看到的信息。</p>
+	</section>
+
+	<section class="sheet" aria-labelledby="b">
+		<h2 id="b">按钮与标签</h2>
+		<div class="row">
+			<button class="btn btn-primary">Order test kit →</button>
+			<button class="btn btn-primary btn-lg">Confirm note</button>
+			<button class="btn">Learn more →</button>
+			<button class="btn btn-text">Read more</button>
+			<button class="btn btn-danger">Discard draft</button>
+			<button class="btn" disabled>Unavailable</button>
+			<button class="btn btn-primary demo-focus">Focus ring</button>
+		</div>
+		<h3>标签（圆点必须配文字）</h3>
+		<div class="row">
+			<span class="tag"><span class="dot" style="background: var(--color-amber)"></span>Needs review</span>
+			<span class="tag"><span class="dot" style="background: var(--color-blue)"></span>Uploading</span>
+			<span class="tag"><span class="dot" style="background: var(--color-green)"></span>Confirmed</span>
+			<span class="tag"><span class="dot" style="background: var(--color-purple)"></span>AI draft</span>
+		</div>
+		<h3>分段控件</h3>
+		<div class="seg" role="tablist" aria-label="Sample views">
+			<button role="tab" aria-selected="true">Notes</button>
+			<button role="tab" aria-selected="false">Handover</button>
+			<button role="tab" aria-selected="false">Residents</button>
+		</div>
+	</section>
+
+	<section class="sheet" aria-labelledby="f">
+		<h2 id="f">输入、卡片、进度</h2>
+		<div class="row" style="align-items: flex-start; gap: var(--space-6)">
+			<div class="field"><label for="n">Resident name (sample)</label><input id="n" value="Resident A"></div>
+			<div class="field invalid"><label for="r">Room</label><input id="r" aria-invalid="true" aria-describedby="re" value=""><span class="err" id="re">⚠ Enter a room number, for example 12B.</span></div>
+			<div class="card">
+				<h3>Upload</h3>
+				<p class="soft">Audio is uploading. You can keep working.</p>
+				<div class="progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Upload progress"><span></span></div>
+				<p class="t-caption" style="margin-top: var(--space-2)">Uploading 70%</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="sheet" aria-labelledby="a">
+		<h2 id="a">状态提示</h2>
+		<div class="alert alert-success"><span aria-hidden="true">✔</span><div><strong>Saved</strong>Your note was saved as a draft.</div></div>
+		<div class="alert alert-info"><span aria-hidden="true">ℹ</span><div><strong>Syncing</strong>You are offline. Notes will sync when the connection returns.</div></div>
+		<div class="alert alert-warn"><span aria-hidden="true">!</span><div><strong>Please check</strong>This note has no resident selected.</div></div>
+		<div class="alert alert-danger"><span aria-hidden="true">✖</span><div><strong>Could not save</strong>Check your connection and try again. Your draft is still on this device.</div></div>
+		<div class="alert alert-ai"><span aria-hidden="true">✦</span><div><strong>AI draft</strong>Drafted from what you said. You review and approve every note. (样式由 DS-4 定稿，这里只演示颜色规则)</div></div>
+	</section>
+
+	<section class="sheet" aria-labelledby="m">
+		<h2 id="m">品牌层：导航与页脚</h2>
+		<div class="nav">
+			<strong>careKind AI</strong>
+			<ul><li>How it works</li><li>Stories</li><li>Security</li></ul>
+			<div class="row"><span>Login</span><button class="btn">Book a demo →</button></div>
+		</div>
+		<div class="footer">
+			<p>Built for Australian aged care. Nurse in control.</p>
+			<div class="wordmark">careKind AI</div>
+		</div>
+	</section>
+</main>
+</body>
+</html>

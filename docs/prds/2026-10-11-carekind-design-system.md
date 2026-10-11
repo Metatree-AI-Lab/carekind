@@ -199,7 +199,7 @@ flowchart LR
 ## 12. 开放问题（需要人回答）
 | # | 问题 | Owner | 影响 |
 |---|---|---|---|
-| Q1 | 品牌视觉：Logo、主色、字体由谁定、什么时候定？ | Lightman | **阻塞** DS-1 的最终 tokens |
+| Q1 | 品牌视觉：**风格已由 Lightman 于 11/10/2026 选定**（见 `06-app-development/design/DESIGN.md`）。仍待定：Logo、最终品牌主色是否沿用参考图的黑 + 米色 + 强调色、品牌字体 | Lightman | 影响 DS-1 的最终值（目前的值标注 measured / derived / proposed） |
 | Q2 | 目标平台：iOS / Android / Web PWA 都要，还是先 PWA？ | Lin + Lightman | ADR-0001、DS-5 范围 |
 | Q3 | Lin 有没有容量同时做：本 PRD 的 reviewer、ADR-0001、Shift Capture（我的评分是 L：范围 2 + 技术面 2 + 不确定性 2 + 依赖 1 = 7，**待你确认**）？ | Lin / Lightman | reviewer 是缓解措施的核心，Lin 过载会让评审变形式 |
 | Q4 | Gary 写代码的方向（frontend / fullstack）？阶段 4 他是否承担 DS-5 实现？ | Gary | 阶段 4 的安排 |
@@ -216,6 +216,7 @@ flowchart LR
 ## 14. 变更记录
 | 日期 | 变更 | 作者 |
 |---|---|---|
+| 11/10/2026 | DS-1 首版产出：`DESIGN.md`（设计规范 SoT）、`design-system/tokens.json`、生成脚本 `scripts/build-design-system.sh`、预览页；视觉风格由 Lightman 选定 | Gary（演示）/ Claude Code |
 | 11/10/2026 | 初稿（AI 起草，Lightman 待审）；拆分 6 个子 PRD 并按 ADLC 规则评分 | Claude Code |
 
 ## 15. 审批

@@ -24,4 +24,6 @@ Owner: Lightman · Status: Draft · Last reviewed: 04/10/2026
 **careKind AI**（c 小写，K 大写）；简称 careKind。
 
 ## 视觉
+> 视觉风格已于 11/10/2026 选定，规范见 [`06-app-development/design/DESIGN.md`](../../06-app-development/design/DESIGN.md)（颜色、字体、组件、插画）。**Logo 与最终品牌主色仍待定。**
+
 {{TBD: Logo、主色、字体}} —— 方向：温暖、可信、柔和（避免冷冰冰的"科技蓝 + 机器人"）。

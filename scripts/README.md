@@ -13,6 +13,7 @@ Owner: Lin (Tech Lead) · Last reviewed: 04/10/2026
 - ai-changelog.sh — AI 修改记录（Claude Code hook 自动调用；Codex 用 --manual 手动调用）
 - check-context-docs.sh — 检查各层 CLAUDE.md 和 README.md 是否齐全
 - my-work.sh — 成员提醒（SessionStart hook / `/my-work` / `--all` 汇总）：未完成 PRD、新分配、卡点、今天是否提交 standup；lib-member.sh — 识别当前成员（`git config user.name` 或 `CARE_MEMBER`）
+- build-design-system.sh — 从 design-system/tokens.json 生成 tokens.css 和 DESIGN.md 的 token 表格，并检查对比度（`--check` 供 pre-commit 使用）
 - check-prd-registry.sh — 检查 docs/prds/registry.md：每个 PRD 一行、阶段合法、assignee 有且仅有一个人（pre-commit 运行）
 
 ## 怎么用
