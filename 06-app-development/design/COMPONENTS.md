@@ -277,8 +277,18 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 | 横向类别条 / ck-feature-strip | 图标 + 文本，上下细分隔线 | 小屏两列；最后一项可占满 |
 | 标题 / ck-display、ck-section-heading、ck-brand-title | display font + regular；其余工作文字 sans | 按 DESIGN.md §4 的明确层级缩放 |
 | 页脚 / ck-brand-footer | ink 底、on-ink 字；巨型衬线 wordmark | 手机完整呈现；链接有焦点环 |
+| 装饰图 / ck-decoration | 透明 PNG，保持比例；图库复用 ck-component-grid / ck-component-panel，下载用 ck-btn--editorial | 品牌层使用；手机单列；下载有名称、键盘焦点和完整原图 |
 | 文案状态样例 | unsaved / saved / loading / error 分开，保留文字与状态图标 | 合成输入只在当前页内存；保存按钮明确说明是设计演示 |
 
+
+装饰图纯点缀时用空 alt；图库提供描述性 alt 与标题。小幅变体 `ck-decoration--accent` 用 space-9，
+媒体变体 `ck-decoration--media` 在现有媒体卡内使用；只引用现有 tokens。
+图片不作为错误、审核或保存状态的唯一表达；关联下载链接沿用 Button 的 focus/hover 状态。
+
+Mini 图库 `ck-mini-grid`：沿用 Card / Button，默认三列、手机两列；使用
+`repeat(auto-fit, minmax(min(100%, size-dialog-sm / 3), 1fr))` 保证极窄与大字号回流。
+`ck-decoration--mini` 宽度为 space-8 × 2；`ck-decoration--mini-sm/md` 分别为 space-8 / space-9。
+不新增交互状态；下载与焦点沿用现有控件。
 
 品牌文字按钮 `ck-btn--editorial` 为黑字加箭头；工作层 `ck-btn--text` 的链接表现保留。普通 `ck-card` 默认细描边、无阴影；真正悬浮的卡片另用 `ck-floating-card`，避免所有卡片漂浮。
 

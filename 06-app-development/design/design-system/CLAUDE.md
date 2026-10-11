@@ -22,6 +22,9 @@ Owner: Lightman (PO) · Status: Draft · Last reviewed: 11/10/2026
 - 改组件样式先改 `../COMPONENTS.md` 的规格，再改 components.css 和样例；改完在浏览器里用键盘测一遍
 
 ## 关键文件
+- decoration-mini-*-v1.png / mini-decorations-prompts.json：六张轻线小装饰与实际提示词；#mini-decorations 提供真实小尺寸样张与下载。
+- decorations.css / decoration-*-v1.png：品牌层装饰图；保持透明度与比例，不替代状态图标。
+- decorations-prompts.json：实际 image_gen 提示词及原始素材出处。
 - tokens.json
 - tokens.css（生成）
 - preview.html（风格总览）

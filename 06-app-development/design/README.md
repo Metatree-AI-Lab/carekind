@@ -9,6 +9,7 @@ UX 原则、无障碍、设计系统。
 - **DESIGN.md** — 设计规范（Source of Truth）：风格、tokens、排版、组件、状态与 AI 内容、无障碍、文案
 - **COMPONENTS.md** — 组件规格（Source of Truth）：每个常用组件的用途、变体、状态、键盘与无障碍、文案
 - design-system/ — tokens.json（数值唯一来源）、生成的 tokens.css、预览页
+- decorations-2026-10-11/：四张原创场景配图与生成出处；统一预览和小配图库在 [Decoration](design-system/preview.html#decorations)。
 - ux-principles.md
 
 ## 怎么用

@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- Owner: Lightman | Status: Draft asset preview | Last reviewed: 11/10/2026 -->
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>careKind · Decoration 配图</title>
+	<style>
+		/* Review surfaces follow the supplied reference; these are not App design tokens. */
+		:root {
+			--ink: #171717;
+			--canvas: #ebe8df;
+			--surface: #fff;
+			--muted: #605d55;
+			--border: #dedbd3;
+			--space: 24px;
+		}
+		* { box-sizing: border-box; }
+		body { margin: 0; background: var(--canvas); color: var(--ink); font-family: Arial, sans-serif; }
+		main { max-width: 1240px; margin: auto; padding: 36px; }
+		header { margin-bottom: var(--space); }
+		.brand { font-family: Georgia, serif; font-size: 25px; }
+		h1 { font-family: Georgia, serif; font-size: 44px; font-weight: 400; margin: 16px 0 8px; }
+		header p { color: var(--muted); line-height: 1.6; margin: 0; }
+		.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space); }
+		figure { margin: 0; padding: 24px; background: var(--surface); border: 1px solid var(--border); }
+		.art { height: 300px; display: grid; place-items: center; }
+		img { width: 100%; height: 100%; max-height: 300px; object-fit: contain; }
+		figcaption { border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px; }
+		h2 { margin: 0 0 8px; font-size: 18px; font-weight: 400; }
+		figcaption p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+		footer { margin-top: var(--space); color: var(--muted); font-size: 13px; line-height: 1.6; }
+		@media (max-width: 640px) {
+			main { padding: 24px 16px; }
+			h1 { font-size: 34px; }
+			.grid { grid-template-columns: 1fr; gap: 16px; }
+			figure { padding: 20px; }
+			.art { height: 260px; }
+			img { max-height: 260px; }
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<header>
+			<div class="brand">careKind AI</div>
+			<h1>把温暖留在细节里</h1>
+			<p>Decoration 配图 · 黑色手绘线描 · 透明底 PNG · 11/10/2026</p>
+		</header>
+		<section class="grid" aria-label="四张装饰配图">
+			<figure>
+				<div class="art"><img src="companionship-v1.png" alt="护士与一位戴眼镜的老人温暖交流"></div>
+				<figcaption><h2>01 · 陪伴沟通</h2><p>适合首页介绍、陪伴照护与团队故事。</p></figcaption>
+			</figure>
+			<figure>
+				<div class="art"><img src="nurse-review-v1.png" alt="手握笔在打开的笔记本上审核"></div>
+				<figcaption><h2>02 · 护士审核</h2><p>适合记录功能与人工审核流程说明。</p></figcaption>
+			</figure>
+			<figure>
+				<div class="art"><img src="hands-and-heart-v1.png" alt="双手托起爱心，一侧点缀植物枝叶"></div>
+				<figcaption><h2>03 · 双手托心</h2><p>适合照护理念与标题旁的温暖点缀。</p></figcaption>
+			</figure>
+			<figure>
+				<div class="art"><img src="quiet-moment-v1.png" alt="冒着热气的茶杯和插着枝叶的小花瓶"></div>
+				<figcaption><h2>04 · 茶杯与植物</h2><p>适合 Time back to care 区块与页尾。</p></figcaption>
+			</figure>
+		</section>
+		<footer>原创 AI 生成候选素材 · 人物均为虚构 · 本页浅色底用于预览，原图保留透明度</footer>
+	</main>
+</body>
+</html>

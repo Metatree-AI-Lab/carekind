@@ -1,0 +1,62 @@
+{
+	"Owner": "Lightman (PO)",
+	"Status": "Draft — light mini decorations",
+	"Last reviewed": "11/10/2026",
+	"mode": "built-in image_gen",
+	"assets": [
+		{
+			"slug": "mini-smile",
+			"title": "轻轻一笑",
+			"use": "欢迎语、介绍标题旁",
+			"alt": "不规则椭圆轮廓中的简洁笑脸",
+			"prompt": "Create ONE new original tiny decorative pen doodle for careKind's minimal editorial design system. Style references are the user's original Microva+ screenshots, especially the small outlined heart, balloon and smiling face, used only for their airy pen-drawing feeling. This is a NEW raster decoration, not an edit of a reference, not a UI icon or logo. Use extremely spare light single-pass fine near-black #111111 contour strokes with tiny natural irregularity, roughly 4–6 pixels wide on a 1254px square canvas. The effect must be visibly lighter and much simpler than the previously generated careKind nurse scenes and detailed hands. Single subject, only a few deliberate lines, large clear negative space, subject occupies approximately 55% of a square canvas. Genuine alpha-transparent background, including enclosed shape interiors: no white fill, paper, coloured background, shadow or gradient. No text, letters, numbers, watermark, frame, label, additional props, realistic anatomy or intricate detail. No heavy outlines, shading, sketch doubling, crosshatching, large solid black fill, 3D or photographic rendering. Warm and mature, spontaneous and elegant, not an emoji or kawaii sticker. Designed to sit beside a serif heading at 64–128 CSS px. SUBJECT: an imperfect, gently tilted oval smiling face, just two tiny dot eyes and one shallow curved smile within one very thin oval outline. No nose, hair, ears, neck, body, blush or eyelashes. Keep the expressive character of a spontaneous hand doodle rather than a geometrically perfect emoji. No other elements.",
+			"filename": "decoration-mini-smile-v1.png",
+			"source": "/Users/lightman/.codex/generated_images/01a12a99-999f-7513-bd50-732e8a462d4d/exec-1596f3bd-a769-47b7-899d-8473162ff575.png"
+		},
+		{
+			"slug": "mini-heart",
+			"title": "一笔爱心",
+			"use": "照护理念、短句旁",
+			"alt": "轻盈手绘爱心轮廓",
+			"prompt": "Create ONE new original tiny decorative pen doodle for careKind's minimal editorial design system. Style references are the user's original Microva+ screenshots, especially the small outlined heart, balloon and smiling face, used only for their airy pen-drawing feeling. This is a NEW raster decoration, not an edit of a reference, not a UI icon or logo. Use extremely spare light single-pass fine near-black #111111 contour strokes with tiny natural irregularity, roughly 4–6 pixels wide on a 1254px square canvas. The effect must be visibly lighter and much simpler than the previously generated careKind nurse scenes and detailed hands. Single subject, only a few deliberate lines, large clear negative space, subject occupies approximately 55% of a square canvas. Genuine alpha-transparent background, including enclosed shape interiors: no white fill, paper, coloured background, shadow or gradient. No text, letters, numbers, watermark, frame, label, additional props, realistic anatomy or intricate detail. No heavy outlines, shading, sketch doubling, crosshatching, large solid black fill, 3D or photographic rendering. Warm and mature, spontaneous and elegant, not an emoji or kawaii sticker. Designed to sit beside a serif heading at 64–128 CSS px. SUBJECT: a single light open-heart contour drawn with one flowing imperfect pen line, asymmetric lobes and a delicate tapered bottom. No anatomical heart, no hands, no extra hearts, no shine marks, no loops crossing its interior. Hollow interior remains transparent. Simple and airy.",
+			"filename": "decoration-mini-heart-v1.png",
+			"source": "/Users/lightman/.codex/generated_images/01a12a99-999f-7513-bd50-732e8a462d4d/exec-af8d899e-e032-4224-b5b1-4061bd5339c4.png"
+		},
+		{
+			"slug": "mini-sprig",
+			"title": "小小枝叶",
+			"use": "卡片角落、章节收尾",
+			"alt": "一根细茎与圆润小叶子",
+			"prompt": "Create ONE new original tiny decorative pen doodle for careKind's minimal editorial design system. Style references are the user's original Microva+ screenshots, especially the small outlined heart, balloon and smiling face, used only for their airy pen-drawing feeling. This is a NEW raster decoration, not an edit of a reference, not a UI icon or logo. Use extremely spare light single-pass fine near-black #111111 contour strokes with tiny natural irregularity, roughly 4–6 pixels wide on a 1254px square canvas. The effect must be visibly lighter and much simpler than the previously generated careKind nurse scenes and detailed hands. Single subject, only a few deliberate lines, large clear negative space, subject occupies approximately 55% of a square canvas. Genuine alpha-transparent background, including enclosed shape interiors: no white fill, paper, coloured background, shadow or gradient. No text, letters, numbers, watermark, frame, label, additional props, realistic anatomy or intricate detail. No heavy outlines, shading, sketch doubling, crosshatching, large solid black fill, 3D or photographic rendering. Warm and mature, spontaneous and elegant, not an emoji or kawaii sticker. Designed to sit beside a serif heading at 64–128 CSS px. SUBJECT: a small gently bending eucalyptus sprig with ONE fine curved stem and exactly FIVE simple hollow rounded leaves, alternating along the stem. Each leaf uses one loop outline, no veins, no fill. No vase, pot, flower, soil, hands or secondary branches. Light and sparse.",
+			"filename": "decoration-mini-sprig-v1.png",
+			"source": "/Users/lightman/.codex/generated_images/01a12a99-999f-7513-bd50-732e8a462d4d/exec-2377fa17-95f0-4fef-9425-77359405b31b.png"
+		},
+		{
+			"slug": "mini-balloon",
+			"title": "轻盈气球",
+			"use": "欢迎区、品牌页留白",
+			"alt": "一只椭圆气球与轻弯细线",
+			"prompt": "Create ONE new original tiny decorative pen doodle for careKind's minimal editorial design system. Style references are the user's original Microva+ screenshots, especially the small outlined heart, balloon and smiling face, used only for their airy pen-drawing feeling. This is a NEW raster decoration, not an edit of a reference, not a UI icon or logo. Use extremely spare light single-pass fine near-black #111111 contour strokes with tiny natural irregularity, roughly 4–6 pixels wide on a 1254px square canvas. The effect must be visibly lighter and much simpler than the previously generated careKind nurse scenes and detailed hands. Single subject, only a few deliberate lines, large clear negative space, subject occupies approximately 55% of a square canvas. Genuine alpha-transparent background, including enclosed shape interiors: no white fill, paper, coloured background, shadow or gradient. No text, letters, numbers, watermark, frame, label, additional props, realistic anatomy or intricate detail. No heavy outlines, shading, sketch doubling, crosshatching, large solid black fill, 3D or photographic rendering. Warm and mature, spontaneous and elegant, not an emoji or kawaii sticker. Designed to sit beside a serif heading at 64–128 CSS px. SUBJECT: one slightly irregular oval balloon with a tiny simple tied knot and one loose fine string curling gently downward. No reflection, ribbons, face, extra balloons or confetti. A new original contour that does not duplicate the reference balloon. Transparent inside the balloon.",
+			"filename": "decoration-mini-balloon-v1.png",
+			"source": "/Users/lightman/.codex/generated_images/01a12a99-999f-7513-bd50-732e8a462d4d/exec-c3cc2bcf-d5fd-4593-961f-354f8216e086.png"
+		},
+		{
+			"slug": "mini-flower",
+			"title": "一朵小花",
+			"use": "感谢文字、页尾点缀",
+			"alt": "一朵五瓣小花与细细花茎",
+			"prompt": "Create ONE new original tiny decorative pen doodle for careKind's minimal editorial design system. Style references are the user's original Microva+ screenshots, especially the small outlined heart, balloon and smiling face, used only for their airy pen-drawing feeling. This is a NEW raster decoration, not an edit of a reference, not a UI icon or logo. Use extremely spare light single-pass fine near-black #111111 contour strokes with tiny natural irregularity, roughly 4–6 pixels wide on a 1254px square canvas. The effect must be visibly lighter and much simpler than the previously generated careKind nurse scenes and detailed hands. Single subject, only a few deliberate lines, large clear negative space, subject occupies approximately 55% of a square canvas. Genuine alpha-transparent background, including enclosed shape interiors: no white fill, paper, coloured background, shadow or gradient. No text, letters, numbers, watermark, frame, label, additional props, realistic anatomy or intricate detail. No heavy outlines, shading, sketch doubling, crosshatching, large solid black fill, 3D or photographic rendering. Warm and mature, spontaneous and elegant, not an emoji or kawaii sticker. Designed to sit beside a serif heading at 64–128 CSS px. SUBJECT: one small five-petalled flower with a tiny hollow centre, ONE thin gently bending short stem and ONE tiny hollow leaf. The five petals are rounded and slightly asymmetric. No fill, bouquet, pot, additional stems, decorative specks or background. Only a few fine contour lines.",
+			"filename": "decoration-mini-flower-v1.png",
+			"source": "/Users/lightman/.codex/generated_images/01a12a99-999f-7513-bd50-732e8a462d4d/exec-8e22fbff-4bdb-43ea-a3d0-35d3b75e842f.png"
+		},
+		{
+			"slug": "mini-spark",
+			"title": "小小星芒",
+			"use": "品牌标题的小点缀",
+			"alt": "一颗细线四角小星芒",
+			"prompt": "Create ONE new original tiny decorative pen doodle for careKind's minimal editorial design system. Style references are the user's original Microva+ screenshots, especially the small outlined heart, balloon and smiling face, used only for their airy pen-drawing feeling. This is a NEW raster decoration, not an edit of a reference, not a UI icon or logo. Use extremely spare light single-pass fine near-black #111111 contour strokes with tiny natural irregularity, roughly 4–6 pixels wide on a 1254px square canvas. The effect must be visibly lighter and much simpler than the previously generated careKind nurse scenes and detailed hands. Single subject, only a few deliberate lines, large clear negative space, subject occupies approximately 55% of a square canvas. Genuine alpha-transparent background, including enclosed shape interiors: no white fill, paper, coloured background, shadow or gradient. No text, letters, numbers, watermark, frame, label, additional props, realistic anatomy or intricate detail. No heavy outlines, shading, sketch doubling, crosshatching, large solid black fill, 3D or photographic rendering. Warm and mature, spontaneous and elegant, not an emoji or kawaii sticker. Designed to sit beside a serif heading at 64–128 CSS px. SUBJECT: one tiny loose four-point sparkle, drawn as a hollow thin concave outline with gently curved inward sides, slightly tilted and asymmetrical. No additional sparks, dots, orbital rings or trails. It is only a standalone decorative doodle, never a brand logo, badge or functional AI status indicator. No fill.",
+			"filename": "decoration-mini-spark-v1.png",
+			"source": "/Users/lightman/.codex/generated_images/01a12a99-999f-7513-bd50-732e8a462d4d/exec-bc65a388-dc00-47a2-9d12-28d845799c96.png"
+		}
+	]
+}

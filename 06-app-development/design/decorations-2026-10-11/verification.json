@@ -1,0 +1,80 @@
+{
+	"Owner": "Lightman",
+	"Status": "Draft assets — local visual checks completed",
+	"Last reviewed": "11/10/2026",
+	"assets": [
+		{
+			"file": "companionship-v1.png",
+			"width": 1254,
+			"height": 1254,
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_pixel_fraction": 0.837,
+			"sha256": "b09d3c772cc9dc3a01dd14896aa3a2bba1ed83d31b3a51156747d0e0259c4c4a",
+			"original_preserved": true
+		},
+		{
+			"file": "nurse-review-v1.png",
+			"width": 1254,
+			"height": 1254,
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_pixel_fraction": 0.9271,
+			"sha256": "6d66db19fb748caffd857ef7a62025a14e11ff41d8bb5258ad91d44d6bc8865f",
+			"original_preserved": true
+		},
+		{
+			"file": "hands-and-heart-v1.png",
+			"width": 1254,
+			"height": 1254,
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_pixel_fraction": 0.929,
+			"sha256": "cb0414bf60b4175599a6c7f72b397d8b28c45c01005e9b819e6933f2bbecc4bd",
+			"original_preserved": true
+		},
+		{
+			"file": "quiet-moment-v1.png",
+			"width": 1254,
+			"height": 1254,
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_pixel_fraction": 0.9289,
+			"sha256": "9ea4da80ad6ecefc79885e1ab12d53f4f1492866e7137a901a008a44098d5f0c",
+			"original_preserved": true
+		}
+	],
+	"preview": {
+		"desktop": {
+			"width": 1440,
+			"images_loaded": true,
+			"no_horizontal_overflow": true,
+			"visual_review": "pass"
+		},
+		"mobile": {
+			"width": 390,
+			"images_loaded": true,
+			"no_horizontal_overflow": true,
+			"visual_review": "pass"
+		}
+	},
+	"visual_review": "All four illustrations viewed on light backgrounds at card scale. Contour style, human review imagery and hands are acceptable; no text, logos or clinical metrics.",
+	"limitations": [
+		"Raster PNG, not SVG",
+		"Not integrated into the App",
+		"Not published",
+		"Black strokes intended for light backgrounds"
+	]
+}

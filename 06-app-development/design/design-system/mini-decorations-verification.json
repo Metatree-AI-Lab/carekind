@@ -1,0 +1,99 @@
+{
+	"Owner": "Lightman (PO)",
+	"Status": "Draft — local asset validation",
+	"Last reviewed": "11/10/2026",
+	"mode": "built-in image_gen",
+	"assets": [
+		{
+			"file": "decoration-mini-smile-v1.png",
+			"size": [
+				1254,
+				1254
+			],
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				254
+			],
+			"transparent_fraction": 0.9833,
+			"sha256": "397b87640d5789873e26291fbaabe32297d11086d33497d784d9d10e7c9243f6",
+			"original_preserved": true
+		},
+		{
+			"file": "decoration-mini-heart-v1.png",
+			"size": [
+				1254,
+				1254
+			],
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_fraction": 0.9819,
+			"sha256": "b0ff2a0620dd193d67d877de1f99ab3128c5ce01eb48ea847a9b5ce6c2db7a9c",
+			"original_preserved": true
+		},
+		{
+			"file": "decoration-mini-sprig-v1.png",
+			"size": [
+				1254,
+				1254
+			],
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_fraction": 0.978,
+			"sha256": "dce39beab907f4107345b28101d5d8cc8eb7a07ed9e12cb7ce7df9594b023413",
+			"original_preserved": true
+		},
+		{
+			"file": "decoration-mini-balloon-v1.png",
+			"size": [
+				1254,
+				1254
+			],
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_fraction": 0.9871,
+			"sha256": "344b0f55063db5cf1b49f60ee41973848a99925043389b7a0d1605883169a621",
+			"original_preserved": true
+		},
+		{
+			"file": "decoration-mini-flower-v1.png",
+			"size": [
+				1254,
+				1254
+			],
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_fraction": 0.9795,
+			"sha256": "23d3b066919983d44e593e7c050390f8ec5238d8ae036337c78ef4dafbcd8969",
+			"original_preserved": true
+		},
+		{
+			"file": "decoration-mini-spark-v1.png",
+			"size": [
+				1254,
+				1254
+			],
+			"mode": "RGBA",
+			"alpha_range": [
+				0,
+				255
+			],
+			"transparent_fraction": 0.9841,
+			"sha256": "12617026ee9b4cc597ca9d7cc9bce353ad4bd6af5a9fec96ada796a4a74b72f1",
+			"original_preserved": true
+		}
+	],
+	"notes": "Original transparent PNGs preserved without colour, stroke or alpha edits; inspect preview.html#mini-decorations for actual 64/96/128px rendering. Raster only, not SVG. Decorative sparkle is not an approved Logo asset."
+}

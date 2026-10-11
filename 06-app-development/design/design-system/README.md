@@ -5,6 +5,8 @@ Owner: Lightman (PO) · Assignee: Gary · Status: Draft · Last reviewed: 11/10/
 careKind AI 设计系统的**数值来源**和预览。规则和用法在上一级的 [`../DESIGN.md`](../DESIGN.md)。
 
 ## 内容
+- `decoration-mini-*-v1.png` — 六张更轻的笑脸、爱心、植物等小装饰；见 [Mini decoration](preview.html#mini-decorations)，提示词见 `mini-decorations-prompts.json`。
+- `decorations.css` / `decoration-*-v1.png` — 四张透明底装饰图及 token 样式，见 `preview.html#decorations`；`decorations-prompts.json` 保留生成出处。
 - `tokens.json` — **所有设计数值的唯一来源**（颜色、字体、间距、圆角、阴影、尺寸、动效、对比度要求）
 - `tokens.css` — 由脚本从 tokens.json **生成**的 CSS 变量，不要手改
 - `preview.html` — 风格总览（引用 tokens.css，内容全部是合成示例）

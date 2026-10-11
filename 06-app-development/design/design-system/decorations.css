@@ -1,0 +1,100 @@
+/* Owner: Lightman (PO) | Status: Draft | Last reviewed: 11/10/2026 */
+/* Decoration reuses the existing brand tokens, panels and buttons. */
+.ck-decoration {
+	display: block;
+	width: 100%;
+	max-width: var(--size-hero-aside);
+	height: auto;
+	object-fit: contain;
+}
+.ck-decoration--accent {
+	width: var(--space-9);
+}
+.ck-decoration--media {
+	max-width: none;
+	height: calc(var(--space-9) * 1.5);
+	margin-top: var(--space-7);
+	margin-bottom: var(--space-4);
+}
+.ck-decoration-card {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+.ck-decoration-stage {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 1;
+}
+.ck-decoration-caption {
+	border-top: 1px solid var(--color-line);
+	padding-top: var(--space-5);
+	margin-top: var(--space-4);
+}
+.ck-decoration-caption h3 {
+	font-family: var(--font-family-display);
+	font-weight: var(--font-weight-regular);
+	margin-bottom: var(--space-3);
+}
+.ck-decoration-caption p {
+	margin: 0 0 var(--space-3);
+}
+.ck-decoration-caption .ck-card-meta {
+	margin-top: 0;
+	border-top: 0;
+	padding-top: 0;
+}
+.ck-mini-library {
+	margin-bottom: var(--space-7);
+}
+.ck-mini-library > .ck-brand-title {
+	margin-top: var(--space-5);
+}
+.ck-mini-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--space-4);
+	margin: var(--space-6) 0;
+}
+.ck-mini-grid .ck-component-panel {
+	padding: var(--space-4);
+}
+.ck-mini-stage {
+	display: grid;
+	place-items: center;
+	min-height: calc(var(--space-9) * 1.5);
+}
+.ck-decoration--mini {
+	width: calc(var(--space-8) * 2);
+	max-width: 100%;
+}
+.ck-decoration--mini-sm {
+	width: var(--space-8);
+}
+.ck-decoration--mini-md {
+	width: var(--space-9);
+}
+.ck-mini-size-demo {
+	margin-bottom: var(--space-5);
+}
+.ck-mini-size-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	gap: var(--space-6);
+}
+.ck-mini-size-row figure {
+	margin: var(--space-4) 0 0;
+	text-align: center;
+}
+.ck-mini-size-row figcaption {
+	margin-top: var(--space-3);
+	color: var(--color-ink-soft);
+	font-size: var(--font-size-caption);
+}
+/* The query matches size-breakpoint-sm from tokens.json. */
+@media (max-width: 640px) {
+	.ck-mini-grid {
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--size-dialog-sm) / 3)), 1fr));
+	}
+}

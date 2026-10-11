@@ -367,8 +367,19 @@ careKind **不提供**健康评分、风险等级、趋势预测、"改善 x%" �
 - **插画**：手绘线稿风格（近黑线条、留白、少量强调色），让产品有温度。**只用我们自己创作或获得授权的插画**，不复制参考图里的人物、气球或任何素材。
 - **照片**：真实人物（尤其是住户、员工）必须有**书面同意**或使用有授权的素材；演示和截图只用合成数据（`rules/01-operations-rules.md` §1）。人物要多样（年龄、文化、性别），表现尊重的照护场景。
 - 不使用暗示"诊断 / 检测"的画面（例如体征仪读数大特写配"评分"）。
-- 图片一律有替代文字（alt）。
+- 图片一律有 alt 属性；纯装饰且语义已由相邻文字表达时用 `alt=""`，承担独立信息时写简洁描述。
 
+
+### 8.1 Decoration 配图库
+- 四张透明 PNG 收录于 `design-system/decoration-*-v1.png`；实际提示词与原始出处见 `design-system/decorations-prompts.json`。
+- [预览页 Decoration](design-system/preview.html#decorations) 展示陪伴沟通、护士审核、双手托心、茶杯与植物，并提供原图下载；人物均为 AI 生成虚构角色。
+- 仅用于品牌层标题旁、介绍、流程说明和页尾，不替代工作层状态图标、审核按钮或记录信息。
+- `ck-decoration` 保留原图比例与透明度，浅色底展示；小幅点缀使用 `space-9`，图库最大宽度使用 `size-hero-aside`。不得裁切或用 CSS filter 改色。
+- 图库复用现有 Card、Grid 与 Button；手机单列。原图为 1254 × 1254 位图，未矢量化。
+- Mini decoration：新增笑脸、单线爱心、枝叶、气球、小花、星芒六张更轻的透明底线描，见 [小配图库](design-system/preview.html#mini-decorations)。完整实际提示词见 `design-system/mini-decorations-prompts.json`。
+- Mini 仅点缀品牌文字，默认用 `space-9` 显示；图库用 `space-8 × 2`，同时展示 `space-8`、`space-9`、`space-8 × 2` 的真实尺寸。保持原始线条，不通过降低 opacity 或 CSS filter 制造轻线效果。
+- Mini 图库桌面三列、手机两列；极窄或放大文字时按最小宽度自动单列。星芒为装饰图，不替代标准 Logo 或 AI 状态图标。
+- TGA boundary check：🟢，只表达陪伴、人工审核与休息意象，无新增临床功能或效果声明。依据主 PRD §9、`03-legal-compliance/tga-samd-boundary.md`。运营参考，不是法规意见；🟡/🔴 需要法规顾问确认。
 
 ## 9. 无障碍（目标 WCAG 2.2 AA）
 - **对比度**：由 `tokens.json` 的 `contrast` 列表强制检查（见 §3 的表）。

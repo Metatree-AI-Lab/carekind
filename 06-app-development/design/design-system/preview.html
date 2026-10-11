@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="tokens.css">
 	<link rel="stylesheet" href="components.css">
 	<link rel="stylesheet" href="editorial.css?v=logo-04a-v1">
+	<link rel="stylesheet" href="decorations.css">
 	<script src="preview.js" defer></script>
 </head>
 <body>
@@ -24,7 +25,7 @@
 	<header class="ck-brand-nav">
 		<a class="ck-brand-name" href="#main" aria-label="careKind，回到顶部">careKind AI</a>
 		<nav class="ck-brand-nav-links" aria-label="设计系统章节">
-			<a href="#typography">Typography</a><a href="#colours">Colour</a><a href="#components">Components</a><a href="#layouts">Layouts</a>
+			<a href="#typography">Typography</a><a href="#colours">Colour</a><a href="#components">Components</a><a href="#layouts">Layouts</a><a href="#decorations">Decoration</a>
 		</nav>
 		<a class="ck-btn" href="#typography">Type &amp; tokens <svg class="ck-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 	</header>
@@ -39,7 +40,7 @@
 				</div>
 			</div>
 			<div class="ck-hero-aside">
-				<svg class="ck-doodle" viewBox="0 0 100 100" aria-hidden="true"><path d="M35 55C14 46 15 19 37 14c23-6 34 24 14 40M35 55l5 3 8-4M40 58c-3 18 18 20 11 34M27 29c-5 8-2 15 3 18"/><path d="M72 10l-3 8m14 6-8 1M67 36l7 5"/></svg>
+				<img class="ck-decoration ck-decoration--accent" src="decoration-mini-smile-v1.png" alt="" width="1254" height="1254">
 				<article class="ck-floating-card">
 					<span class="ck-tag"><span class="ck-dot" style="background:var(--color-purple)"></span>AI draft</span>
 					<h2 class="ck-brand-title" style="margin-top:var(--space-4)">Your words.<br>A clearer starting point.</h2>
@@ -66,7 +67,7 @@
 			</article>
 			<article class="ck-media ck-media--sage">
 				<span class="ck-tag ck-media-label">03 / Review</span>
-				<svg class="ck-doodle" viewBox="0 0 100 100" aria-hidden="true"><path d="M17 24l51-5 13 57-54 6zM31 34l27-3M33 45l20-2M36 56l14-1M59 58l7 7 15-22"/></svg>
+				<img class="ck-decoration ck-decoration--media" src="decoration-nurse-review-v1.png" alt="" width="1254" height="1254">
 				<h2 class="ck-brand-title">Care stays<br>in your hands.</h2>
 				<p class="ck-media-caption">原创审核线稿<br>未使用第三方照片</p>
 			</article>
@@ -120,6 +121,143 @@
 			<div class="ck-split ck-layout-demo"><div><h3 class="ck-section-heading" id="pattern-title" aria-live="polite">Start with<br>your own words.</h3><p class="ck-copy" id="pattern-copy">Documentation starts with what you observed and said. The person providing care stays in control.</p><a class="ck-btn" href="#draft-demo">Try a component ↪</a></div><article class="ck-component-panel"><span class="ck-tag">Pattern sample</span><h4 class="ck-brand-title" style="margin-top:var(--space-5)">One clear next step.</h4><p class="ck-muted">左侧大衬线标题，右侧小白卡。分段条使用矩形小圆角，而不是药丸。</p><div class="ck-card-meta">选中状态同时更新按钮语义和样例内容。</div></article></div>
 		</section>
 		<section class="ck-section" aria-labelledby="pattern-cards-title"><span class="ck-tag">05 / Cards &amp; rhythm</span><h2 class="ck-section-heading" id="pattern-cards-title" style="text-align:center">Simple things, considered.</h2><div class="ck-step-strip"><article class="ck-component-panel"><span class="ck-tag">Typography</span><h3 class="ck-brand-title">Let the words lead.</h3><p>品牌标题用衬线；工作内容用无衬线。黑白对比、清晰层级。</p><a class="ck-btn ck-btn--editorial" href="#typography">See the type scale ↪</a></article><article class="ck-component-panel"><span class="ck-tag">Structure</span><h3 class="ck-brand-title">Give it room.</h3><p>连续白色内页、整幅灰色分区、细分隔线和有节奏的留白。</p><a class="ck-btn ck-btn--editorial" href="#colours">See colour &amp; space ↪</a></article><article class="ck-component-panel"><span class="ck-tag">Interaction</span><h3 class="ck-brand-title">Make it clear.</h3><p>黑色主操作、描边次操作。错误、焦点、禁用与保存状态可辨。</p><a class="ck-btn ck-btn--editorial" href="#components">Try the components ↪</a></article></div></section>
+		<section class="ck-section ck-section--subtle" id="decorations" aria-labelledby="decoration-title">
+			<div class="ck-spec-heading">
+				<div>
+					<span class="ck-tag">06 / Decoration</span>
+					<h2 class="ck-section-heading" id="decoration-title">A little warmth.<br>A little room.</h2>
+				</div>
+				<p class="ck-muted">轻盈的黑色手绘线描，用在标题旁、品牌介绍与流程说明。留白充分，让内容先被看见。</p>
+			</div>
+			<div id="mini-decorations" class="ck-mini-library" aria-labelledby="mini-title">
+				<span class="ck-tag">Mini decoration / 轻线小配图</span>
+				<h3 class="ck-brand-title" id="mini-title">Small marks. A softer touch.</h3>
+				<p class="ck-copy ck-muted">更少笔画、更轻线条。透明底小笑脸、爱心与植物，给标题和卡片留一点温度。</p>
+				<div class="ck-mini-grid">
+					<figure class="ck-component-panel ck-decoration-card">
+						<div class="ck-mini-stage">
+							<img class="ck-decoration ck-decoration--mini" src="decoration-mini-smile-v1.png" alt="不规则椭圆轮廓中的简洁笑脸" width="1254" height="1254" loading="lazy">
+						</div>
+						<figcaption class="ck-decoration-caption">
+							<h3>01 / 轻轻一笑</h3>
+							<p class="ck-muted">欢迎语、介绍标题旁</p>
+							<a class="ck-btn ck-btn--editorial" href="decoration-mini-smile-v1.png" download aria-label="下载轻轻一笑透明 PNG">下载 PNG ↗</a>
+						</figcaption>
+					</figure>
+					<figure class="ck-component-panel ck-decoration-card">
+						<div class="ck-mini-stage">
+							<img class="ck-decoration ck-decoration--mini" src="decoration-mini-heart-v1.png" alt="轻盈手绘爱心轮廓" width="1254" height="1254" loading="lazy">
+						</div>
+						<figcaption class="ck-decoration-caption">
+							<h3>02 / 一笔爱心</h3>
+							<p class="ck-muted">照护理念、短句旁</p>
+							<a class="ck-btn ck-btn--editorial" href="decoration-mini-heart-v1.png" download aria-label="下载一笔爱心透明 PNG">下载 PNG ↗</a>
+						</figcaption>
+					</figure>
+					<figure class="ck-component-panel ck-decoration-card">
+						<div class="ck-mini-stage">
+							<img class="ck-decoration ck-decoration--mini" src="decoration-mini-sprig-v1.png" alt="一根细茎与圆润小叶子" width="1254" height="1254" loading="lazy">
+						</div>
+						<figcaption class="ck-decoration-caption">
+							<h3>03 / 小小枝叶</h3>
+							<p class="ck-muted">卡片角落、章节收尾</p>
+							<a class="ck-btn ck-btn--editorial" href="decoration-mini-sprig-v1.png" download aria-label="下载小小枝叶透明 PNG">下载 PNG ↗</a>
+						</figcaption>
+					</figure>
+					<figure class="ck-component-panel ck-decoration-card">
+						<div class="ck-mini-stage">
+							<img class="ck-decoration ck-decoration--mini" src="decoration-mini-balloon-v1.png" alt="一只椭圆气球与轻弯细线" width="1254" height="1254" loading="lazy">
+						</div>
+						<figcaption class="ck-decoration-caption">
+							<h3>04 / 轻盈气球</h3>
+							<p class="ck-muted">欢迎区、品牌页留白</p>
+							<a class="ck-btn ck-btn--editorial" href="decoration-mini-balloon-v1.png" download aria-label="下载轻盈气球透明 PNG">下载 PNG ↗</a>
+						</figcaption>
+					</figure>
+					<figure class="ck-component-panel ck-decoration-card">
+						<div class="ck-mini-stage">
+							<img class="ck-decoration ck-decoration--mini" src="decoration-mini-flower-v1.png" alt="一朵五瓣小花与细细花茎" width="1254" height="1254" loading="lazy">
+						</div>
+						<figcaption class="ck-decoration-caption">
+							<h3>05 / 一朵小花</h3>
+							<p class="ck-muted">感谢文字、页尾点缀</p>
+							<a class="ck-btn ck-btn--editorial" href="decoration-mini-flower-v1.png" download aria-label="下载一朵小花透明 PNG">下载 PNG ↗</a>
+						</figcaption>
+					</figure>
+					<figure class="ck-component-panel ck-decoration-card">
+						<div class="ck-mini-stage">
+							<img class="ck-decoration ck-decoration--mini" src="decoration-mini-spark-v1.png" alt="一颗细线四角小星芒" width="1254" height="1254" loading="lazy">
+						</div>
+						<figcaption class="ck-decoration-caption">
+							<h3>06 / 小小星芒</h3>
+							<p class="ck-muted">品牌标题的小点缀</p>
+							<a class="ck-btn ck-btn--editorial" href="decoration-mini-spark-v1.png" download aria-label="下载小小星芒透明 PNG">下载 PNG ↗</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="ck-component-panel ck-mini-size-demo">
+					<h4 class="ck-brand-title">实际小尺寸 / 不加粗、不降透明度</h4>
+					<div class="ck-mini-size-row">
+						<figure><img class="ck-decoration ck-decoration--mini-sm" src="decoration-mini-smile-v1.png" alt="" width="1254" height="1254" loading="lazy"><figcaption>64 px</figcaption></figure>
+						<figure><img class="ck-decoration ck-decoration--mini-md" src="decoration-mini-smile-v1.png" alt="" width="1254" height="1254" loading="lazy"><figcaption>96 px</figcaption></figure>
+						<figure><img class="ck-decoration ck-decoration--mini" src="decoration-mini-smile-v1.png" alt="" width="1254" height="1254" loading="lazy"><figcaption>128 px</figcaption></figure>
+					</div>
+				</div>
+				<div class="ck-demo-row">
+					<a class="ck-btn" href="mini-decorations-v1.zip" download>下载整组小配图 ↗</a>
+					<a class="ck-btn ck-btn--editorial" href="mini-decorations-prompts.json" download>下载提示词与出处 ↗</a>
+				</div>
+			</div>
+			<h3 class="ck-brand-title">Scene decoration / 场景配图</h3>
+			<div class="ck-component-grid">
+				<figure class="ck-component-panel ck-decoration-card">
+					<div class="ck-decoration-stage">
+						<img class="ck-decoration" src="decoration-companionship-v1.png" alt="护士与戴眼镜的老人温暖交流" width="1254" height="1254" loading="lazy">
+					</div>
+					<figcaption class="ck-decoration-caption">
+						<h3>01 / 陪伴沟通</h3>
+						<p class="ck-muted">适合首页介绍、陪伴照护与团队故事。</p>
+						<span class="ck-card-meta">PNG · 1254 × 1254 · 透明底</span>
+						<a class="ck-btn ck-btn--editorial" href="decoration-companionship-v1.png" download>下载陪伴沟通 PNG ↗</a>
+					</figcaption>
+				</figure>
+				<figure class="ck-component-panel ck-decoration-card">
+					<div class="ck-decoration-stage">
+						<img class="ck-decoration" src="decoration-nurse-review-v1.png" alt="手握笔在打开的笔记本上审核" width="1254" height="1254" loading="lazy">
+					</div>
+					<figcaption class="ck-decoration-caption">
+						<h3>02 / 护士审核</h3>
+						<p class="ck-muted">适合记录功能与人工审核流程说明。</p>
+						<span class="ck-card-meta">PNG · 1254 × 1254 · 透明底</span>
+						<a class="ck-btn ck-btn--editorial" href="decoration-nurse-review-v1.png" download>下载护士审核 PNG ↗</a>
+					</figcaption>
+				</figure>
+				<figure class="ck-component-panel ck-decoration-card">
+					<div class="ck-decoration-stage">
+						<img class="ck-decoration" src="decoration-hands-and-heart-v1.png" alt="双手托起爱心，一侧点缀植物枝叶" width="1254" height="1254" loading="lazy">
+					</div>
+					<figcaption class="ck-decoration-caption">
+						<h3>03 / 双手托心</h3>
+						<p class="ck-muted">适合照护理念与标题旁的温暖点缀。</p>
+						<span class="ck-card-meta">PNG · 1254 × 1254 · 透明底</span>
+						<a class="ck-btn ck-btn--editorial" href="decoration-hands-and-heart-v1.png" download>下载双手托心 PNG ↗</a>
+					</figcaption>
+				</figure>
+				<figure class="ck-component-panel ck-decoration-card">
+					<div class="ck-decoration-stage">
+						<img class="ck-decoration" src="decoration-quiet-moment-v1.png" alt="热茶杯与插着枝叶的小花瓶" width="1254" height="1254" loading="lazy">
+					</div>
+					<figcaption class="ck-decoration-caption">
+						<h3>04 / 茶杯与植物</h3>
+						<p class="ck-muted">适合 Time back to care 区块与页尾。</p>
+						<span class="ck-card-meta">PNG · 1254 × 1254 · 透明底</span>
+						<a class="ck-btn ck-btn--editorial" href="decoration-quiet-moment-v1.png" download>下载茶杯与植物 PNG ↗</a>
+					</figcaption>
+				</figure>
+			</div>
+			<p class="ck-copy ck-muted">浅色底展示，保留原图比例；不作为功能按钮或状态图标。纯点缀用空 alt，独立信息用描述性 alt。人物均为 AI 生成虚构角色。</p>
+			<a class="ck-btn" href="decorations-prompts.json" download>下载生成提示词与出处 <svg class="ck-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+		</section>
 	</main>
 	<footer class="ck-brand-footer"><div class="ck-footer-top"><p>Thoughtful documentation.<br>Nurse in control.</p><nav class="ck-footer-links" aria-label="设计资料"><a href="#typography">Typography ↑</a><a href="#components">Components ↑</a><a href="#layouts">Layouts ↑</a></nav></div><p style="font-size:var(--font-size-caption);margin-top:var(--space-5)">Internal design system · Draft · 11/10/2026<br>原创构图 / 合成内容，无真实住户数据。运营参考，不是法律意见。</p><div class="ck-wordmark">careKind AI</div></footer>
 </div>

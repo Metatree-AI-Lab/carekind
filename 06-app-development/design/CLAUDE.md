@@ -24,6 +24,7 @@ UX 原则、无障碍、设计系统。
 - **COMPONENTS.md**（组件规格 SoT：做界面前先找现成组件；新组件先补规格再实现）
 - design-system/components.css（参考实现，ck- 前缀，只用 token）；交互样例统一在 design-system/preview.html
 - design-system/（tokens.json 是数值唯一来源；改完运行 scripts/build-design-system.sh）
+- decorations-2026-10-11/：四张原创场景配图与生成出处；统一预览和小配图库在 [Decoration](design-system/preview.html#decorations)。
 - ux-principles.md
 
 ## 不要做
