@@ -1,6 +1,6 @@
 # COMPONENTS.md — careKind AI 组件规格（Source of Truth）
 
-Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · Last reviewed: 11/10/2026
+Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · Last reviewed: 18/10/2026
 上级规范：[`DESIGN.md`](DESIGN.md)（风格、tokens、全局规则）· PRD 工作包：DS-2 通用组件规格（[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10-11-carekind-design-system.md)）
 
 > **做任何界面之前，先在这里找现成的组件。** 能用现成组件就不要自己画；确实需要新组件或新变体，先在这里补规格，再实现。本文件和 `DESIGN.md` 冲突时，以 `DESIGN.md` 为准。运营参考，不是法律意见。
@@ -87,6 +87,9 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 | 弹层 | 对话框 Dialog | `ck-dialog` | 需要用户决定才能继续 |
 | 弹层 | Tooltip | `ck-tooltip` | 补充说明（不能承载必须看到的信息） |
 | 加载 | 进度 / Spinner / 骨架 / 空状态 | `ck-progress` / `ck-spinner` / `ck-skeleton` / `ck-empty` | 等待与无内容 |
+| 管理端（§12A） | 应用框架 / 侧边导航 / 页面头部 | `ck-app-shell` / `ck-sidenav` / `ck-page-header` | Super Admin 与机构管理端的桌面页面框架 |
+| 管理端（§12A） | 数据表扩展 / Combobox / 日期时间 | `ck-table-toolbar` / `ck-bulkbar` / `ck-combobox` / `ck-input--date` | 筛选、排序、批量操作；多选项搜索；日期输入与 DD/MM/YYYY 显示 |
+| 管理端（§12A） | 抽屉 / 步骤条 / 差异 / 审计 / 名称确认 / 数字卡片 | `ck-drawer` / `ck-stepper` / `ck-diff` / `ck-audit-list` / `ck-dialog--confirm-name` / `ck-stat` | 行详情；分步导入；版本对比；只追加日志；危险操作；计数 + 口径 |
 
 ---
 
@@ -125,7 +128,7 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 |---|---|
 | 默认、简单文本选项、手机 / 平板 | **原生 `select`**（`ck-select-wrap` + `ck-select`）：系统选择器最顺手，无障碍最好 |
 | 选项需要辅助文字、图标或禁用说明，或桌面端需要统一外观 | 自定义 Dropdown（`ck-dropdown`） |
-| 选项很多（约 15 个以上）、需要搜索 | 可搜索下拉 Combobox（**待做**，§13） |
+| 选项很多（约 15 个以上）、需要搜索 | 可搜索下拉 Combobox（§12A.4） |
 | 选项 ≤ 5 个且都要一眼看到 | 单选 `radio`，不用下拉 |
 | 执行操作，而不是选值 | 菜单 Menu（§6） |
 
@@ -245,14 +248,149 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 - **骨架屏** `ck-skeleton`：首次加载内容区时，形状接近真实内容；对屏幕阅读器隐藏，用一个 `role="status"` 文字说明正在加载。
 - **空状态** `ck-empty`：图标 + 标题（说明现在是什么情况）+ 一句话（说明为什么 / 接下来会怎样）+ 最多一个主操作。不用"暂无数据"这种模糊说法。
 
+## 12A. 管理端组件（18/10/2026）
+
+> 状态：**已写规格，待 Lin 评审**。Super Admin（`docs/prds/2026-10-18-super-admin-multi-facility-console.md` §9.1）和机构管理端（`docs/prds/2026-10-18-provider-portal-facility-admin.md` §9.1）共用，规格只写一份。参考 CSS 在 `components.css` 末尾"管理端组件"一节；`preview.html` 还没有这些组件的交互样例（待补）。
+> 管理端是**桌面优先**（`size-breakpoint-md` 以上），但所有组件在手机宽度下必须可用、无横向页面滚动（表格区域自身可横向滚动）。示例只用虚构的 Wattle Grove Care Group 数据，并标注 fictional。
+> 涉及**住户归属选择、同名提示**的界面仍属于 DS-4（R3），不能用本节的 Combobox 自行实现。
+
+### 12A.1 桌面应用框架 `ck-app-shell` + 侧边导航 `ck-sidenav`（18/10/2026 由 `ck-shell` 改名：与 editorial.css 预览页外框 `.ck-shell` 冲突）
+- **何时用**：Super Admin 和机构管理端的每个登录后页面。手机 App 仍用 App bar / Tab bar（§9），两套不混用。
+- **结构**：
+  | 区域 | 类名 | 内容 |
+  |---|---|---|
+  | 跳转链接 | `ck-skip-link` | 页面第一个可聚焦元素："Skip to main content"，指向 `ck-shell-main`（`id="main"`、`tabindex="-1"`） |
+  | 持续标识条 | `ck-shell-banner`（Demo）/ `ck-shell-banner--support`（支持访问会话） | 见下方"持续标识" |
+  | 侧栏 | `ck-sidenav`（`nav aria-label="Main"`） | 产品名 `ck-sidenav-brand` → **租户切换位置** `ck-sidenav-switcher` → 导航分组 `ck-sidenav-heading` + `ck-sidenav-group` → 底部 `ck-sidenav-footer`（版本、帮助链接） |
+  | 顶栏 | `ck-shell-topbar` | 当前租户上下文 `ck-shell-context`（`ck-shell-context-label` + `ck-shell-context-value`）+ 用户菜单 `ck-shell-user`（头像 + 姓名 + 角色 + Sign out） |
+  | 主区域 | `ck-shell-main`（`main`） | 页面头部 `ck-page-header`（§12A.2）+ 内容 |
+- **租户切换位置**（`ck-sidenav-switcher`，只有一个）：
+  - 机构管理端：公司层 / 单院层切换，用自定义下拉 `ck-dropdown`（≤ 15 个选项）或 Combobox `ck-combobox`（更多）。第一项是公司层 "All facilities — Wattle Grove Care Group"，其余每项写院名 + 城市 + 州（"Banksia Park Aged Care · Geelong VIC"）。
+  - Super Admin：默认在平台层；进入某个 Provider 时用 Combobox 选择，选择后顶栏显示该 Provider。
+  - 切换会**重新加载该租户的数据**并回到对应列表页；有未保存输入时先弹确认（§11.3）。切换结果用 `role="status"` 播报："Now viewing Banksia Park Aged Care"。
+- **持续标识**（不随滚动消失，不能被关闭）：
+  - 顶栏 `ck-shell-context` 永远写出当前租户全称："Viewing: Wattle Grove Care Group / Banksia Park Aged Care (VIC)"。不只用 Logo 或颜色区分租户。
+  - Demo 身份：`ck-shell-banner`（`color-blue-tint` 底 + `color-blue-ink` 字，`role="region" aria-label="Demo workspace"`），文字写明 "Demo workspace — fictional data. Signed in as Helen Tran (fictional), Owner." + 一个 "Exit demo" 操作（返回自己的工作区）。
+  - 支持访问会话（Super Admin 进入客户租户）：`ck-shell-banner--support`（`amber` 一对），写明 Provider、范围、结束时间："Support access to Wattle Grove Care Group · read-only · ends 18/10/2026 3:45 pm AEDT" + "End session"。
+- **导航项**：链接 `a`，图标 + 文字（不能只有图标），当前页 `aria-current="page"`：白底 + 加粗 + 左侧 3px 竖线。分组标题是文字，不是可点元素。导航项 ≤ 约 9 个；没有权限的项**不显示**（不是灰掉），避免暴露不存在的能力。
+- **窄屏**（< `size-breakpoint-md`）：侧栏移到顶栏下方，默认收起，用 `ck-sidenav-toggle`（`button aria-expanded aria-controls`，文字 "Menu"）展开；收起的内容放在 `ck-sidenav-collapsible` 里并紧跟在按钮之后。
+- **键盘与 ARIA**：Tab 顺序 = 跳转链接 → 标识条操作 → 侧栏 → 顶栏 → 主区域；导航用普通链接 Tab 移动，不做方向键漫游。地标：`header`、`nav`、`main` 各一个（标识条用 `role="region"`）。
+- **不要**：把 Demo / 支持访问标识做成可关闭的提示；只用颜色区分 Demo 和正式租户；在侧栏里放主操作按钮；多层嵌套折叠导航。
+
+### 12A.2 页面头部 `ck-page-header`
+- **结构**：面包屑 `ck-breadcrumb`（可选，深层页面才用）→ 标题 `ck-page-header-title`（页面唯一的 `h1`）→ 一句说明 `ck-page-header-desc`（可选，说明这页做什么）→ 元信息 `ck-page-header-meta`（状态标签，如 "Published v3"）→ 右侧操作 `ck-page-header-actions`。
+- **操作**：最多一个主按钮（`ck-btn--primary`），加 1–2 个次按钮；更多操作放进菜单 `ck-menu`（"More actions"）。危险操作（暂停、终止）放在菜单最后或详情页底部，**不放**在头部主按钮位置。
+- **手机**：标题与操作上下排列，操作左对齐；标题降一级字号（`font-size-heading-sm`）。
+- **文案**：标题是名词（"Staff"、"Banksia Park Aged Care"），主按钮动词开头（"Invite staff"、"Import roster"）。
+- **不要**：在头部放统计数字；一个页面多个 `h1`；用头部承载错误（错误用 `ck-alert`）。
+
+### 12A.3 数据表扩展（在 `ck-table` 基础上）
+- **何时用**：员工、住户名单、Provider、养老院、规则包版本等列表。手机上列多时仍可用表格区横向滚动，但第一列（名称）要能识别行。
+- **结构（自上而下）**：筛选栏 `ck-table-toolbar` → 已选筛选 `ck-filter-chips` → 批量操作条 `ck-bulkbar`（有选中行时出现）→ `ck-table-wrap` + `ck-table` → 底部 `ck-table-footer`（结果数 + 分页 `ck-pagination`）。
+- **筛选栏**：搜索 `ck-input--search`（`type="search"`，标签可视觉隐藏但要有 `<label>`）+ 1–3 个原生下拉 `ck-select`（状态、养老院、角色）+ 右侧 `ck-table-toolbar-end`（"Clear filters" 文字按钮 + 结果数 `ck-table-count`）。搜索输入后约 300ms 防抖再请求（⚠️ 数值待 Lin 定）。结果数放在 `role="status"` 里播报："12 staff match your filters"。
+- **已选筛选**：每个筛选一个 `ck-filter-chip`（`button`，文字 "Status: Active" + 关闭图标，`aria-label="Remove filter Status: Active"`）。筛选条件写进 URL 查询参数，刷新和分享链接后保留。
+- **排序**：可排序列的表头是 `button`，`th` 上写 `aria-sort="ascending | descending | none"`；同一时间只按一列排序。方向用图标形状（`ck-sort-icon`，降序旋转 180°）+ `aria-sort` 表达，不只靠颜色。默认排序在规格里写明（如员工按姓氏升序）。
+- **行选择与批量操作**：
+  - 第一列 `ck-col-select`：每行一个复选框（`aria-label="Select Grace Liu"`）；表头复选框只选**当前页**，部分选中时为 `indeterminate`（`aria-label="Select all staff on this page"`）。
+  - 选中行加 `is-selected`：浅灰底 + 左侧 3px 竖线（不只靠底色）。
+  - `ck-bulkbar`（`role="region" aria-label="Bulk actions"`）：已选数量 `ck-bulkbar-count`（"3 selected"，`role="status"`）+ 操作按钮 + "Clear selection"。跨页全选必须是显式操作："Select all 48 matching staff"。
+  - 批量危险操作（停用、移除）**必须**弹确认对话框，并列出受影响的数量和被阻断的行（例如有未确认草稿、是通知路由的备用联系人）；能部分完成时，结果逐行报告，不只说"失败"。
+- **行操作**：每行最后一列 `ck-col-actions` 放一个菜单按钮（`aria-label="Actions for Grace Liu"`）；打开详情用第一列名称的链接（或打开 Drawer 的按钮），**不做整行点击**。
+- **状态**：
+  | 状态 | 显示 | ARIA |
+  |---|---|---|
+  | 加载中（首次） | 表头保留，5 行骨架 `ck-table-skeleton-cell` | `ck-table-wrap aria-busy="true"` + 一个 `role="status"` "Loading staff" |
+  | 加载中（翻页、排序） | 保留旧数据并禁用交互，表头旁 spinner | 同上 |
+  | 还没有数据 | `ck-table-state`（一行 `td colspan`）里放 `ck-empty`：说明为什么 + 一个主操作（"Import roster"） | — |
+  | 筛选后无结果 | `ck-empty`："No staff match these filters" + "Clear filters" | 结果数播报 |
+  | 加载失败 | `ck-table-state` 里放 `ck-alert--danger`：发生了什么 + "Try again" | `role="alert"` |
+- **密度**：默认行高满足 `size-target-min`；`ck-table--dense` + `ck-btn--sm` 只用于桌面端密集表格。
+- **careKind 特别规则**：Super Admin 的列表**不出现住户姓名和临床内容**，只显示数量与 ID；表格里不做排名列（员工按产出、记录数排序展示属于绩效排名，禁止，PRD §4.7 / §9）。
+- **不要**：整行点击；只用颜色标记选中；把批量操作藏在右键菜单；分页之间悄悄保留选中而不告诉用户。
+
+### 12A.4 可搜索下拉 Combobox `ck-combobox`
+- **何时用**：选项多（约 15 个以上）或需要按名称搜索：选 Provider、州、模板、员工、养老院。≤ 15 个用 `ck-select` / `ck-dropdown`（§5）。
+- **结构**：`ck-field` 标签 → `ck-combobox` 外壳 → `input.ck-input`（`role="combobox"`、`aria-autocomplete="list"`、`aria-expanded`、`aria-controls`、`aria-activedescendant`）+ 清除按钮 `ck-combobox-clear`（`aria-label="Clear selection"`，有值时显示）→ 列表复用 `ck-listbox`（`role="listbox"`）/ `ck-option`（`role="option"`、`aria-selected`）。选项可以两行：`ck-option-text` 主文字 + `ck-option-sub`（"Geelong VIC"）；匹配字用 `mark`（加粗 + 下划线，不只靠颜色）。
+- **行为**：只允许从列表里选（不接受自由文本）。输入即过滤；远程搜索时显示 spinner 和 `ck-listbox-message`（"Searching…"、"No matching facilities"、"Type at least 2 characters"）。结果数用独立的 `role="status"` 播报（"5 results"）。失焦时如果文字不对应已选项，恢复为上一个已选值，并在 `ck-error` 里说明。
+- **键盘**（WAI-ARIA combobox 模式；⚠️ 细节以 W3C APG 原文为准，需核实）：↓ 打开并移到下一项，↑ 上一项；Alt + ↓ 只打开；Enter 选择当前项并关闭；Esc 先关闭列表，列表已关闭时清空输入；Tab 关闭并离开（不自动选中当前项）；Home / End 在输入框里移动光标。焦点始终留在输入框，当前项用 `aria-activedescendant` 指示并加 `is-active`。
+- **状态**：默认、聚焦、展开、搜索中、无结果、已选、错误（`aria-invalid`）、禁用。
+- **careKind 特别规则**：选项只显示区分所需的最少信息（姓名 + 养老院 / 角色），**不显示**健康信息；搜索词不写进日志和分析事件。
+- **不要**：自由文本 + 自动补全混用；用 Combobox 做导航；把住户归属选择做成 Combobox（DS-4）。
+
+### 12A.5 日期 / 时间
+- **何时用**：合同日期、入住、离开、转院日期、审计日志的时间范围。
+- **输入**：**优先原生** `input type="date"` / `type="time"`（`ck-input ck-input--date` / `ck-input--time`），值用 ISO（`YYYY-MM-DD`）提交。页面 `lang="en-AU"`，使浏览器的原生控件按 DD/MM/YYYY 显示（⚠️ 各浏览器表现不同，需核实）。日期范围用 `fieldset.ck-date-range` + `legend`（"Date range"），"From" / "To" 两个字段。
+- **显示**（只读文字、表格、审计日志）：一律 **DD/MM/YYYY**（"18/10/2026"）；带时间写 "18/10/2026 2:30 pm"，跨州或审计场景加时区缩写（AEST / AEDT），时区按**养老院所在地**（VIC 用 Australia/Melbourne，NSW 用 Australia/Sydney；10 月至次年 4 月为夏令时 AEDT，⚠️ 夏令时起止以官方为准）；用 `time datetime="2026-10-18T14:30+11:00"` + `ck-datetime` 包住。不用 "10/18"、"Oct 18" 或相对时间（"2 hours ago"）作为唯一显示；相对时间可以作为补充。
+- **校验**：提示文字写格式（`ck-hint` "For example, 18/10/2026"）；错误说明怎么改（"Enter a move-out date on or after the move-in date, 01/03/2026."）。
+- **不要**：自己做日历弹层（除非有 PRD 需求并补规格）；用美式日期；日期显示成纯数字而没有标签。
+
+### 12A.6 侧边抽屉 Drawer `ck-drawer`
+- **何时用**：在不离开列表的情况下看行详情、编辑少量字段、更多筛选。内容长、要分享链接、或有多步流程时用独立页面。手机底部抽屉（Bottom sheet）仍待做。
+- **结构**：原生 `dialog.ck-drawer` + `showModal()`（焦点限制、Esc 关闭、背景不可操作由浏览器提供）；`ck-drawer-header`（标题 `ck-drawer-title` + 关闭图标按钮 `aria-label="Close"`）→ `ck-drawer-body`（可滚动）→ `ck-drawer-footer`（操作，右对齐，主操作在右）。宽度默认 `size-dialog-sm`，`ck-drawer--wide` 用 `size-dialog-md`；手机全宽。`aria-labelledby` 指向标题。
+- **键盘**：打开后焦点到标题或第一个输入框；Esc / 关闭按钮 / 点遮罩关闭；关闭后焦点回到触发按钮。有未保存输入时关闭前先确认，不因点遮罩丢失内容。
+- **不要**：抽屉里再开抽屉；在抽屉里做不可撤销操作的最终确认（用对话框）；用抽屉显示住户临床内容（属于护士端）。
+
+### 12A.7 分步流程 Stepper `ck-stepper`
+- **何时用**：有固定顺序、每步要检查的任务：名单 CSV 分步导入（Upload → Map columns → Review changes → Confirm import）。2–5 步；只有一页表单时不用。
+- **结构**：`nav.ck-stepper aria-label="Import steps"` + `ol` + 每步 `li.ck-step`：序号圆 `ck-step-marker`（数字或对勾图标）+ `ck-step-label`（步骤名 + `ck-step-status` 状态文字）。当前步 `aria-current="step"`；内容区标题重复当前步名（"Step 3 of 4: Review changes"）；底部 `ck-stepper-footer`："Back"（左）+ 下一步主按钮（右，"Continue to review"）。
+- **状态**（每步都有**文字**，不只靠颜色或图标）：
+  | 状态 | 视觉 | 状态文字 |
+  |---|---|---|
+  | 未开始 | `line-strong` 描边圆、次要文字 | "Not started" |
+  | 当前 | `ink` 描边圆、加粗 | "Current step" |
+  | 已完成 `is-complete` | 黑底白对勾、可点击回到该步（链接） | "Completed" |
+  | 需处理 `is-error` | `danger-ink` 描边与文字 + 提醒图标 | "Needs attention: 2 rows" |
+- **行为**：后面的步骤不能跳过；回到前面的步骤不丢已填内容；最后一步写清楚将发生什么（"This will add 12 residents and update 3."）。导入在服务端执行时用 `ck-progress` 表示任务进度。
+- **不要**：把 Stepper 当标签页用；在最后一步之前就写入数据；超过 5 步（拆成独立流程）。
+
+### 12A.8 差异对比视图 `ck-diff`
+- **何时用**：名单导入前的差异、州规则包 / 模板 / 流程配置的版本对比、发布前确认。
+- **结构**：摘要 `ck-diff-summary`（"3 added · 2 changed · 1 removed"，每项是 `ck-tag`）→ 列表 `ul.ck-diff` → 每条 `li.ck-diff-row ck-diff-row--added | --changed | --removed`：状态标签 + 标题 `ck-diff-title`（对象名或 ID）+ 字段对比 `dl.ck-diff-fields`（每个字段：`dt` 字段名、`dd` 新值、`dd.ck-diff-old` 旧值）。
+- **状态不只靠颜色**：每条同时有 ① 标签文字（`ck-tag--success` "＋ Added" / `ck-tag--warning` "~ Changed" / `ck-tag--danger` "− Removed"）② 符号 ③ 左侧 3px 竖线；旧值删除线 + `color-ink-soft`，并有视觉隐藏前缀 "Previous value:"，新值前缀 "New value:"。
+- **行为**：默认只显示有变化的字段；可切换 "Show unchanged fields"（分段控件）。条目多时分组或分页，并可按类型筛选。需要逐条决定（例如可能重复的行）时，每条带单选或操作按钮，决定结果写在行内。
+- **careKind 特别规则**：只对比管理字段（姓名、房号、角色、状态、配置项）；**不对比临床内容**。删除的住户在机构管理端写 "Moved out / Removed from roster"，不是"删除记录"（记录按保留期保留）。
+- **不要**：只用红绿底色表示变化；把增删改混在一个无标签的列表里；在差异视图里直接写入（写入在 Stepper 最后一步确认后）。
+
+### 12A.9 审计日志视图 `ck-audit-list`
+- **何时用**：审计日志页、单个对象的"History"标签页、支持访问记录。数据只追加，界面**没有**编辑和删除。
+- **结构**：上方用数据表筛选栏（§12A.3：操作人、动作类型、对象类型、日期范围 §12A.5）→ `ol.ck-audit-list`（按时间倒序）→ 每条 `li.ck-audit-entry`：时间 `ck-audit-time`（`time` 元素，DD/MM/YYYY + 时间 + 时区）→ 动作 `ck-audit-action`（"Grace Liu changed the Tier 3 notification route"）→ 元信息 `ck-audit-meta`（操作人角色、养老院、对象 ID `ck-audit-id`、来源：Web / API / Support access）→ 原因 `ck-audit-reason`（支持访问、暂停租户等需要填写原因的动作）。需要排序或多列对比时可改用 `ck-table`，内容规则相同。
+- **显示规则**：只显示**谁、何时、做了什么、对哪个对象（ID）、改了哪些字段名**；**不显示**字段的健康信息内容、记录正文、转写文本。Super Admin 视图里住户只显示 ID（"Resident R-0193"）。非临床配置字段（例如开关从 Off 到 On）可以显示前后值。
+- **键盘与 ARIA**：列表是普通 `ol`；加载更多用按钮（"Load older entries"），不做无限滚动；导出用按钮并写明格式。
+- **不要**：在审计日志里显示可编辑控件；截断时间戳；用"刚刚"代替绝对时间；显示 IP 以外的设备指纹（⚠️ 是否显示 IP 待 PRD 确认）。
+
+### 12A.10 危险操作确认对话框（输入名称确认，基于 `ck-dialog`）
+- **何时用**：后果严重且难以撤销的操作：暂停 / 终止租户、发布州规则包、停用整个养老院。普通的可撤销删除仍用 §11.3 的确认对话框或 Toast + Undo。
+- **结构**：`dialog.ck-dialog.ck-dialog--confirm-name`：标题（问题形式 + 提醒图标："Suspend Wattle Grove Care Group?"）→ 后果列表 `ck-confirm-consequences`（谁会受影响、多少人、能否恢复、恢复方式）→ 原因字段（必填，写入审计日志）→ 确认字段：标签 "Type **Wattle Grove Care Group** to confirm"（名称放在 `ck-confirm-phrase` 里）→ 底部：安全选项（"Keep tenant active"，左）+ 最终按钮 `ck-btn--danger-solid`（"Suspend tenant"，右）。
+- **行为**：名称匹配规则：去掉首尾空格后**区分大小写**完全一致；允许粘贴（无障碍）。最终按钮保持可点（§3）：不匹配时点击显示行内错误 "The name doesn't match. Type Wattle Grove Care Group exactly."，不提交。在确认字段里按 Enter **不提交**。提交时按钮 loading（"Suspending…"、`aria-busy`），成功后关闭并用 Toast 告知，同时写审计。
+- **初始焦点**：原因字段（第一个输入框）；关闭后焦点回到触发按钮。点遮罩不关闭（有输入）。
+- **不要**：只用一个"确定"按钮；把名称预填进输入框；用这个模式处理日常操作（会让用户习惯性输入）。
+
+### 12A.11 数字卡片 Stat card `ck-stat`
+- **何时用**：Owner 看板、Super Admin 运营监控中展示**计数类**数字（例如 "Active staff"、"Notes confirmed this week"）。
+- **结构**：`ul.ck-stat-grid` → `li.ck-stat`：标签 `ck-stat-label`（名词："Notes confirmed"）→ 数字 `ck-stat-value`（等宽数字，可带单位 `ck-stat-unit`）→ **测量口径** `ck-stat-measure`（必填：统计范围、时间段、数据来源，"Confirmed by nurses at Banksia Park, 13/10/2026–19/10/2026. Source: careKind records."）→ `ck-stat-footer`：数据标记 `ck-tag`。
+- **数据标记**（必填其一）：Demo 和预生成数据显示 `ck-tag` "Pre-generated sample"（并在页面标识条说明 fictional）；真实数据显示更新时间（"Updated 18/10/2026 9:00 am AEDT"）。没有数据时数字位置写 "No data yet" 并说明原因，**不显示 0 冒充**。
+- **careKind 特别规则（禁止）**：**禁止**趋势箭头、上升 / 下降颜色、迷你走势图、评分、等级、"改善 x%" / "节省 x 小时"、红黄绿风险色、员工个人排名。卡片默认中性配色（`ink` / `ink-soft` / `line`），不按数字大小变色；不能由系统推算或补全数字（DESIGN.md §7.3、PRD §9 G3、机构管理端 PRD §4.7）。
+- **不要**：没有口径的裸数字；把临床事件次数做成看板"指标"；点击卡片跳到住户临床内容。
+
+### 12A.12 法律依据与边界
+- 查阅：`docs/PRD.md` §9（G1–G11）、`03-legal-compliance/tga-samd-boundary.md`（不做评分、风险、趋势）、两份管理端 PRD §4 / §9.1；未新增数据收集或临床功能。tga-boundary-check：🟢（只有管理界面组件，界面文字不含 detect / predict / monitor / risk）。审计与支持访问的具体字段以 PRD 为准。运营参考，不是法律意见。
+
 ## 13. 待做与不在本文件范围
 
 | 组件 / 模式 | 状态 | 说明 |
 |---|---|---|
-| 可搜索下拉 Combobox | 待做（DS-2 第二批） | 选项多时使用；需要支持输入过滤和键盘 |
-| 日期 / 时间选择 | 待做（DS-2 第二批） | 优先用原生 `input type="date" / "time"`；日期显示 DD/MM/YYYY |
-| 底部抽屉 Bottom sheet / 侧边抽屉 Drawer | 待做（DS-2 第二批） | 手机上的次要操作和筛选 |
-| 步骤条 Stepper、数字输入 | 待做 | 有具体需求时再做（YAGNI） |
+| 可搜索下拉 Combobox | 已写规格（18/10/2026，待 Lin 评审） | §12A.4；`preview.html` 交互样例待补 |
+| 日期 / 时间选择 | 已写规格（18/10/2026，待 Lin 评审） | §12A.5：原生 input，显示 DD/MM/YYYY |
+| 侧边抽屉 Drawer | 已写规格（18/10/2026，待 Lin 评审） | §12A.6 |
+| 底部抽屉 Bottom sheet | 待做（DS-2 第二批） | 手机上的次要操作和筛选 |
+| 步骤条 Stepper | 已写规格（18/10/2026，待 Lin 评审） | §12A.7：机构管理端名单 CSV 分步导入 |
+| 数字输入 | 待做 | 有具体需求时再做（YAGNI） |
+| 桌面应用框架与侧边导航 | 已写规格（18/10/2026，待 Lin 评审）（§12A.1、§12A.2 页面头部） | Super Admin、机构管理端都需要；现有 App bar / Tab bar 是手机用（`docs/prds/2026-10-18-super-admin-multi-facility-console.md` §9.1、`2026-10-18-provider-portal-facility-admin.md` §9.1） |
+| 数据表：筛选 / 排序 / 批量操作 | 已写规格（18/10/2026，待 Lin 评审）（§12A.3） | 在 `ck-table` 基础上扩展；员工、住户、Provider 列表 |
+| 差异对比视图 | 已写规格（18/10/2026，待 Lin 评审）（§12A.8） | 名单导入差异、配置和流程版本对比 |
+| 审计日志视图 | 已写规格（18/10/2026，待 Lin 评审）（§12A.9） | 只追加记录的浏览和筛选；不显示健康信息内容 |
+| 危险操作确认（输入名称确认） | 已写规格（18/10/2026，待 Lin 评审）（§12A.10） | 在 `ck-dialog` 基础上扩展；终止 / 暂停租户、发布规则包 |
+| 数字卡片 Stat card | 已写规格（18/10/2026，待 Lin 评审）（§12A.11） | 数字 + 测量口径 + 样例标记；禁止趋势、评分、风险色 |
 | AI 草稿标注、原文并排、新增 / 改写高亮、低置信度标记 | **DS-4（R3）** | 需 Lin 评审和可用性测试，不要自行发明 |
 | 老人归属选择与同名提示、敏感事件逐条确认、确认动作 | **DS-4（R3）** | 同上 |
 | 深色模式 | 待做（DS-1 后续） | |
@@ -262,6 +400,7 @@ Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · 
 | 日期 | 变更 | 作者 |
 |---|---|---|
 | 11/10/2026 | 初稿：通用组件规格（按钮、表单、下拉与菜单、选择、上传、导航、展示、反馈、弹层、加载与空状态），参考 CSS 与交互样例；在浏览器里用键盘逐项测试 | Gary（演示）/ Claude Code |
+| 18/10/2026 | 新增 §12A 管理端组件规格（应用框架与侧边导航、页面头部、数据表扩展、Combobox、日期时间、Drawer、Stepper、差异对比、审计日志、名称确认对话框、数字卡片）与 `components.css` 参考实现；§13 对应条目改为待 Lin 评审。**未做浏览器测试，`preview.html` 尚无样例** | Claude Code |
 
 > 运营参考，不是法律意见。
 

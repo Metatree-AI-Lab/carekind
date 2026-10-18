@@ -282,7 +282,7 @@ Provider Portal PRD 负责"机构怎么配"；本 PRD 负责"careKind 提供哪�
 | 控制 | 设计 | 依据 |
 |---|---|---|
 | 独立部署与域名 | Super Admin 单独部署、单独域名（如 `admin.<内部域名>` {{TBD}}），与护士端、Provider Portal 不共用会话和 cookie；不在公开搜索中出现 | ADR-0003 决定 2 |
-| 身份 | 只允许 careKind 公司身份登录（Workspace SSO）；**不做 MFA**（Lightman 18/10/2026 决定第一阶段不做 MFA，见 ADR-0005；作为已接受风险记录）；没有共享账号；会话 {{TBD：8}} 小时、空闲 {{TBD：15}} 分钟超时 | `information-security-policy.md`"身份"；ADR-0005 |
+| 身份 | 只允许 careKind 员工账号登录（邮箱 + 密码，argon2id；按 ADR-0006，第一阶段不做 SSO，Workspace SSO 留到 Phase 2）；**不做 MFA**（Lightman 18/10/2026 决定第一阶段不做 MFA，见 ADR-0005；作为已接受风险记录）；没有共享账号；会话 {{TBD：8}} 小时、空闲 {{TBD：15}} 分钟超时 | `information-security-policy.md`"身份"；ADR-0005 |
 | 网络 | **不做 IP allowlist**（Lightman 18/10/2026 决定，见 ADR-0005）；管理 API 单独域名、单独部署 | ADR-0005 |
 | 最小权限 | §4-C 角色；权限 45 天不用自动停用，每 12 个月重新批准；每季度权限审查 | E8 Restrict admin privileges ML2；`access-control.md` |
 | 审计不可修改 | Super Admin 所有操作（包括读取客户联系人列表、导出报表）写 append-only 审计，哈希链或 WORM 存储；任何人（包括 Platform Owner、工程师）不能改删；保留 {{TBD：≥ 7 年}} | E8 "Event logs are protected from unauthorised modification and deletion"；`data-classification-and-retention.md` |
@@ -415,6 +415,26 @@ Required next step: 规则包每个新版本发布前逐条过下表；内容触
 - 界面语言：英语（澳式）；内部说明可用中文。规则包和模板的客户可见文字只用澳式英语，日期 DD/MM/YYYY。
 - 桌面优先；手机宽度只需支持只读查看和审批 four-eyes 请求。
 
+## 9.1 设计参考（设计系统）
+> Lightman 18/10/2026：MVP 先做管理端，**所有界面以设计系统为设计参考**。规范以 `06-app-development/design/DESIGN.md` 为准，组件以 `COMPONENTS.md` 为准，数值只引用 `design-system/tokens.json` 的 token 名，交互样例看 `design-system/preview.html`。代码组件放在 `carekind-shared`（DS-5，React）。
+
+**页面 → 现有组件**
+| 页面 | 用到的组件（`COMPONENTS.md`） |
+|---|---|
+| Provider / 养老院列表 | 表格 `ck-table`、搜索 `ck-input--search`、状态标签 `ck-tag`、分页 `ck-pagination`、空状态 `ck-empty` |
+| Provider 详情 | 标签页 `ck-tablist`、卡片 `ck-card`、面包屑 `ck-breadcrumb`、提示 `ck-alert` |
+| 新建 Provider / 首次上线 | 字段 `ck-field`、输入 `ck-input`、原生下拉 `ck-select`、复选框 `ck-check`、Toast `ck-toast` |
+| 州规则包、模板库、流程模板 | 表格、字段、开关 `ck-switch`、标签（版本状态 Draft / Published）、对话框 `ck-dialog`（发布确认） |
+| 功能开关 | 开关 `ck-switch`（默认关）、提示 `ck-alert`（影响范围说明） |
+| 支持访问 | 对话框、标签（Pending / Approved / Expired）、提示（会话剩余时间） |
+| 运营监控 | 卡片（只显示数字和口径，不做评分、风险或趋势类组件——`06-app-development/design/CLAUDE.md`）、表格 |
+| 终止 / 暂停租户 | 对话框 + 输入租户名称确认（危险操作） |
+
+**设计前置：组件缺口**（先在 `COMPONENTS.md` 补规格、经 Lin 评审，再实现；不要在页面里自行发明）
+- DS-2 第二批（已列为待做）：可搜索下拉 Combobox（选 Provider、州、模板）、日期选择（合同日期，显示 DD/MM/YYYY）、侧边抽屉 Drawer（行详情、筛选）。
+- 管理端新模式（`COMPONENTS.md` 里还没有）：桌面应用框架与侧边导航（现有 App bar / Tab bar 是手机用）、带筛选 / 排序 / 批量操作的数据表、配置版本的差异对比视图、审计日志视图、"输入名称确认"的危险操作对话框。
+- 这些组件与机构管理端共用，规格只写一份。
+
 ---
 
 ## 10. 上线计划与回滚
@@ -422,7 +442,7 @@ Required next step: 规则包每个新版本发布前逐条过下表；内容触
 ### 10.1 工作包（同一 assignee 内部划分，不是子 PRD）
 | WP | 内容 |
 |---|---|
-| SA-1 | 控制面数据模型、租户生命周期、身份（SSO）、独立部署 |
+| SA-1 | 控制面数据模型、租户生命周期、身份（邮箱 + 密码，ADR-0006）、独立部署 |
 | SA-2 | Provider / Facility / Unit 向导、首个 Owner 邀请、合同状态、上线清单 |
 | SA-3 | 配置分层引擎（Layer 0–3、"只能调严"校验、版本、推送、回滚） |
 | SA-4 | 州规则包、模板库、流程模板、功能开关 |
@@ -487,6 +507,22 @@ Required next step: 规则包每个新版本发布前逐条过下表；内容触
 验收报告分别写：代码完成、Demo 本地可用、已部署、线上验收。
 
 ---
+
+## 11.9 开发假设（18/10/2026，Lightman 指示先开发）
+§12 的问题在 Lightman 决定前按下面的默认做；**能做成配置的都做成配置**，以后改决定不用改代码。
+| # | 问题 | 开发默认 |
+|---|---|---|
+| 1 | 内部角色人选 | 角色做成可分配的权限组（Platform Owner、Onboarding、Content & Clinical Governance、Support、Read-only），不写死人名；第二批准人 = 任意另一位有该权限的用户 |
+| 2 | 单人 break-glass | **不允许**（功能开关，默认关） |
+| 3 | 计价单位 | 套餐记录"限额单位"（seat / bed / facility 三选一）和上限，只记录 + 限额生效，不做支付 |
+| 4 | 暂停通知期、账务暂停 | 通知期配置项，默认 7 天；账务原因只限制新增，不暂停 |
+| 5 | `rp_consent_cth_transition` | 版本化开关，默认 On（01/12/2026 前的现行安排），只能人工切换并写审计 |
+| 6 | 合同原件、会计系统 | 只存外部引用（文本），不集成 |
+| 7 | 审计与删除证明保留期 | 配置项，默认 7 年 |
+| 8 | 与 Provider Portal 对齐 | 角色名、Demo 人名以 Provider Portal PRD 和 `docs/prds/2026-10-18-demo-workspace-and-synthetic-data.md` 为准 |
+
+**第一阶段不做**：在线支付、SSO、客户自助开户、任何住户临床内容的查看界面。
+**MFA**：不做（ADR-0005）。
 
 ## 12. 开放问题与需要 Lightman 决定的事
 1. 🧑 **内部角色人选**：4 人团队里谁担任 Content & Clinical Governance、谁是第二批准人；临床顾问和法律审阅人是谁（规则包发布门槛依赖）。

@@ -58,3 +58,5 @@ Parent: [`docs/PRD.md`](../PRD.md) · 规则：[`rules/06-adlc-rules.md`](../../
 | 18/10/2026 | 2026-10-18-super-admin-multi-facility-console | 登记：idea，assignee = —（待 Lightman 确认） | Lightman 要求第一阶段加入 super admin 与养老院管理端，只写 PRD、不开发；AI agent 起草（Status: Draft）；复杂度与风险为 PRD 建议值 | — |
 | 18/10/2026 | 2026-10-18-provider-portal-facility-admin | 登记：idea，assignee = —（待 Lightman 确认） | Lightman 要求第一阶段加入 super admin 与养老院管理端，只写 PRD、不开发；AI agent 起草（Status: Draft）；复杂度与风险为 PRD 建议值 | — |
 | 18/10/2026 | 2026-10-18-marketing-website | 登记：idea，assignee = —（待 Lightman 确认） | Lightman 要求补一个宣传 careKind 的 marketing website，只写 PRD；技术栈纯 HTML（不用 Next.js），脚本统一 TypeScript；AI agent 起草（Status: Draft） | — |
+| 18/10/2026 | 2026-10-18-super-admin-multi-facility-console | 备注：Lightman 指示第一阶段只做管理端并立即开发（阶段仍为 idea） | 门禁未满足：assignee 未定、未审批（rules/06 §2）；AI 按 PRD 写代码到本地 submodule，未提交；开发默认值见 engineering/adr/0006（Proposed） | Lightman（对话中指示） |
+| 18/10/2026 | 2026-10-18-provider-portal-facility-admin | 备注：Lightman 指示第一阶段只做管理端并立即开发（阶段仍为 idea） | 门禁未满足：assignee 未定、未审批（rules/06 §2）；AI 按 PRD 写代码到本地 submodule，未提交；开发默认值见 engineering/adr/0006（Proposed） | Lightman（对话中指示） |

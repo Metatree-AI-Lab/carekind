@@ -474,6 +474,26 @@ Required next step: 🟡 项（第 3、5 事件后提示、6 项、SIRS 通知�
 - 界面文字用澳式英语、日期 DD/MM/YYYY；示例：
   - "Rosa Bianchi has opted out of AI documentation. Staff will be asked to write their own notes."
   - "This change makes the rule stricter. It will apply from the start of the next shift."
+
+## 9.1 设计参考（设计系统）
+> Lightman 18/10/2026：MVP 先做管理端，**所有界面以设计系统为设计参考**。规范以 `06-app-development/design/DESIGN.md` 为准，组件以 `COMPONENTS.md` 为准，数值只引用 `design-system/tokens.json` 的 token 名，交互样例看 `design-system/preview.html`。代码组件放在 `carekind-shared`（DS-5，React），与 Super Admin 共用。
+
+**页面 → 现有组件**
+| 页面 | 用到的组件（`COMPONENTS.md`） |
+|---|---|
+| 公司层 / 单院层切换 | 自定义下拉 `ck-dropdown`（选项含地点和州），面包屑 `ck-breadcrumb` |
+| 员工列表、住户名单 | 表格 `ck-table`、搜索、状态标签 `ck-tag`（Active / Invited / Deactivated；Opted out）、分页、空状态 |
+| 员工 / 住户详情 | 卡片、标签页、列表 `ck-list`、头像 `ck-avatar`（住户照片只在 PRD 允许且有同意时显示） |
+| 名单 CSV 导入 | 上传 `ck-dropzone`、表格（逐行处理可能重复的行）、提示 `ck-alert`、进度 `ck-progress` |
+| 转院、停用员工 | 对话框 `ck-dialog`（显示阻断项：未确认草稿、审核项、通知路由、待办） |
+| 流程管理 | 字段、原生下拉、开关、单选、标签（版本），提示（"只能调严"说明） |
+| Owner 看板 | 卡片（数字 + 测量口径），表格；不做员工排名、临床事件趋势、"节省时间"（§4.7） |
+| 审计日志、支持访问审批 | 表格、标签、对话框 |
+
+**设计前置：组件缺口**（先在 `COMPONENTS.md` 补规格、经 Lin 评审，再实现；不要在页面里自行发明）
+- DS-2 第二批（已列为待做）：可搜索下拉 Combobox（选员工、住户、养老院）、日期 / 时间选择（入住、离开、转院日期，显示 DD/MM/YYYY）、侧边抽屉 Drawer（行详情、筛选）。
+- 管理端新模式（`COMPONENTS.md` 里还没有）：桌面应用框架与侧边导航、带筛选 / 排序 / 批量操作的数据表、分步流程 Stepper（CSV 分步导入）、差异对比视图（导入差异、流程配置版本）、审计日志视图。
+- 与 Super Admin 共用，规格只写一份；涉及住户归属、同名提示的界面属于 DS-4（R3），需 Lin 评审。
   - "You can't deactivate Tom Becker yet. He is the backup contact for Tier 3 notes at Banksia Park."
   - "Helen, you're viewing group totals. Resident details are only shown to staff with a clinical role."
 - 管理端用户多是英语流利的管理者，MVP 只做英语；员工上线告知需要多语言版本（与多语言 PRD 协调）。
@@ -520,6 +540,22 @@ Required next step: 🟡 项（第 3、5 事件后提示、6 项、SIRS 通知�
 | 当前状态 | 未实现（PRD 阶段）；代码、Demo、部署、线上验收均未开始 |
 
 ---
+
+## 12.9 开发假设（18/10/2026，Lightman 指示先开发）
+§13 的问题在 Lightman 决定前按下面的默认做；**能做成配置的都做成配置**。
+| # | 问题 | 开发默认 |
+|---|---|---|
+| 1 | Owner 默认不看临床内容 | 是；授予临床角色需要第二人批准，写审计 |
+| 2 | 独立 app 还是并入护士端 | 独立 app（`carekind-provider-portal`，ADR-0005 已建 repo） |
+| 3 | MVP 切分 | 按 §4.11 的 MVP 列 |
+| 4 | "PCW 确认 Tier 1" 默认值 | Off（机构主动开） |
+| 5 | 转院后目标院能否看此前记录 | 配置项，默认能看、发起院失去访问；⚠️ 律师确认前不对真实租户开放转院 |
+| 6 | 看板最小单元人数 | 配置项，默认 5；自助新增 Facility 受 Super Admin 套餐限额约束 |
+| 7 | Demo 人名 | 以 Demo PRD 和本 PRD §12 为准 |
+| 8 | 员工记录豁免、工作场所监控 | 律师意见前：员工字段最小化，不做任何员工个人统计 |
+
+**第一阶段没有护士端**：看板里依赖护士端数据的卡片（口述量、确认及时性、Tier 3 确认时长）在真实租户显示 "No data yet"，在 Demo 租户显示标注 "Pre-generated sample" 的虚构数据。
+**MFA**：不做（ADR-0005）。
 
 ## 13. 开放问题与需要 Lightman 决定的事
 1. **Owner 默认不看临床内容**、授予需第二人批准——是否接受？（本 PRD 建议：是）

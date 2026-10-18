@@ -374,14 +374,26 @@ flowchart LR
 
 | 模块 | MVP（试点） | Phase 2 | Phase 3 |
 |---|---|---|---|
-| **Capture** | 模式 A 整班口述 + 声纹过滤；按住说话（降级选项）；离线缓存 | 快捷标记硬件（耳机键 / 挂绳麦克风）；自动暂停区域 | 模式 B 环境对话录音（有法律门槛） |
+| **Capture** | 护士端 Web App **按住说话**（只录护士本人；ElevenLabs 转写）；离线草稿缓存（ADR-0003 / 0005） | 快捷标记硬件（耳机键 / 挂绳麦克风）；自动暂停区域 | Mobile App（React Native）+ 模式 A 整班口述与声纹过滤；模式 B 环境对话录音（都有法律门槛） |
 | **Understand** | 转写（自定义词表）；事件切分；老人归属；待分配队列 | 多语言口述（3–5 种语言） | 更多语言 |
 | **Draft** | Progress notes；交接要点 | Incident 草稿 + SIRS 提示；跌倒后记录；behaviour chart（ABC）；food & fluid；家属沟通 | Care plan 变化汇总（只标出变化）；病例会议纪要；转介信 |
 | **Review** | 按老人分组的收件箱；原话对照；高亮；改归属、拆分、合并 | 两级审核（PCW → RN）+ 分级规则；退回批注 | 机构自定义审批链 |
 | **File** | 老人档案时间线；PDF / 剪贴板导出 | 首个 CMS 集成 | 多家 CMS 合作 / API |
 | **Hand over** | 交接摘要（ISBAR）；覆盖情况 | 下一班确认接收 | — |
-| **Manage** | 名单、模板、保留期、同意状态、审计日志 | 护理经理单元总览；质量抽样 | 多机构报表 |
+| **Manage** | **Super Admin**（careKind 内部，多机构管理与配置）+ **机构管理端**（多院多地点：员工、住户、流程管理、Owner 看板、审计）；名单、模板、保留期、同意状态、审计日志都在这两端完成 | 护理经理单元总览；质量抽样；流程管理 🟡 项 | 多机构报表 |
 | **Trust** | 事实一致性检查；审计链；境内数据 | 评测看板 | ISO 27001 |
+
+**第一阶段只完成 Super Admin（Lightman 18/10/2026 最新）**：第一阶段 = 地基（API、共享包、设计系统组件）+ Super Admin，本地可运行即结束；机构管理端移到第二阶段。以下一段是之前的版本，保留作记录。
+
+**第一阶段只做管理端（Lightman 18/10/2026 再次调整）**：第一阶段 = 下面第 1–3 步（地基、Super Admin、机构管理端，含管理端虚构 Demo 数据）；第 4–5 步（护士端、Demo 体验与网站）移到第二阶段。上表"MVP"列里护士端相关的 Capture / Understand / Draft / Review / File / Hand over 实际在第二阶段交付。
+
+**MVP 交付顺序（Lightman 18/10/2026）**：先做管理端，再做护士端。
+1. 地基：API 多租户与审计、共享包、设计系统补齐管理端组件。
+2. Super Admin → 3. 机构管理端。
+4. 护士端：口述 → 起草 → 分级审核 → 交接 → 导出。
+5. Demo 和 Marketing website，可与第 4 步并行。
+
+所有界面以设计系统为设计参考（`06-app-development/design/DESIGN.md`、`COMPONENTS.md`）。详见 `06-app-development/product/product-roadmap.md`。
 
 **MVP 退出标准（进入 Phase 2）**：试点达到 [§11](#11-指标) 的门槛，0 起错配进入正式记录，并获得 1 家付费转化意向。
 
@@ -533,6 +545,9 @@ flowchart TB
 |---|---|---|---|
 | 04/10/2026 | v0.1 | 初版：方向分析、亮点与突破、产品逻辑、workflows | Claude（Lightman 审阅中） |
 | 04/10/2026 | v0.2 | 按 `rules/04-prd-rules.md` 补充 §9.1 法律依据（本地参考文件） | Claude |
+| 18/10/2026 | v0.3 | §8：Capture 改为护士端 Web App 按住说话（整班录音移到 Mobile App 阶段）；Manage 改为 Super Admin + 机构管理端；新增 MVP 交付顺序（管理端先行，以设计系统为设计参考）。依据 Lightman 决定与 ADR-0003/0004/0005 | Claude（Lightman 决定） |
+| 18/10/2026 | v0.4 | §8：第一阶段只做管理端（Super Admin + 机构管理端 + 地基）；护士端、Demo 体验与网站移到第二阶段 | Claude（Lightman 决定） |
+| 18/10/2026 | v0.5 | §8：第一阶段只完成 Super Admin（+ 地基），本地可运行即结束；机构管理端移到第二阶段 | Claude（Lightman 决定） |
 
 ## 审批
 | 角色 | 姓名 | 日期 |

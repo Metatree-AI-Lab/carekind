@@ -286,3 +286,213 @@
 	.ck-spinner, .ck-skeleton, .ck-toast, .ck-progress--indeterminate > span { animation: none; }
 	.ck-progress--indeterminate > span { width: 100%; }
 }
+
+/* =====================================================================
+ * 管理端组件（18/10/2026，待 Lin 评审）。规格见 COMPONENTS.md §12A。
+ * Super Admin 与机构管理端（Provider Portal）共用。只引用 tokens.css 变量；
+ * 1–3px 边框、0、百分比按 DESIGN.md §3.x 例外直接写。
+ * 缺少专用 token 的尺寸先用现有 token 组合，并在注释里写明（待 tokens.json 补齐）。
+ * ===================================================================== */
+
+/* 管理端可聚焦元素沿用统一焦点样式（DESIGN.md §9） */
+:where(.ck-skip-link, .ck-sidenav a, .ck-sidenav-toggle, .ck-filter-chip, .ck-combobox-clear,
+	.ck-stepper a, .ck-shell-banner a, .ck-shell-banner button):focus-visible {
+	outline: none;
+	box-shadow: var(--focus-ring);
+}
+
+/* ---------- 桌面应用框架 ck-shell ---------- */
+.ck-skip-link { position: absolute; z-index: var(--z-tooltip); top: var(--space-2); left: var(--space-2); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--color-ink); color: var(--color-on-ink); text-decoration: none; transform: translateY(-200%); }
+.ck-skip-link:focus-visible { transform: none; }
+.ck-app-shell {
+	display: grid; min-height: 100vh; background: var(--color-canvas); color: var(--color-ink);
+	/* 侧栏宽度：缺 token size-sidenav-width，暂用 size-menu-min + space-8（= 264px） */
+	grid-template-columns: calc(var(--size-menu-min) + var(--space-8)) minmax(0, 1fr);
+	grid-template-rows: auto auto minmax(0, 1fr);
+	grid-template-areas: "banner banner" "nav top" "nav main";
+}
+/* 持续标识条：Demo 身份（信息色）/ 支持访问会话（提醒色）。文字写明身份，不只靠底色 */
+.ck-shell-banner { grid-area: banner; position: sticky; top: 0; z-index: var(--z-sticky); display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); min-height: var(--size-target-min); padding: var(--space-2) var(--space-5); border-bottom: 1px solid var(--color-line); background: var(--color-blue-tint); color: var(--color-blue-ink); }
+.ck-shell-banner--support { background: var(--color-amber-tint); color: var(--color-amber-ink); }
+.ck-shell-banner-text { flex: 1; min-width: 0; }
+.ck-shell-banner strong { font-weight: var(--font-weight-semibold); }
+.ck-shell-banner a, .ck-shell-banner button { display: inline-flex; align-items: center; min-height: var(--size-target-min); padding: 0 var(--space-3); border: 0; border-radius: var(--radius-pill); background: none; color: inherit; font: inherit; font-weight: var(--font-weight-semibold); text-decoration: underline; text-underline-offset: 0.2em; cursor: pointer; }
+.ck-shell-banner a:hover, .ck-shell-banner button:hover { background: var(--color-surface); }
+.ck-shell-topbar { grid-area: top; display: flex; align-items: center; gap: var(--space-4); min-height: var(--size-control-height-lg); padding: 0 var(--size-page-inset) 0 var(--space-6); border-bottom: 1px solid var(--color-line); background: var(--color-surface); }
+.ck-shell-context { display: flex; align-items: center; gap: var(--space-2); flex: 0 0 auto; }
+.ck-shell-context-label { color: var(--color-ink-soft); font-size: var(--font-size-caption); }
+.ck-shell-context-value { font-weight: var(--font-weight-semibold); white-space: nowrap; }
+.ck-shell-user { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-3); flex: 1 1 auto; min-width: 0; text-align: right; }
+.ck-shell-main { grid-area: main; min-width: 0; padding: var(--space-6) var(--size-page-inset) var(--space-8) var(--space-6); }
+.ck-shell-main:focus { outline: none; } /* 跳转链接的落点（tabindex="-1"），不是交互控件 */
+
+/* ---------- 侧边导航 ck-sidenav ---------- */
+.ck-sidenav { grid-area: nav; position: sticky; top: 0; align-self: start; display: flex; flex-direction: column; gap: var(--space-4); height: 100vh; overflow-y: auto; padding: var(--space-4) var(--space-3); border-right: 1px solid var(--color-line); background: var(--color-surface-subtle); }
+.ck-sidenav-brand { display: flex; align-items: center; gap: var(--space-2); min-height: var(--size-target-min); padding: 0 var(--space-3); font-weight: var(--font-weight-semibold); }
+.ck-sidenav-switcher { padding: 0 var(--space-1); }
+.ck-sidenav-switcher .ck-dropdown, .ck-sidenav-switcher .ck-combobox { max-width: none; }
+.ck-sidenav-group { display: grid; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+.ck-sidenav-heading { margin: var(--space-3) 0 var(--space-1); padding: 0 var(--space-3); color: var(--color-ink-soft); font-size: var(--font-size-caption); font-weight: var(--font-weight-semibold); }
+.ck-sidenav a { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-target-min); padding: 0 var(--space-3); border-radius: var(--radius-md); color: var(--color-ink); text-decoration: none; }
+.ck-sidenav a:hover { background: var(--color-surface); }
+/* 当前页：白底 + 加粗 + 左侧竖线，不只靠颜色 */
+.ck-sidenav a[aria-current="page"] { background: var(--color-surface); font-weight: var(--font-weight-semibold); box-shadow: inset 3px 0 0 var(--color-ink); }
+.ck-sidenav-footer { margin-top: auto; padding: var(--space-3); color: var(--color-ink-soft); font-size: var(--font-size-caption); }
+.ck-sidenav-toggle { display: none; }
+
+/* 窄屏（< size-breakpoint-md）：侧栏收起为可展开的导航；media query 不能用变量，取 token 同值 */
+@media (max-width: 900px) {
+	.ck-app-shell { grid-template-columns: minmax(0, 1fr); grid-template-areas: "banner" "top" "nav" "main"; }
+	.ck-shell-topbar { flex-wrap: wrap; padding: var(--space-2) var(--space-4); }
+	.ck-shell-main { padding: var(--space-5) var(--space-4) var(--space-7); }
+	.ck-sidenav { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--color-line); }
+	.ck-sidenav-toggle { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-target-min); padding: 0 var(--space-4); border: 1px solid var(--color-line-strong); border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-ink); font: inherit; cursor: pointer; }
+	.ck-sidenav-toggle[aria-expanded="false"] ~ .ck-sidenav-collapsible { display: none; }
+}
+
+/* ---------- 页面头部 ck-page-header ---------- */
+.ck-page-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: var(--space-3) var(--space-5); margin-bottom: var(--space-6); }
+.ck-page-header .ck-breadcrumb { grid-column: 1 / -1; font-size: var(--font-size-caption); }
+.ck-page-header-title { margin: 0; font-size: var(--font-size-heading); font-weight: var(--font-weight-semibold); line-height: var(--font-leading-heading); overflow-wrap: anywhere; }
+.ck-page-header-desc { margin: var(--space-2) 0 0; max-width: var(--font-measure); color: var(--color-ink-soft); }
+.ck-page-header-meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+.ck-page-header-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-3); }
+@media (max-width: 640px) {
+	.ck-page-header { grid-template-columns: minmax(0, 1fr); }
+	.ck-page-header-actions { justify-content: flex-start; }
+	.ck-page-header-title { font-size: var(--font-size-heading-sm); }
+}
+
+/* ---------- 数据表扩展：筛选栏 / 排序 / 行选择 / 批量操作 / 状态 ---------- */
+.ck-table-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); margin-bottom: var(--space-3); }
+.ck-table-toolbar .ck-field { width: auto; flex: 1 1 var(--size-menu-min); }
+.ck-table-toolbar-end { display: flex; align-items: center; gap: var(--space-3); margin-left: auto; }
+.ck-table-count { color: var(--color-ink-soft); font-size: var(--font-size-caption); }
+.ck-filter-chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); margin: 0 0 var(--space-3); padding: 0; list-style: none; }
+.ck-filter-chip { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--size-control-height-sm); padding: 0 var(--space-2) 0 var(--space-3); border: 1px solid var(--color-line-strong); border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-ink); font: inherit; font-size: var(--font-size-caption); cursor: pointer; }
+.ck-filter-chip:hover { background: var(--color-surface-subtle); }
+/* 排序：方向用图标形状 + aria-sort 表达；未排序列显示中性双向图标 */
+.ck-table th[aria-sort] button .ck-icon { color: var(--color-ink-soft); }
+.ck-table th[aria-sort="ascending"] button .ck-icon, .ck-table th[aria-sort="descending"] button .ck-icon { color: var(--color-ink); }
+.ck-table th[aria-sort="descending"] button .ck-sort-icon { transform: rotate(180deg); }
+.ck-table .ck-col-select { width: calc(var(--size-checkbox) + var(--space-4) * 2); }
+.ck-table .ck-col-select .ck-check { justify-content: center; }
+.ck-table .ck-col-actions { width: calc(var(--size-control-height) + var(--space-4) * 2); text-align: right; }
+.ck-table tbody tr.is-selected { background: var(--color-surface-subtle); box-shadow: inset 3px 0 0 var(--color-ink); }
+.ck-table--dense th, .ck-table--dense td { padding-top: var(--space-2); padding-bottom: var(--space-2); } /* 仅桌面密集表格 */
+.ck-bulkbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); padding: var(--space-2) var(--space-4); border-radius: var(--radius-md); background: var(--color-ink); color: var(--color-on-ink); }
+.ck-bulkbar-count { margin-right: auto; font-weight: var(--font-weight-semibold); }
+.ck-bulkbar .ck-btn { border-color: var(--color-on-ink); background: transparent; color: var(--color-on-ink); }
+.ck-bulkbar .ck-btn:hover { background: var(--color-ink-soft); }
+.ck-table-wrap[aria-busy="true"] .ck-table tbody { pointer-events: none; }
+.ck-table-skeleton-cell { display: block; height: var(--space-4); }
+.ck-table-state td { padding: 0; }
+.ck-table-state .ck-empty, .ck-table-state .ck-alert { margin: var(--space-4); }
+.ck-table-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-3); }
+
+/* ---------- 可搜索下拉 ck-combobox（WAI-ARIA combobox + listbox，复用 ck-listbox / ck-option） ---------- */
+.ck-combobox { position: relative; width: 100%; max-width: var(--size-field-max); }
+.ck-combobox .ck-input { padding-right: calc(var(--size-control-height) + var(--space-2)); }
+.ck-combobox-clear { position: absolute; top: 0; right: 0; display: inline-grid; place-items: center; width: var(--size-control-height); height: var(--size-control-height); padding: 0; border: 0; border-radius: var(--radius-pill); background: none; color: var(--color-ink-soft); cursor: pointer; }
+.ck-combobox-clear:hover { background: var(--color-surface-subtle); color: var(--color-ink); }
+.ck-option-text { display: grid; min-width: 0; padding: var(--space-2) 0; }
+.ck-option-sub { color: var(--color-ink-soft); font-size: var(--font-size-caption); font-weight: var(--font-weight-regular); }
+.ck-option mark { background: none; color: inherit; font-weight: var(--font-weight-semibold); text-decoration: underline; }
+.ck-listbox-message { padding: var(--space-3); color: var(--color-ink-soft); }
+
+/* ---------- 日期 / 时间（原生 input；显示 DD/MM/YYYY） ---------- */
+.ck-input--date, .ck-input--time { width: auto; min-width: calc(var(--size-menu-min) - var(--space-5)); font-variant-numeric: tabular-nums; }
+.ck-date-range { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-3); margin: 0; padding: 0; border: 0; }
+.ck-date-range legend { margin-bottom: var(--space-2); padding: 0; font-weight: var(--font-weight-medium); }
+.ck-datetime { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* ---------- 侧边抽屉 ck-drawer（原生 dialog，从右侧进入） ---------- */
+.ck-drawer {
+	/* 宽度：缺 token size-drawer-width，暂用 size-dialog-sm（默认）/ size-dialog-md（--wide） */
+	position: fixed; inset: 0 0 0 auto; width: min(100%, var(--size-dialog-sm)); height: 100%; max-width: 100%; max-height: 100%;
+	margin: 0 0 0 auto; padding: 0; border: 0; border-left: 1px solid var(--color-line);
+	background: var(--color-surface); color: var(--color-ink); box-shadow: var(--shadow-2);
+	animation: ck-drawer-in var(--motion-duration-base) var(--motion-easing-standard);
+}
+.ck-drawer[open] { display: flex; flex-direction: column; }
+.ck-drawer--wide { width: min(100%, var(--size-dialog-md)); }
+.ck-drawer::backdrop { background: var(--color-overlay); }
+.ck-drawer-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); padding: var(--space-5); border-bottom: 1px solid var(--color-line); }
+.ck-drawer-title { margin: 0; font-size: var(--font-size-title); font-weight: var(--font-weight-semibold); line-height: var(--font-leading-heading); }
+.ck-drawer-body { flex: 1; overflow-y: auto; padding: var(--space-5); }
+.ck-drawer-footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-top: 1px solid var(--color-line); }
+@keyframes ck-drawer-in { from { opacity: 0; transform: translateX(var(--space-6)); } }
+
+/* ---------- 分步流程 ck-stepper ---------- */
+.ck-stepper ol { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: 0 0 var(--space-6); padding: 0; list-style: none; }
+.ck-step { display: flex; align-items: center; gap: var(--space-3); min-height: var(--size-target-min); color: var(--color-ink-soft); }
+/* 序号圆：缺 token size-step-marker，暂用 size-avatar-sm（= 32px） */
+.ck-step-marker { display: inline-grid; place-items: center; flex: none; width: var(--size-avatar-sm); height: var(--size-avatar-sm); border: 2px solid var(--color-line-strong); border-radius: var(--radius-pill); background: var(--color-surface); font-size: var(--font-size-caption); font-weight: var(--font-weight-semibold); }
+.ck-step-label { display: grid; }
+.ck-step-status { font-size: var(--font-size-caption); font-weight: var(--font-weight-regular); }
+.ck-step[aria-current="step"] { color: var(--color-ink); font-weight: var(--font-weight-semibold); }
+.ck-step[aria-current="step"] .ck-step-marker { border-color: var(--color-ink); }
+.ck-step.is-complete { color: var(--color-ink); }
+.ck-step.is-complete .ck-step-marker { border-color: var(--color-ink); background: var(--color-ink); color: var(--color-on-ink); }
+.ck-step.is-error { color: var(--color-danger-ink); }
+.ck-step.is-error .ck-step-marker { border-color: var(--color-danger-ink); color: var(--color-danger-ink); }
+.ck-stepper a { color: inherit; border-radius: var(--radius-sm); }
+.ck-stepper-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-line); }
+
+/* ---------- 差异对比 ck-diff（状态 = 标签文字 + 符号 + 左侧竖线，不只靠颜色） ---------- */
+.ck-diff-summary { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0 0 var(--space-3); padding: 0; list-style: none; }
+.ck-diff { margin: 0; padding: 0; list-style: none; border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); }
+.ck-diff-row { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: var(--space-1) var(--space-4); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-line); box-shadow: inset 3px 0 0 var(--color-line-strong); }
+.ck-diff-row:last-child { border-bottom: 0; }
+.ck-diff-row--added { box-shadow: inset 3px 0 0 var(--color-green-ink); }
+.ck-diff-row--changed { box-shadow: inset 3px 0 0 var(--color-amber-ink); }
+.ck-diff-row--removed { box-shadow: inset 3px 0 0 var(--color-danger-ink); }
+.ck-diff-row > .ck-tag { grid-row: 1 / span 2; justify-self: start; }
+.ck-diff-title { font-weight: var(--font-weight-semibold); overflow-wrap: anywhere; }
+.ck-diff-fields { display: grid; grid-template-columns: max-content minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-1) var(--space-4); margin: 0; font-size: var(--font-size-caption); }
+.ck-diff-fields dt { color: var(--color-ink-soft); }
+.ck-diff-fields dd { margin: 0; overflow-wrap: anywhere; }
+.ck-diff-old { color: var(--color-ink-soft); text-decoration: line-through; }
+.ck-diff-row--removed .ck-diff-title { color: var(--color-ink-soft); text-decoration: line-through; }
+@media (max-width: 640px) {
+	.ck-diff-row { grid-template-columns: minmax(0, 1fr); }
+	.ck-diff-row > .ck-tag { grid-row: auto; }
+	.ck-diff-fields { grid-template-columns: max-content minmax(0, 1fr); }
+	.ck-diff-fields .ck-diff-old { grid-column: 2; }
+}
+
+/* ---------- 审计日志 ck-audit-list（只追加；只显示动作、对象 ID、字段名，不显示健康信息内容） ---------- */
+.ck-audit-list { margin: 0; padding: 0; list-style: none; border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); }
+.ck-audit-entry { display: grid; grid-template-columns: calc(var(--size-menu-min) - var(--space-5)) minmax(0, 1fr); gap: var(--space-1) var(--space-5); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-line); }
+.ck-audit-entry:last-child { border-bottom: 0; }
+.ck-audit-time { grid-row: 1 / span 3; color: var(--color-ink-soft); font-size: var(--font-size-caption); font-variant-numeric: tabular-nums; }
+.ck-audit-action { font-weight: var(--font-weight-medium); overflow-wrap: anywhere; }
+.ck-audit-meta { display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); color: var(--color-ink-soft); font-size: var(--font-size-caption); }
+.ck-audit-id { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; } /* 缺 token font-family-mono，暂不换字体 */
+.ck-audit-reason { margin: 0; font-size: var(--font-size-caption); }
+@media (max-width: 640px) {
+	.ck-audit-entry { grid-template-columns: minmax(0, 1fr); }
+	.ck-audit-time { grid-row: auto; }
+}
+
+/* ---------- 危险操作确认（输入名称确认，基于 ck-dialog） ---------- */
+.ck-dialog--confirm-name .ck-dialog-title { display: flex; align-items: flex-start; gap: var(--space-2); }
+.ck-dialog--confirm-name .ck-dialog-title .ck-icon { margin-top: var(--space-1); color: var(--color-danger-ink); }
+.ck-confirm-consequences { margin: var(--space-3) 0; padding-left: var(--space-5); }
+.ck-confirm-consequences li + li { margin-top: var(--space-1); }
+.ck-confirm-phrase { padding: 0 var(--space-1); border-radius: var(--radius-sm); background: var(--color-surface-subtle); font-weight: var(--font-weight-semibold); overflow-wrap: anywhere; }
+.ck-dialog--confirm-name .ck-field { max-width: none; margin-top: var(--space-4); }
+
+/* ---------- 数字卡片 ck-stat（数字 + 测量口径 + 样例标记；无趋势、无评分、无风险色） ---------- */
+.ck-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--size-menu-min) + var(--space-6)), 1fr)); gap: var(--space-4); margin: 0; padding: 0; list-style: none; }
+.ck-stat { display: grid; align-content: start; gap: var(--space-2); padding: var(--space-5); border: 1px solid var(--color-line); border-radius: var(--radius-md); background: var(--color-surface); }
+.ck-stat-label { margin: 0; color: var(--color-ink-soft); font-weight: var(--font-weight-medium); }
+.ck-stat-value { margin: 0; color: var(--color-ink); font-size: var(--font-size-heading); font-weight: var(--font-weight-semibold); line-height: var(--font-leading-heading); font-variant-numeric: tabular-nums; }
+.ck-stat-unit { margin-left: var(--space-1); font-size: var(--font-size-body); font-weight: var(--font-weight-regular); }
+.ck-stat-measure { margin: 0; color: var(--color-ink-soft); font-size: var(--font-size-caption); }
+.ck-stat-footer { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-1); }
+
+/* ---------- 管理端：减少动态效果 ---------- */
+@media (prefers-reduced-motion: reduce) {
+	.ck-drawer { animation: none; }
+}
