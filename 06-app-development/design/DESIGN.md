@@ -1,6 +1,6 @@
 # DESIGN.md — careKind AI 设计规范（Source of Truth）
 
-Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · Last reviewed: 11/10/2026
+Owner: Lightman (PO) · Assignee: Gary · Reviewer: Lin · Status: **Draft** · Last reviewed: 18/10/2026
 PRD：[`docs/prds/2026-10-11-carekind-design-system.md`](../../docs/prds/2026-10-11-carekind-design-system.md)（本文件是其工作包 DS-1 的产出，并为 DS-2、DS-3、DS-4 提供基础）
 
 > **所有人和所有 AI agent：做任何界面、组件、插画、文案之前，先读本文件。** 设计稿、前端代码、营销页、演示都以这里为准；本文件与别处冲突时以这里为准（法律和 PRD §9 护栏除外，护栏优先）。运营参考，不是法律意见。
@@ -433,3 +433,8 @@ careKind **不提供**健康评分、风险等级、趋势预测、"改善 x%" �
 - `03-legal-compliance/references/law-library/ahpra-ai-in-healthcare-summary.md`：保留人工审核表述。
 - 八项设计问题的适用范围：无新数据流 / 第三方存储 / 自动决策 / provider 义务 / 州级规则；不新增临床风险或同意流程；预览字段仅合成输入且只存于页面内存。
 - tga-boundary-check：🟢，设计样例仅描述起草、记录和人工审核；不改变预期用途。运营参考，不是法规意见；🟡/🔴 需要法规顾问确认。
+
+## 18/10/2026 Owner 视觉增强要求
+Owner: Lightman · Status: Local revision · Last reviewed: 18/10/2026
+
+Owner 要求页面更 cool，增加图片和动画。本次在 Super Admin 登录及工作页页头允许使用设计系统已有原创照护插画，作为 §2 工作层一般“不用装饰照片”指导的具体例外；不在数据字段和临床确认区域放装饰。登录使用双栏视觉面板，手机缩为紧凑图文条。新增短入场、悬停及切页动效，遵守 reduced-motion，不循环或闪烁。组件规格及素材母版仍以 COMPONENTS.md 和 design-system/ 为准，不引入独立色板或虚构成果。实际验证见 [art-motion-review-2026-10-18.md](art-motion-review-2026-10-18.md)。
