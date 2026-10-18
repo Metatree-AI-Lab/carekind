@@ -22,6 +22,7 @@
 - 2026-10-11-adlc-prd-lifecycle.md
 - 2026-10-11-carekind-design-system.md（设计系统总 PRD；子 PRD DS-1…DS-6 先在 registry 登记为 idea，尚无文件）
 - 2026-10-04-shift-capture-and-resident-records.md
+- 2026-10-18-*.md（6 份功能 PRD：多文书起草、分级审核、交接与覆盖、多语言、导出与 CMS、Demo；均 idea / Draft）
 
 ## 不要做
 - 不要省略"法律依据"一节

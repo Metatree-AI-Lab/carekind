@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Telstra Health（Clinical Manager / CareKeeper / 原 iCareHealth）
 
@@ -31,3 +31,9 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中。** 短期内不太可能推出成熟的养老生成式文档功能，但只要宣布把 Smart Scribe 引入 Clinical Manager，就会显著改变竞争格局。另一方面，Telstra Health 客户在窗口期内是 careKind 的潜在目标，前提是有可行的写回或集成路径（⚠️ 需技术核实 Clinical Manager 是否开放 API）。
+
+## 2026-10-18 更新
+- 2026-02 Whiddon 选用 Telstra Health（Clinical Manager + Message Manager + CareKeeper）覆盖 NSW 和东南昆士兰 23 家院（S110，搜索摘要 ⚠️）——说明装机仍在扩张。
+- 本次**未发现 Smart Scribe 或其他生成式文书功能进入 Clinical Manager** 的公开信息；Corus 养老版仍为 2028 年（S11）。
+- AccuNote 官网称可"alongside" Telstra Health Clinical Manager 使用（S106 ⚠️），说明第三方已在打这个客户群。
+- **威胁等级**：维持**中**。

@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # 竞品对比矩阵
 
@@ -39,10 +39,12 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **Notive** | 澳洲（阿德莱德） | Notive | **Residential**（SA、VIC） | 语音生成班次笔记和结构化交接；自动标记事故和 RN 跟进事项；班次进度看板 | 未说明（推测独立工具） | Pilot 阶段，7 天试用 | 未公开 | 悉尼；语音不保留 | — | "Founding facilities"，未点名 | **高** | S60 |
 | **Aria Care** | 新西兰 | Aria | NDIS、小型服务商、aged care | 笔记、交接、事故草稿、翻译、Easy Read、缺失项检测 | 复制粘贴 | $19 到 $699/月（币种 ⚠️） | 未公开 | 未披露 | — | — | 中 | S61 |
-| **AccuNote** | 澳洲 | AccuNote | 养老 + NDIS | 语音笔记、progress note 生成和检查 | 未说明 | 14 天试用 | 未公开 | 澳洲服务器，不用于训练 | — | — | 中 | S62, S63 |
+| **AccuNote** | 澳洲 | AccuNote | 养老 + NDIS | 语音笔记、progress note 生成和检查；review prompts；治理看板（S106） | 声称"works alongside" Telstra Health Clinical Manager、AlayaCare、PCS，方式未说明 ⚠️（S106） | 14 天试用 | 未公开 | 澳洲服务器，不用于训练 | — | — | **中高**（18/10 上调） | S62, S63, S106 |
 | **AgedCareAI** | 澳洲（悉尼） | 9 模块套件（含 Whisper 语音） | Residential + 居家 + 社区 | 语音文档、表单、政策问答、洞察 | 叠加在现有系统上（未点名） | 未公开 | 未公开 | 未公开 | — | — | 中 | S64 |
 | **Regis RegiCare Assist**（自建） | 澳洲 | RegiCare Assist | Regis 自用（72 院） | **汇总**笔记和交接，按临床问题归类，68 页压到 3 页 | 手动上传；计划与 CMS 集成 | 不销售 | 约 150 名员工在用 | Regis 自有安全环境 | — | Regis | 中到高（自建替代） | S68, S69 |
 | **Uniting Buddy**（自建） | 澳洲 | Buddy | Uniting 居家和社区护工 | **多语言**口述转笔记、翻译、政策指引 | 内部系统 | 不销售 | 1,200+ 用户 | 未公开 | — | Uniting + 5 家合作机构 | 中 | S70 |
+| **Beam**（2026-04 新进入） | 英国（墨尔本设亚太办公室） | Notes（Magic Notes）、Interpret、Talk | 残障、aged care、住房、家庭支持等社会服务 | AI 个案笔记、报告准备、实时翻译；审核流程未说明 | 未说明 | 未公开 | 全球 75,000 名支持工作者、350+ 机构（自报） | 声称澳洲本地加密存储；ISO 27001 | — | Life Without Barriers 试点 | 中低 | S104, S105 |
+| Bupa knowledge agent（自建，2026-08 披露） | 澳洲 | 未命名 | Bupa 57 家护理院 | 政策问答，答案附内部指引来源；**不写临床记录** | 内部 | 不销售 | 57 院 | 未公开 | — | Bupa | 低到中（自建替代信号） | S109 |
 | Sparks Scribe | 澳洲（QLD） | Sparks Scribe | 独立 NDIS 支持工作者 | 语音转班次笔记、事故报告 | Xero | $15 / $20 / $39 每月（含 GST） | — | 澳洲 | — | — | 低 | S65 |
 | NDISNotes | 澳洲 | NDISNotes | NDIS（**不做养老**） | 笔记和事故报告起草 | PDF 导出 | 未公开 | — | 悉尼 | — | — | 低 | S66 |
 | SupportNotes | 澳洲 | 12 个生成器（含 Aged Care Progress Note、ISBAR） | 支持工作者、护士 | 把零散笔记改写成规范笔记 | 无 | 免费 + Pro | — | 声称在澳洲 | — | — | 低 | S67 |
@@ -70,3 +72,12 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 - **VCare**：总部在新西兰，以 NZ 客户为主（S27）。
 - **MedTasker**：医院任务协调平台，与养老文档无关，建议移除（S29）。
 - **建议补充**：Mirus Australia（MirusPlus/ManAd）、Notive、Aria Care、AccuNote、AgedCareAI、ShiftCare、Lumary，以及机构自建项目（Regis、Uniting）。
+
+## 2026-10-18 更新摘要
+- **新增**：Beam（2026-04-30 进入澳洲，S104）、Bupa knowledge agent（S109）。Minikai（墨尔本，NDIS/残障行政 agent，2025-02 种子轮 A$2.5m，S113）以 NDIS 为主，暂不单列。
+- **威胁等级变化**：AccuNote 中 → **中高**（公开把自己定位为 Telstra Health / AlayaCare / PCS 的"伴随层"，S106 ⚠️）。其余维持。
+- **AlayaCare**：AI 功能标为 "Premium Feature"；Form Assistant 可能已上线（S95, S96 ⚠️）。
+- **Heidi**：发布 SIRS 内容与模板，声明"never decides what's reportable"（S97）；Metlifecare 官方确认 RN 审核后才写入（S98）。
+- **Access Smart Notes**：实为 voice-to-form + 逐字段音频回放；定价写为按音频处理小时（S107），与 S72 不一致 ⚠️。
+- **监管**：TGA 2026-10-16 公布 12 个 scribe 的审查，8 个可能构成医疗器械，Heidi、Lyrebird、Dragon Medical One 在被审名单中（S99）。
+- 按"解决路径"的完整对比见 [how-competitors-solve-it.md](how-competitors-solve-it.md)。

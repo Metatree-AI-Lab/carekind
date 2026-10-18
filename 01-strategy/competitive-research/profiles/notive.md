@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Notive
 
@@ -29,3 +29,8 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **高。** 同阶段、同细分市场、同一套价值主张，主要拼执行速度和首批机构的争夺。建议：(1) 试用 Notive，做体验拆解；(2) 在 RN 审核链、完整事故报告（含 SIRS 字段）、care plan 更新建议、多语言口述这四点上形成清晰差异。
+
+## 2026-10-18 更新
+- 首页复访（S60）：功能无明显变化。护工口述、实时转写；分区交接笔记；自动标记事故和 RN 跟进事项；管理者可导出 PDF 合规报告；**仍由护工审核后锁定**，未说明 RN 是否审核；无 CMS 集成；无多语言、无 SIRS；数据在悉尼、语音转写后删除（[声称]）；7 天免费 pilot，定价按机构规模；示例笔记日期 14/04/2026。
+- 本次未发现融资、客户或媒体报道。
+- **威胁等级**：维持**高**。

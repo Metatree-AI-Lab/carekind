@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Lyrebird Health
 
@@ -28,3 +28,8 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **低到中。** 目前没有进入 residential aged care 的公开证据，但技术底座可以迁移。值得关注的触发信号：发布养老页面，或宣布与养老 CMS 集成。
+
+## 2026-10-18 更新
+- 在 TGA 2026-10-16 公布的 12 个被审 scribe 名单中；TGA 未说明哪些可能构成医疗器械（S99）。
+- 本次检索未发现 Lyrebird 进入 aged care 的公开动态（养老页面、养老 CMS 集成均未见）。
+- **威胁等级**：维持**低到中**。

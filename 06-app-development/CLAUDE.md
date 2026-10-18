@@ -24,7 +24,7 @@
 - engineering/
 - design/
 - research/
-- app/（代码仓库）
+- app/（代码仓库）——计划拆成 api / nurse-web / provider-portal / super-admin / website / shared 多个 submodule，文档仍只放 meta repo（engineering/adr/0005-*，repo 尚未创建）
 
 ## 不要做
 - 不要实现 TGA 红灯功能（诊断、风险评分、治疗建议、数值报警）

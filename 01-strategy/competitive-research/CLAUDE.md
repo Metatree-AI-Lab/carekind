@@ -4,7 +4,7 @@
 > 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
 
 ## 这里是什么
-研究 agent 产出的竞品矩阵、19 份档案、AI 功能对比和来源列表（2026-10-04）。全部来自公开资料，没有试用过产品。
+研究 agent 产出的竞品矩阵、20 份档案、AI 功能对比、按解决路径的分析（how-competitors-solve-it.md）和来源列表（2026-10-04 建立，2026-10-18 更新）。全部来自公开资料，没有试用过产品。
 
 ## 在这里通常要做的事
 - 新增或更新竞品档案（profiles/<slug>.md）
@@ -19,7 +19,8 @@
 - README.md（执行摘要、空白点、前五大威胁）
 - competitor-matrix.md
 - ai-features-comparison.md
-- profiles/
+- how-competitors-solve-it.md（按解决路径归类、定位图、空白点、竞品的坑）
+- profiles/（更新时在档案末尾追加"## YYYY-MM-DD 更新"，不删旧内容）
 - sources.md
 
 ## 不要做

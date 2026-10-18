@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # AgedCareAI（Innovation Philosophy Pty Ltd）
 
@@ -17,3 +17,10 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中。** 走"AI 层叠加在现有 CMS 之上"的路线，与 careKind 可能的集成策略相同。模块很宽，文档专精程度存疑。没有公开客户，实力需要核实。
+
+## 2026-10-18 更新
+- 首页复访（S64）：产品改为 **Intelligence**（按机构政策问答、起草笔记/信件/报告、Autopilot 例行任务、标出文档缺口）和 **Governance**（政策、Continuous Improvement Plans、会议决议、风险、董事会文件）两大块；早前列出的 9 个模块和 Whisper 语音模块未再出现（⚠️ 可能是改版）。
+- 声称"A person always reviews and approves"；按 Aged Care Act 2024 和 Strengthened Quality Standards 设计；明确不用于诊断、治疗、监测或预测（[声称]）。
+- 渠道：Chrome 扩展（"Assist by IP"）、iOS/Android App；无 CMS 点名；未写数据存储位置；办公室在悉尼和雅典；定价、客户未公开。
+- 定位从"文书工具"更偏向"治理与合规工作台"（[推断]）。
+- **威胁等级**：维持**中**。

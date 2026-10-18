@@ -20,7 +20,9 @@
 - law-library/index.md（含关键条款摘录）
 - paperwork-templates/index.md（含许可说明）
 - paperwork-taxonomy.md
-- state-by-state-comparison.md
+- state-by-state-comparison.md（含 §3.10 监控设备法、§3.11 州 ICT）
+- state-clinical-practice-rules.md（约束性措施同意、给药权限、coroner、VAD 按州）
+- paperwork-requirements-by-event.md（按触发事件的必需文书、时限、条款）
 - sources.md
 
 ## 不要做

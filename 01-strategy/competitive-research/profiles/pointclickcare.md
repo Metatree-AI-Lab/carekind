@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # PointClickCare（Vox Advantage）：全球参照
 
@@ -19,3 +19,8 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 ## 对 careKind 的启示
 - 证明了"养老 CMS 原生 ambient AI + 签署 + 同意"是北美市场的主流方向，澳洲 CMS 厂商很可能效仿（参见 AlayaCare）。
 - 它的 consent 加 sign-off 设计可以作为 careKind 产品设计的参考。
+
+## 2026-10-18 更新
+- Vox Advantage 2026-08-12 有限发布，官方计划 2026-10 商用；截至 18/10/2026 **未查到正式 GA 公告**（S71 ⚠️）。每条笔记都要护理团队签署才进病历（S71）。
+- 新闻稿和检索结果均未提澳洲。
+- **威胁等级**：维持**低**（参照）。

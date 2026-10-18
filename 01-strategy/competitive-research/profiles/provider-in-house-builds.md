@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # 养老机构自建 AI（Regis RegiCare Assist / Uniting Buddy）
 
@@ -36,3 +36,10 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 2. **多语言是刚需**：Buddy 选的 5 种语言反映了澳洲养老护工的语言构成，careKind 应优先支持。
 3. **"自建与采购"论证**：Regis 自己承认成本难以持续，而且需要手动上传；careKind 可以主打"开箱即用、与 CMS 集成、持续合规更新"。
 4. **威胁**：Uniting 与另外 5 家大型机构合作，如果 Buddy 被行业联盟共享或商业化，会成为强力竞品。
+
+## 2026-10-18 更新
+- **C. Bupa Villages and Aged Care：knowledge agent（新增）**：2026-08-17 署名文章称已在 57 家护理院引入生成式 AI "knowledge agent"，员工用日常语言提问，答案来自批准的内部指引并附来源链接；**不涉及写临床记录**；无正式评估数据；技术供应商未公开（S109）。
+- Regis RegiCare Assist：本次未发现新的公开信息。
+- Uniting Buddy：S70（2026-06）之后未发现商业化迹象。
+- 观察：三家头部机构分别在"下游汇总（Regis）""上游多语言口述（Uniting）""政策问答（Bupa）"补洞，没有一家把起草—审核—汇总连起来（[推断]）。
+- **威胁等级**：维持**中到高**。

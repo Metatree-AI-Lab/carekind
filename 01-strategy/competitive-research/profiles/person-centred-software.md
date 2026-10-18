@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Person Centred Software（Clinical Care System，原 Mobile Care Monitoring）
 
@@ -29,3 +29,9 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中。** 语音入口已经存在，补上 LLM 结构化只是一个功能迭代的距离。需要持续监测英国 PCS 是否发布 AI 笔记功能。
+
+## 2026-10-18 更新
+- 本次检索**未发现** PCS 在澳洲或英国发布 AI 起草笔记功能。
+- 英国端 2024-10 与 Teton（哥本哈根，传感器和计算机视觉监测）合作，把监测数据接入 mCare（S115）；Teton 2026-07 推出查询运营数据的 agent Samwise（S114，付费墙 ⚠️）。未见进入澳洲。
+- AccuNote 官网称可"alongside" PCS 使用（S106 ⚠️）。
+- **威胁等级**：维持**中**。

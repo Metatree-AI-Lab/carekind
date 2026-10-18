@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Aria Care
 
@@ -19,3 +19,10 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中。** 功能清单（笔记、交接、事故草稿、翻译）与 careKind 高度重叠，价格透明且低。但它主攻 NDIS 和个人用户，复制粘贴模式加上数据驻留不明，难以进入 residential 机构采购。它是"低价通用笔记生成器"这一类的代表，会压低个人层面的价格预期。
+
+## 2026-10-18 更新
+- 首页复访（S61）：定价不变（$0 / $19 / $29 / $149 / $349 / $699 每月 + Enterprise，币种仍未注明 ⚠️）。
+- Provider Starter 档列出 "reportable-incident detection"；Growth 档有 review inbox、audit-ready reports；新增可见 **"Dignity + Risk Guardian"**，标出含糊或缺乏依据的措辞——这是公开竞品中直接回应"记录空洞"的少数设计之一。
+- 仍无官方集成（FAQ："Not yet"），数据物理位置未披露；产品以 NDIS 为主，aged care 是"也可使用"。
+- 页面自身有不一致（rostering 所在档位、免费额度描述）（S61）。
+- **威胁等级**：维持**中**。

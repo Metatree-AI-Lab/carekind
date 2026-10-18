@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # The Lookout Way（Lookout Assist）
 
@@ -21,3 +21,7 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中低。** 不在 residential 赛道。但它的 "six points of control" 治理框架很成熟，是 careKind 设计人工审核 UX 和对外沟通安全性时的**直接对标**。
+
+## 2026-10-18 更新
+- 本次未发现新动态。"six points of control" 仍是审核治理设计的直接对标（见 [how-competitors-solve-it.md](../how-competitors-solve-it.md) §8）。
+- **威胁等级**：维持**中低**。

@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # ShiftCare
 
@@ -19,3 +19,7 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **低到中。** 主战场是 NDIS 和居家，不是 residential 护理院。但"从笔记中自动识别事故风险"的思路值得 careKind 借鉴，可用于识别 SIRS 潜在事件并提示 RN 复核。
+
+## 2026-10-18 更新
+- 本次未发现新的 AI 发布。主战场仍是 NDIS 和居家。
+- **威胁等级**：维持**低到中**。

@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # CareTrust AI：新加坡参照
 
@@ -17,3 +17,7 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 ## 对 careKind 的启示
 - 亚洲出现了"AI 原生护理院操作系统"，从文档切入，再扩展成完整的 system of record。这是 careKind 长期可以考虑的路径，但会与澳洲 CMS 厂商正面竞争。
 - 它把"所有 AI 产出由人批准"放在首页，作为核心信任卖点。
+
+## 2026-10-18 更新
+- 首页复访（S76）：仍只提新加坡（MOH HCSA、PDPA），50+ 院、2,400+ 居民（自报）；无澳洲动态；价格未公开。
+- **威胁等级**：维持**低**（参照）。

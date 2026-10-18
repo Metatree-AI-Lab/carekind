@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # AutumnCare
 
@@ -26,3 +26,7 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中低。** 短期不会推出 AI 竞品；它的客户反而是 careKind 的机会群（缺少内置 AI）。需要确认 AutumnCare 是否开放 API 用于写回。
+
+## 2026-10-18 更新
+- 本次检索**未发现** AutumnCare 的 AI 动态。
+- **威胁等级**：维持**中低**。

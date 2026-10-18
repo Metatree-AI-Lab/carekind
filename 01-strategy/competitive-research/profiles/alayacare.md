@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # AlayaCare（含 AlayaCare Residential）
 
@@ -33,3 +33,12 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **高（对 AlayaCare 客户群）/ 低（对其他 CMS 客户群）。** 它代表最核心的结构性风险：**CMS 厂商把 AI 文档做成内置免费功能**。如果 Leecare、AutumnCare、Telstra Health 跟进，独立工具的价值空间会被压缩。careKind 的应对：要么成为这些 CMS 的 AI 层合作伙伴（参考 PainChek 的集成打法，S80），要么在 AI 质量和养老专用流程上明显领先内置功能。
+
+## 2026-10-18 更新
+- **Residential "What's new" 页**：AI Note Assistant（口述生成结构化 progress notes）和 AI Resident Insights 都标为 **"Premium Feature"**，未写上线日期；搜索摘要中同一页曾显示 "Coming 2026"，两者不一致（S95 ⚠️）。
+- **审核**：页面称 "every AI action is logged and human-approved"，但没有说明谁审核、能否绕过（S95，[声称]）。
+- **数据驻留**：页面提到 Privacy Act 1988 和数据隔离，**仍未写存储位置**（S95）。
+- **SIRS、事故表单**：页面未提及（S95）。
+- **AI Form Assistant**：网络研讨会页称 AI Form Assistant 和 AI Resident Overview "now built into the platform"（S96，仅搜索摘要，年份未确认 ⚠️）。如属实，AlayaCare 已从"单条笔记"走到"口述填表"。
+- 居家端 Layla 已对 AU/NZ AlayaCare Cloud 用户开放（S117），与 residential 是不同产品。
+- **威胁等级**：维持**高**（对 AlayaCare 客户群）。

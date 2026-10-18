@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Leecare Solutions（Platinum6）
 
@@ -27,3 +27,7 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中。** Leecare 本身短期构不成产品威胁。风险在于它选了别的 AI 伙伴，例如 Heidi 或 AlayaCare 以外的 scribe，从而锁定这 480+ 家机构。**建议 BD 优先接触 Leecare**，探讨 AI partnership 的可能性。
+
+## 2026-10-18 更新
+- 本次检索**未发现** Leecare 公布 AI 合作伙伴或生成式 AI 功能。2025-07 提到的 "several AI partnerships" 仍无下文（S4）。
+- **威胁等级**：维持**中**；BD 接触建议不变。

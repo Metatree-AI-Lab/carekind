@@ -14,7 +14,9 @@ Owner: Legal/Compliance · Status: Research draft · Last reviewed: 04/10/2026
 | `law-library/*.pdf`，以及 4 个 `*-summary.md` | 官方 PDF 原件（约 43MB）。只有网页版的资料（TGA digital scribes、Ahpra AI、OAIC AI 产品指引、VAISS 状态）写成了摘要 | 需要引用原文时 |
 | `paperwork-templates/index.md` | 30 多份公开的表单、模板和工具：SIRS 表单和工具、BSP 模板、RPSDM 同意、AN-ACC、QI Program、跌倒、压伤、疼痛、恶化、ISBAR、case conference 等，每份都写了发布方、URL、许可、文档类型 | 设计 AI 起草模板的字段结构 |
 | `paperwork-taxonomy.md` | residential aged care 护理文书分类：每种文书的典型字段、频率、监管依据、AI 起草适合度（高/中/低），以及 TGA 风险和产品设计启示 | 产品路线图排序、功能边界评审 |
-| `state-by-state-comparison.md` | 8 个州/领地在以下方面的对照：健康记录法、保留期、公营部门隐私法与 MNDB、限制性措施与监护、elder abuse 报告、护士配比、工人筛查、工资税、工伤保险、疫苗要求；附"对 careKind 的影响" | 进入新州前、和州政府运营的设施签约前 |
+| `state-by-state-comparison.md` | 8 个州/领地在以下方面的对照：健康记录法、保留期、公营部门隐私法与 MNDB、限制性措施与监护、elder abuse 报告、护士配比、工人筛查、工资税、工伤保险、疫苗要求、监控设备法（录音）、州政府 ICT；附"对 careKind 的影响" | 进入新州前、和州政府运营的设施签约前 |
+| `state-clinical-practice-rules.md` | 8 个州/领地的约束性措施同意与替代决策者、ACD、给药权限与 S8 register、coroner 与 VAD、强制报告；附产品设计启示（18/10/2026） | 设计约束性措施、用药、死亡相关文书前 |
+| `paperwork-requirements-by-event.md` | 16 个触发事件各自需要的文书、起草/签署人、时限、条款号、州差异、AI 适合度；"一个事实 → 多张表"总表；试点机构侧 paperwork 清单（18/10/2026） | 设计起草规则、准备试点前 |
 | `sources.md` | 全部来源 URL（按章节去重） | 核查出处 |
 
 ## 使用方法

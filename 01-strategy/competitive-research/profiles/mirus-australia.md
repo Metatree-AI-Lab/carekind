@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Mirus Australia（MirusPlus，含 ManAd Plus）
 
@@ -18,3 +18,7 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中低。** 定位偏财务、运营和数据分析，AI 文档能力未明确。有 API 模块，是潜在的集成或合作对象。
+
+## 2026-10-18 更新
+- 官网 AI 内容仍是将来时（"正在开发 AI 解决方案"），本次未发现已上线的 AI 文书功能（S116，搜索摘要 ⚠️）。
+- **威胁等级**：维持**中低**。

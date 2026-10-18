@@ -39,6 +39,8 @@
 ## App 代码仓库（submodule）
 `06-app-development/app/` 是 git submodule（`Metatree-AI-Lab/carekind-app`）。**如果这个目录是空的，先运行 `scripts/setup.sh`（或 `git submodule update --init --recursive`），不要在空目录里新建文件。**修改 App 代码要分两步：先在 submodule 里提交并推送，再回到 meta repo 提交 submodule 指针。不要在 meta repo 里直接提交 App 代码文件。共用工具（`.editorconfig`、`scripts/check-*.sh`）以 meta repo 为准，修改后运行 `scripts/sync-app-tooling.sh` 同步。
 
+> **迁移中（ADR-0005）**：拆成多个独立 repo，都作为本 meta repo 的 submodule。现状：`carekind-app` 已改名为 `carekind-api`，路径暂时仍是 `06-app-development/app`；已加入 `06-app-development/nurse-web`、`provider-portal`、`super-admin`、`website`、`shared` 五个 submodule。**所有文档（PRD、ADR、设计、模板、调研、changelog）都只放在本 meta repo**，代码 repo 只放代码和指回这里的简短 README / CLAUDE.md。repo 建好之前，以上面现有的说明为准。见 `06-app-development/engineering/adr/0005-polyrepo-and-mvp-tech-stack.md`。
+
 ## 产品文档
 产品做什么、怎么做以 `docs/PRD.md` 为准；功能 PRD 在 `docs/prds/`。写代码、写文案、做运营之前先读主 PRD 的 §6 产品逻辑和 §9 护栏。
 

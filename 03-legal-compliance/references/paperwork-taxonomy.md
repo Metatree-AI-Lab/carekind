@@ -1,5 +1,6 @@
 Owner: Legal/Compliance · Status: Research draft · Last reviewed: 04/10/2026
 > 运营参考，不是法律意见
+> 按"触发事件"（入住、跌倒、SIRS、死亡等）查所需文书、时限和签署人：见 [`paperwork-requirements-by-event.md`](paperwork-requirements-by-event.md)
 
 # 澳洲 residential aged care 护理文书类型分类（Paperwork taxonomy）
 

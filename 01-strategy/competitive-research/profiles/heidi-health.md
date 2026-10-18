@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Heidi Health
 
@@ -36,3 +36,11 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **高。** Heidi 是澳洲本土、资金最雄厚、已公开进入养老场景（NZ residential 已扩展部署）的 AI scribe，功能清单与 careKind MVP 几乎完全重叠。careKind 若想差异化，必须靠 residential 专属流程：PCW 到 RN 的审核链、对接 SIRS 的事故报告结构、多班次交接、与 CMS 的写回集成，以及面向 CALD 护工的低门槛体验。不能在"通用 AI scribe"这一层正面竞争。
+
+## 2026-10-18 更新
+- **SIRS 内容**：2026-08-13 发布 SIRS 文章，称 Heidi "drafts the notification log as it happens"、组装"unified final report"、"flags the right timeframe"，并明确 Heidi **"never decides what's reportable"**，由指定员工或 key personnel 确认分类（S97，[声称]）。同一篇文章里最终报告时限出现 84 天和 60 天两种写法，P1 24 小时起算点也前后不一（S97），说明合规内容本身有准确性问题。对 careKind 的"SIRS 对齐事故报告"空白是**正面逼近**。
+- **养老页复访**：推荐用户为 RN、Care Partners、社区支持、专职医疗、GP、老年科医生，**未列 PCW**；"Does Heidi connect to our clinical system?" 没有答案；页面未再写数据存储位置，只链到各地合规页（⚠️ 需打开 AU/NZ 合规页核实）；新增自报数字"每位临床人员每天释放 59 分钟"、"81% 认知负担降低"（无方法说明）（S40 复访）。
+- **Metlifecare 官方发布**（12/05/2026）：4 个月试点、12 名 RN；只在居民同意时转写；**RN 审核、编辑、批准后才进入居民临床记录系统**（系统名未披露）；分阶段扩展到另外 3 家护理院；没有公布量化数据（S98）。
+- **TGA 审查**：2026-10-16 TGA 公布对 12 个 scribe 的审查，Heidi 在被审名单中；8 个可能构成医疗器械，TGA 未点名是哪 8 个，Heidi 未回应是否在内（S99）。
+- 本次**仍未查到澳洲 residential aged care 的公开客户**。
+- **威胁等级**：维持**高**。

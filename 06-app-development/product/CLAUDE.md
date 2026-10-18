@@ -18,6 +18,7 @@
 - product-principles.md
 - product-roadmap.md
 - prd-template.md
+- document-templates/（careKind 自有文书模板；字段是起草规则和 Demo 数据的来源）
 
 ## 不要做
 - 不要在这里写 PRD

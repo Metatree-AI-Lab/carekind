@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # careKind AI 竞争格局：执行摘要
 
@@ -7,7 +7,8 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 ## 文件导航
 - [competitor-matrix.md](competitor-matrix.md)：全量对比矩阵（约 40 家），附原候选清单的更正
 - [ai-features-comparison.md](ai-features-comparison.md)：按 AI 能力逐项对比（口述、模板、多语言、事故起草、审核 UX、集成、数据驻留）
-- [profiles/](profiles/)：19 份重点竞品档案
+- [how-competitors-solve-it.md](how-competitors-solve-it.md)：**按解决路径归类**（CMS 内置 / 通用 scribe / 养老专用新创 / 机构自建 / 相邻工具），含定位图、行业共识、空白点、竞品踩过的坑（18/10/2026）
+- [profiles/](profiles/)：20 份重点竞品档案（18/10/2026 新增 Beam；每份末尾有"2026-10-18 更新"）
 - [sources.md](sources.md)：全部 URL 及访问日期
 
 ## 1. 格局概述
@@ -51,7 +52,14 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 | 2 | **CMS 原生 AI（以 AlayaCare 为先锋）** | 高 | 一旦 system of record 免费内置 AI 笔记，独立工具的采购理由就会变弱；PointClickCare、Access 已经验证这一路径，澳洲 CMS 很可能跟进 | [alayacare.md](profiles/alayacare.md)、[telstra-health.md](profiles/telstra-health.md) |
 | 3 | **Notive** | 高 | 同阶段、同细分市场、同一套价值主张（residential、语音、交接、事故标记、悉尼数据），主要拼执行和首批机构 | [notive.md](profiles/notive.md) |
 | 4 | **机构用 Microsoft 技术栈自建** | 中到高 | Regis 覆盖 72 院，Uniting 有 1,200+ 用户并与 5 家机构合作；头部客户可能选择自建而不是采购 | [provider-in-house-builds.md](profiles/provider-in-house-builds.md) |
-| 5 | **养老专用 AI 初创群（AccuNote、AgedCareAI、Aria Care）** | 中 | 抢占"澳洲数据驻留"和"低价草稿"等叙事和 SEO 流量，压低价格预期；Aria 已公开按月 $19 到 $699 的价格 | [accunote.md](profiles/accunote.md)、[agedcareai.md](profiles/agedcareai.md)、[aria-care.md](profiles/aria-care.md) |
+| 5 | **养老专用 AI 初创群（AccuNote 领头，AgedCareAI、Aria Care）** | 中（AccuNote 单独为中高，18/10 上调） | 抢占"澳洲数据驻留"和"低价草稿"等叙事和 SEO 流量，压低价格预期；Aria 已公开按月 $19 到 $699 的价格；**AccuNote 已公开称可"alongside" Telstra Health Clinical Manager、AlayaCare、PCS 使用**（集成方式未说明 ⚠️，S106） | [accunote.md](profiles/accunote.md)、[agedcareai.md](profiles/agedcareai.md)、[aria-care.md](profiles/aria-care.md) |
+
+### 2026-10-18 威胁变化
+排序不变，内容变化如下（详见 [how-competitors-solve-it.md](how-competitors-solve-it.md)）：
+1. **Heidi 逼近"SIRS 对齐事故报告"空白**：2026-08 发布 SIRS 内容和模板，称起草通报记录、提示时限、但"never decides what's reportable"（S97）。空白 2 变窄，careKind 的差异要落在"事故事实与 progress note 同源 + RN 逐条确认"。
+2. **AccuNote 上调为中高**：公开把自己定位成三大 CMS 的伴随层，与 careKind 的"CMS 伙伴"路径重叠（S106 ⚠️）。
+3. **监管收紧，改变所有 scribe 的扩张成本**：TGA 2026-10-16 审查 12 个 scribe，8 个可能构成医疗器械，免责声明不能豁免，下一步是 targeted compliance（S99）；卫生部 FOI 简报和 Digital Rights Watch 报告指出隐私透明度和数据出境问题（S101–S103）。对通用 scribe 是约束，对严守边界的垂直工具是机会。
+- **新进入者**：Beam（伦敦，2026-04 进入澳洲，墨尔本办公室，声称澳洲本地存储和 ISO 27001）（S104），威胁中低，见 [beam.md](profiles/beam.md)。
 
 **需要持续监测的信号**：Heidi 公布澳洲 residential 客户或 CMS 集成；Leecare 宣布 AI 伙伴；Telstra Health 把 Smart Scribe 引入 Clinical Manager；PCS 把英国的 AI 功能移植到澳洲；Dragon Copilot 在澳洲上线；Buddy 对外商业化。
 

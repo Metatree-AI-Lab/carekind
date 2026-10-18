@@ -1,6 +1,6 @@
 # 用户研究 (User Research)
 
-Owner: Lightman (PO) · Last reviewed: 04/10/2026
+Owner: Lightman (PO) · Last reviewed: 18/10/2026
 
 > ⚠️ 访谈记录**必须去标识化**：不写住户姓名、房号、具体健康细节；受访者用代号（RN-01、DON-02）。录音需事先获得同意，保存在 {{TBD: 安全位置}}，不放入本仓库。
 
@@ -8,6 +8,8 @@ Owner: Lightman (PO) · Last reviewed: 04/10/2026
 - `interview-guide.md` — 访谈脚本（见 `07-marketing-ops/marketing/icp-and-personas.md` 的发现问题）
 - `notes/YYYY-MM-DD-代号.md` — 每次访谈记录
 - `synthesis.md` — 洞察汇总（痛点频次、引语、机会），引用 `10-feedback/` 中的原始文件
+- `care-documentation-process-flows.md` + `-5-8.md` — 8 个护理文书流程的 as-is / to-be 流程图、人工确认门、PRD 缺口（18/10/2026）
+- `documentation-best-practice.md` — 法规、竞品、流程调研综合出的 12 条 best practice
 - 原始反馈（不经 AI 编写）存放在 `10-feedback/`
 
 ## 访谈记录模板

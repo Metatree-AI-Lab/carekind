@@ -1,8 +1,8 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Sources（来源清单）
 
-全部链接的访问日期均为 **04/10/2026**。标注 [官方] 的是公司官网或官方新闻稿，内容属营销声明；[媒体] 指行业或大众媒体；[第三方] 指评测站、聚合站，可信度较低；[监管] 指政府或监管机构。
+S1–S94 的访问日期为 **04/10/2026**；S95 起见文末"2026-10-18 追加"。标注 [官方] 的是公司官网或官方新闻稿，内容属营销声明；[媒体] 指行业或大众媒体；[第三方] 指评测站、聚合站，可信度较低；[监管] 指政府或监管机构。
 
 > 注：部分页面通过 WebFetch 抓取后由模型摘要，个别细节（尤其是数字）在引用前建议人工打开原页复核。
 
@@ -116,3 +116,45 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 | S92 | The Weekly Source – Think twice before using ChatGPT for aged care documentation (20/01/2026) | 媒体 | https://www.theweeklysource.com.au/think-twice-before-using-chatgpt-to-help-with-aged-care-documentation/ |
 | S93 | Inside Ageing – Is AI creating complacent aged care nurses? (03/07/2024) | 媒体 | https://insideageing.com.au/guest-post-is-ai-creating-a-new-generation-of-complacent-aged-care-nurses/ |
 | S94 | ACQSC – AI Transparency Statement | 监管 | https://www.agedcarequality.gov.au/about-us/corporate-documents/ai-transparency-statement |
+
+## 2026-10-18 追加（访问日期均为 18/10/2026）
+
+> 标注"搜索摘要"的条目只看到搜索引擎摘要，没有抓取全文，引用前需人工打开原页复核（⚠️）。
+
+| # | 来源 | 类型 | URL |
+|---|---|---|---|
+| S95 | AlayaCare – AlayaCare Residential: What's new (AU) | 官方 | https://alayacare.com/en-au/alayacare-residential-whats-new/ |
+| S96 | AlayaCare – Webinar: What's new in AlayaCare Residential（搜索摘要 ⚠️，年份未确认） | 官方 | https://alayacare.com/en-au/webinar-whats-new-alayacare-residential/ |
+| S97 | Heidi – SIRS in aged care blog (13/08/2026) | 官方 | https://www.heidihealth.com/en-au/blog/sirs-aged-care |
+| S98 | Metlifecare – media release: Heidi scribe tool (12/05/2026) | 官方（客户） | https://www.metlifecare.co.nz/news/metlifecare-heidi-scribe-tool |
+| S99 | Medical Republic – Eight of 12 AI scribes may be medical devices, TGA finds (16/10/2026) | 媒体 | https://www.medicalrepublic.com.au/eight-of-12-ai-scribes-may-be-medical-devices-tga-finds/130085 |
+| S100 | Medical Republic – TGA flags compliance action on AI scribes as review finds safety concerns（搜索摘要 ⚠️，日期未确认） | 媒体 | https://www.medicalrepublic.com.au/tga-flags-compliance-action-on-ai-scribes-as-review-finds-safety-concerns/127888 |
+| S101 | Digital Rights Watch – media release: AI scribe industry operating with no meaningful oversight ("OFF THE RECORD", 28/07/2026) | 媒体（倡导组织） | https://digitalrightswatch.org.au/2026/07/28/media-release-new-report-finds-ai-scribe-industry-operating-with-no-meaningful-oversight.-patients-locked-out-of-care-for-refusing-ai-scribes./ |
+| S102 | Department of Health – FOI 26-3154 departmental AI scribe use（未抓取原文，经 S103 转述 ⚠️） | 监管 | https://www.health.gov.au/resources/foi-disclosure-log/foi-26-3154-departmental-ai-scribe-use |
+| S103 | Digital Trends – Australian government warns doctors over AI scribing tools（转述 Guardian Australia FOI 报道，搜索摘要 ⚠️） | 媒体 | https://digitaltrends.com/cool-tech/australian-government-warns-doctors-over-ai-scribing-tools-as-privacy-and-safety-concerns-grow |
+| S104 | IT Brief – Beam launches AI social services tools in Australia (30/04/2026) | 媒体 | https://itbrief.com.au/story/beam-launches-ai-social-services-tools-in-australia |
+| S105 | iTWire – Beam launches in Australia（搜索摘要） | 媒体 | https://www.itwire.com/business-it-news/data/beam-launches-in-australia-bringing-purpose-built-ai-to-the-social-services-sector |
+| S106 | AccuNote 首页 | 官方 | https://accunote.com.au/ |
+| S107 | Access Care Planning Help – Get started with Smart Notes | 官方 | https://help-accesscareplanning.theaccessgroup.com/en/articles/12129797-get-started-with-smart-notes |
+| S108 | Access Care Planning Help – Smart Notes: a guide for healthcare assistants（搜索摘要 ⚠️） | 官方 | https://help-accesscareplanning.theaccessgroup.com/en/articles/14809448-smart-notes-a-guide-for-healthcare-assistants |
+| S109 | The Ageing Agenda – Making more time for care at the frontline（Bupa，17/08/2026） | 媒体（机构署名文章） | https://theageingagenda.com.au/clinical/making-more-time-for-care-at-the-frontline/ |
+| S110 | ChannelLife – Whiddon adopts Telstra Health tech to modernise care（12/02/2026，搜索摘要 ⚠️） | 媒体 | https://channellife.com.au/story/whiddon-adopts-telstra-health-tech-to-modernise-care |
+| S111 | Australian Digital Health Agency – ACCIS Standards recommended minimum software requirements v1.0（搜索摘要 ⚠️） | 监管 | https://implementer.digitalhealth.gov.au/resources/aged-care-clinical-information-system-standards-recommended-minimum-software-requirements-v1-0 |
+| S112 | The Weekly Source – Government releases minimum software standards for clinical information systems（05/09/2024，更新 28/08/2025） | 媒体 | https://www.theweeklysource.com.au/government-releases-minimum-software-standards-for-clinical-information-systems-and-electronic-medication-management |
+| S113 | Business News Australia – Minikai secures $2.5m seed funding（2025-02，搜索摘要） | 媒体 | https://www.businessnewsaustralia.com/articles/tech-startup-minikai-secures--2-5m-in-seed-funding-amid-strong-take-up-by-ndis-service-providers.html |
+| S114 | LaingBuisson News – Teton launches AI care agent Samwise（24/07/2026，付费墙，仅见开头 ⚠️） | 媒体 | https://www.laingbuissonnews.com/care-markets-content/teton-launches-ai-care-agent-samwise/ |
+| S115 | Person Centred Software – partners with Teton.ai（2024-10，搜索摘要） | 官方 | https://personcentredsoftware.com/resources/person-centred-software-partners-with-teton.ai |
+| S116 | Mirus Australia – AI-powered insights post（搜索摘要 ⚠️） | 官方 | https://www.mirusaustralia.com/?p=38270 |
+| S117 | The Weekly Source – AlayaCare launches Layla for home care（搜索摘要） | 媒体 | https://www.theweeklysource.com.au/alayacare-launches-layla-to-unlock-ai-powered-efficiencies-for-home-care/ |
+| S118 | Microsoft Support (en-AU) – Welcome to the Dragon Copilot experience for nurses（搜索摘要 ⚠️） | 官方 | https://support.microsoft.com/en-au/topic/welcome-to-the-dragon-copilot-experience-for-nurses-fa075456-ca2c-4933-b09e-d1f8808db3ff |
+| S119 | Riskonnect – Digitising incident management in aged care to align with SIRS（搜索摘要） | 官方 | https://riskonnect.com/enterprise-risk-management/digitising-incident-management-in-aged-care-to-protect-patient-safety-and-align-with-the-sirs/ |
+| S120 | AI Incident Database – entity: South Australia Health（AI 监测试点误报，搜索摘要 ⚠️） | 第三方 | https://incidentdatabase.ai/entities/south-australia-health/ |
+
+### 复访记录（编号不变，18/10/2026 再次访问）
+| # | 复访发现 |
+|---|---|
+| S40 | Heidi 养老页：未再写存储位置（只链合规页）；"Does Heidi connect to our clinical system?" 无答案；推荐用户含 RN、Care Partners，未列 PCW；新增自报数字"每位临床人员每天释放 59 分钟" |
+| S60 | Notive 首页：功能无明显变化；可见 PDF 合规报告导出；示例笔记日期 14/04/2026 |
+| S61 | Aria Care 首页：定价不变；Starter 档列 "reportable-incident detection"；可见 "Dignity + Risk Guardian"、review inbox |
+| S64 | AgedCareAI 首页：改为 Intelligence + Governance 两大块；声称按 Aged Care Act 2024 和 Strengthened Quality Standards 设计；早前的 9 模块 / Whisper 未再出现 |
+| S76 | CareTrust AI：仍只提新加坡，50+ 院（自报） |

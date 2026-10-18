@@ -17,6 +17,8 @@
 ## 关键文件
 - README.md
 - synthesis.md（运行 feedback-synthesis 后生成）
+- care-documentation-process-flows.md、care-documentation-process-flows-5-8.md（流程图；痛点未经访谈验证，标"推测"）
+- documentation-best-practice.md（综合结论）
 
 ## 不要做
 - 不要把原始反馈复制或改写到这里当作原文

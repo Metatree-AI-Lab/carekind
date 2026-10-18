@@ -1,4 +1,4 @@
-Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
+Owner: Strategy · Status: Research draft · Last reviewed: 18/10/2026
 
 # Microsoft（Dragon Copilot / 原 Nuance DAX Copilot）及 Copilot Studio 生态
 
@@ -28,3 +28,8 @@ Owner: Strategy · Status: Research draft · Last reviewed: 04/10/2026
 
 ## 对 careKind 的威胁判断
 **中。** 直接竞品的威胁有限，真正的威胁是让大型机构倾向"自己用 Copilot 搭"。careKind 需要准备好"自建与采购"对比的 TCO 论证：Regis 自己也承认成本可持续性是扩展的难点（S68）。
+
+## 2026-10-18 更新
+- Dragon Medical One 在 TGA 2026-10-16 公布的 12 个被审 scribe 名单中（S99）。
+- 微软已有面向护士的 en-AU 支持页（S118，搜索摘要 ⚠️），但本次**未查到 Dragon Copilot 护理版在澳洲正式上线的公告**。
+- **威胁等级**：维持**中**。

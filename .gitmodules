@@ -1,3 +1,18 @@
 [submodule "06-app-development/app"]
 	path = 06-app-development/app
-	url = git@github.com:Metatree-AI-Lab/carekind-app.git
+	url = git@github.com:Metatree-AI-Lab/carekind-api.git
+[submodule "06-app-development/provider-portal"]
+	path = 06-app-development/provider-portal
+	url = git@github.com:Metatree-AI-Lab/carekind-provider-portal.git
+[submodule "06-app-development/super-admin"]
+	path = 06-app-development/super-admin
+	url = git@github.com:Metatree-AI-Lab/carekind-super-admin.git
+[submodule "06-app-development/website"]
+	path = 06-app-development/website
+	url = git@github.com:Metatree-AI-Lab/carekind-website.git
+[submodule "06-app-development/shared"]
+	path = 06-app-development/shared
+	url = git@github.com:Metatree-AI-Lab/carekind-shared.git
+[submodule "06-app-development/nurse-web"]
+	path = 06-app-development/nurse-web
+	url = git@github.com:Metatree-AI-Lab/carekind-nurse-web.git
