@@ -16,3 +16,6 @@
 [submodule "06-app-development/nurse-web"]
 	path = 06-app-development/nurse-web
 	url = git@github.com:Metatree-AI-Lab/carekind-nurse-web.git
+[submodule "07-marketing-ops/blog"]
+	path = 07-marketing-ops/blog
+	url = git@github.com:Metatree-AI-Lab/carekind-blog.git

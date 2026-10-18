@@ -3,6 +3,8 @@
 > 层级：部门 · 路径：`07-marketing-ops/` · 上级上下文：[`../CLAUDE.md`](../CLAUDE.md)（根目录规则见 `AGENTS.md`）
 > 本文件给 AI 看；给人看的说明在同目录的 `README.md`。
 
+Owner: Lightman · Status: Active · Last reviewed: 18/10/2026
+
 ## 这里是什么
 品牌、ICP 与画像、营销计划与合规、销售流程、试点手册、客户支持、内部运营。
 
@@ -20,6 +22,7 @@
 ## 关键文件
 - brand/
 - marketing/
+- blog/ — 独立私有仓库 `Metatree-AI-Lab/carekind-blog`，通过 git submodule 挂载；先读其 CLAUDE.md。
 - sales/
 - customer-success/
 - operations/
