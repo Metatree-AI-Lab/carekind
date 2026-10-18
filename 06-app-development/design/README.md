@@ -23,3 +23,14 @@ UX 原则、无障碍、设计系统。
 ## 单页入口清理
 - 删除独立旧组件样例页与文档 HTML 生成路径；唯一视觉入口为 `design-system/preview.html`。
 - 保留 DESIGN.md / COMPONENTS.md 规格、tokens 和共享组件样式；生成脚本只更新 tokens.css 与 DESIGN.md 的 token 表格。
+
+## 后台视觉统一（18/10/2026）
+
+Owner: Lightman · Status: Local revision · Last reviewed: 18/10/2026
+
+后台视觉修订、法律依据、真实页面截图与限制见 [admin-review-2026-10-18.md](admin-review-2026-10-18.md)。CSS 母版同步至 shared，未提交或部署。
+
+## 图片与动效（18/10/2026）
+Owner: Lightman · Status: Local revision · Last reviewed: 18/10/2026
+
+插画与界面动效的范围、素材出处和验证见 [art-motion-review-2026-10-18.md](art-motion-review-2026-10-18.md)。

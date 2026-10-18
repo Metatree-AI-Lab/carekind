@@ -432,3 +432,21 @@ Mini 图库 `ck-mini-grid`：沿用 Card / Button，默认三列、手机两列�
 品牌文字按钮 `ck-btn--editorial` 为黑字加箭头；工作层 `ck-btn--text` 的链接表现保留。普通 `ck-card` 默认细描边、无阴影；真正悬浮的卡片另用 `ck-floating-card`，避免所有卡片漂浮。
 
 法律依据：沿用 DESIGN.md §7、§9 及主 PRD §9，未新增临床功能。tga-boundary-check：🟢，仅设计构图与文书界面样例，无评分 / 诊断 / 疗效承诺。运营参考，不是法规意见；🟡/🔴 需要法规顾问确认。
+
+## 18/10/2026 后台统一视觉修订（Draft）
+- Owner: Lightman · Status: Local revision · Last reviewed: 18/10/2026
+- 登录和登录后均采用白底、sans 工作标题、同一 Button / Field / Card / Tag。不在工作页使用营销 Hero 或装饰浮卡。
+- AppShell：桌面细分隔侧栏、带线性图标的导航、轻量顶栏；姓名和角色分两行。Super Admin 顶栏只写职能，完整权限组放侧栏底部；不改变权限过滤。
+- 窄屏：品牌与 Menu 同行，顶栏显示紧凑账户信息；菜单在导航后自动收起。所有内容能回流。
+- PageHeader：统一间距、medium 标题、底部分隔；详情和新建页用既有 Breadcrumb。Form：左侧说明、右侧 Card 内单表单，窄屏单列；同一表单只有一个 submit。
+- Table / DataTable：桌面细边框、较宽行距，名称链接使用 ink + underline。手机呈现带字段名的逐条记录；保留原生表格及显式 table/row/cell 角色、caption、排序按钮；排序头仅展示可排序列，字段标签不代替原有表头关联。长 ID 可换行，空状态和加载不伪造记录。
+- 所有数值使用现有 tokens；不新增色板、依赖、诊断/评分/趋势组件或业务能力。共享组件修订也会影响采用这些组件的 Provider Portal，其运行界面不在本次验收范围。
+
+## 18/10/2026 品牌插画与界面动效（Owner 请求的视觉增强）
+Owner: Lightman · Status: Local revision · Last reviewed: 18/10/2026
+
+- Owner 明确要求页面增加图片、动画及更 cool 的视觉表现；工作页允许在 PageHeader 使用辅助品牌插画，替代此前“不用装饰图”的一般指导；临床/数据字段不加入装饰。
+- `WorkspaceArtwork`：复用设计系统原创透明 PNG（hands-and-heart、nurse-review、companionship），由 shared brand 原样提供；care / notes / connections 三个主题使用既有 media-sage / media-warm / surface-subtle。纯装饰，容器 aria-hidden，图像空 alt，不代表用户成果、AI 执行或健康状态。
+- 登录为视觉面板 + 工作表单双栏；手机将品牌缩为紧凑图文条，表单保持主要区域。后台 PageHeader 可选 artwork，工作标题仍为 sans，插画与操作分开。
+- 动效：一次性短入场（opacity/translate）、插画一次性展开、按钮/导航 hover 微位移；不循环、不闪烁、不移动数据行，不改变权限或提交语义。所有时间与位移由现有 token 推导。
+- `prefers-reduced-motion: reduce` 时关闭新增动画及位移，内容始终可见；不依赖动画完成才允许操作。键盘焦点沿用 shared。
