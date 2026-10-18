@@ -1,5 +1,7 @@
 # AGENTS.md — careKind AI Company OS
 
+Owner: Lightman · Status: Active · Last reviewed: 18/10/2026
+
 > 所有 AI agent（Claude Code、Codex 等）共用的规则。`CLAUDE.md` 通过 `@AGENTS.md` 引入本文件。**改规则只改这里。**
 
 这个仓库是 careKind AI（澳洲 aged care 护士 AI 文书记录创业公司）的 Company OS。不是代码仓库。
@@ -36,10 +38,26 @@
 - 新建目录、新增功能模块或大函数时，同步创建或更新这两份文档（模板在 `09-templates/`），完成后运行 `scripts/check-context-docs.sh`。
 - 规则见 `rules/00-company-rules.md` §4.1。
 
-## App 代码仓库（submodule）
-`06-app-development/app/` 是 git submodule（`Metatree-AI-Lab/carekind-app`）。**如果这个目录是空的，先运行 `scripts/setup.sh`（或 `git submodule update --init --recursive`），不要在空目录里新建文件。**修改 App 代码要分两步：先在 submodule 里提交并推送，再回到 meta repo 提交 submodule 指针。不要在 meta repo 里直接提交 App 代码文件。共用工具（`.editorconfig`、`scripts/check-*.sh`）以 meta repo 为准，修改后运行 `scripts/sync-app-tooling.sh` 同步。
+## 独立仓库（submodule）
+本仓库是 Company OS / meta repo。以下 7 个独立私有仓库已登记在远端 `main` 的 `.gitmodules`；本地存在冲突时，先核对版本，不据此擅自覆盖工作区：
 
-> **迁移中（ADR-0005）**：拆成多个独立 repo，都作为本 meta repo 的 submodule。现状：`carekind-app` 已改名为 `carekind-api`，路径暂时仍是 `06-app-development/app`；已加入 `06-app-development/nurse-web`、`provider-portal`、`super-admin`、`website`、`shared` 五个 submodule。**所有文档（PRD、ADR、设计、模板、调研、changelog）都只放在本 meta repo**，代码 repo 只放代码和指回这里的简短 README / CLAUDE.md。repo 建好之前，以上面现有的说明为准。见 `06-app-development/engineering/adr/0005-polyrepo-and-mvp-tech-stack.md`。
+| Submodule 路径 | 独立私有仓库 | 用途 |
+|---|---|---|
+| `06-app-development/app/` | [Metatree-AI-Lab/carekind-api](https://github.com/Metatree-AI-Lab/carekind-api) | 后端 API（仓库已从 carekind-app 更名，目录仍保留 app） |
+| `06-app-development/provider-portal/` | [Metatree-AI-Lab/carekind-provider-portal](https://github.com/Metatree-AI-Lab/carekind-provider-portal) | 机构管理端 |
+| `06-app-development/super-admin/` | [Metatree-AI-Lab/carekind-super-admin](https://github.com/Metatree-AI-Lab/carekind-super-admin) | 平台管理端 |
+| `06-app-development/website/` | [Metatree-AI-Lab/carekind-website](https://github.com/Metatree-AI-Lab/carekind-website) | 官网 |
+| `06-app-development/shared/` | [Metatree-AI-Lab/carekind-shared](https://github.com/Metatree-AI-Lab/carekind-shared) | 跨端共享代码 |
+| `06-app-development/nurse-web/` | [Metatree-AI-Lab/carekind-nurse-web](https://github.com/Metatree-AI-Lab/carekind-nurse-web) | 护士 Web 端 |
+| `07-marketing-ops/blog/` | [Metatree-AI-Lab/carekind-blog](https://github.com/Metatree-AI-Lab/carekind-blog) | 博客内容与每日新闻 Markdown 草稿 |
+
+- `carekind-app` 已更名为 `carekind-api`，路径暂时仍为 `06-app-development/app/`，不要自行更名。
+- **子仓库目录为空时，先确认权限并运行 `git submodule update --init --recursive`，不要在空目录新建文件。**已有未提交修改、冲突时先保留并解决，不 reset、autostash 或覆盖。
+- PRD、ADR、架构、设计规范、模板、调研、发布说明和 AI changelog 统一放 meta repo；代码 repo 保留代码及简短 README / CLAUDE.md 链回本仓库。Blog repo 放文章及写作说明，适用公司与营销规则仍以 meta repo 为准。
+- 修改任一 submodule 时，只有获得相应提交及推送授权后，才先在该 repo 提交并推送，再回 meta repo 更新对应指针；不能直接在 meta repo 提交子仓库内部文件。先核实 hooks、workflow 和目标 ref，Git 操作不自动授权 CI/CD 或部署。
+- 共用工具以 meta repo 为准。`scripts/setup.sh` 当前仅对 meta repo 与 app 设置 hooks，`scripts/sync-app-tooling.sh` 当前只向 app 同步；未适配全仓库前不得声称它们已覆盖全部 repo。
+- Demo 复用 nurse-web / provider-portal 的正式产品代码与隔离示例，不另建 Demo repo。Mobile 属路线图，未包含在现有清单中。
+- Blog 每日新闻自动任务只写本地 Markdown 草稿，不自动提交、推送或发布。建库、草稿保存、产品功能完成、部署和验收是不同状态。
 
 ## 产品文档
 产品做什么、怎么做以 `docs/PRD.md` 为准；功能 PRD 在 `docs/prds/`。写代码、写文案、做运营之前先读主 PRD 的 §6 产品逻辑和 §9 护栏。

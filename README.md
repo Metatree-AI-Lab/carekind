@@ -1,9 +1,11 @@
 # careKind AI — Company OS
 
+Owner: Lightman · Status: Active · Last reviewed: 18/10/2026
+
 > 帮澳洲 aged care 护士把 paperwork 时间还给照护。
 > 这是 careKind AI 的公司操作系统：使命、战略、运营节奏、合规、安全、人事、产品、GTM、财务——所有"公司怎么运转"的单一事实来源 (Single Source of Truth)。
 
-**状态**：Day 0（项目启动，2026-10）· **地点**：Australia · **最后更新**：2026-10-04
+**状态**：Day 0（项目启动，2026-10）· **地点**：Australia · **最后更新**：2026-10-18
 
 ---
 
@@ -42,11 +44,17 @@ docs/                  📘 产品文档：主 PRD + 功能 PRD（所有运营�
   ├─ engineering/        架构、技术栈、开发规范、发布流程、技术 ADR
   ├─ design/             设计系统、UX 原则、无障碍
   ├─ research/           用户研究、访谈记录
-  └─ app/                App 源码（git submodule → Metatree-AI-Lab/carekind-app）
+  ├─ app/                后端 API（submodule → carekind-api；目录尚未改名）
+  ├─ nurse-web/          护士 Web 端（submodule → carekind-nurse-web）
+  ├─ provider-portal/    机构管理端（submodule → carekind-provider-portal）
+  ├─ super-admin/        平台管理端（submodule → carekind-super-admin）
+  ├─ website/            官网（submodule → carekind-website）
+  └─ shared/             跨端共享代码（submodule → carekind-shared）
 
 07-marketing-ops/      📣 Marketing 与运营
   ├─ brand/              品牌、语气、视觉
   ├─ marketing/          ICP 与画像、内容、官网、渠道、营销合规
+  ├─ blog/               博客与每日新闻草稿（submodule → carekind-blog）
   ├─ sales/              销售流程、采购尽调包
   ├─ customer-success/   试点手册、上线与支持
   └─ operations/         内部运营：工具栈、供应商、行政
@@ -61,34 +69,53 @@ changelog/             📝 AI 修改记录：任务摘要（YYYY-MM.md）+ 自�
 99-inbox/              随手记，定期整理进上面各目录
 ```
 
+## 独立仓库与 submodule
+
+本仓库是 Company OS / meta repo。目前远端 `main` 的 `.gitmodules` 登记以下 **7 个独立私有仓库**，目录名称以实际配置为准：
+
+| Submodule 路径 | 独立私有仓库 | 用途 |
+|---|---|---|
+| `06-app-development/app/` | [Metatree-AI-Lab/carekind-api](https://github.com/Metatree-AI-Lab/carekind-api) | 后端 API（仓库已从 carekind-app 更名，目录仍保留 app） |
+| `06-app-development/provider-portal/` | [Metatree-AI-Lab/carekind-provider-portal](https://github.com/Metatree-AI-Lab/carekind-provider-portal) | 机构管理端 |
+| `06-app-development/super-admin/` | [Metatree-AI-Lab/carekind-super-admin](https://github.com/Metatree-AI-Lab/carekind-super-admin) | 平台管理端 |
+| `06-app-development/website/` | [Metatree-AI-Lab/carekind-website](https://github.com/Metatree-AI-Lab/carekind-website) | 官网 |
+| `06-app-development/shared/` | [Metatree-AI-Lab/carekind-shared](https://github.com/Metatree-AI-Lab/carekind-shared) | 跨端共享代码 |
+| `06-app-development/nurse-web/` | [Metatree-AI-Lab/carekind-nurse-web](https://github.com/Metatree-AI-Lab/carekind-nurse-web) | 护士 Web 端 |
+| `07-marketing-ops/blog/` | [Metatree-AI-Lab/carekind-blog](https://github.com/Metatree-AI-Lab/carekind-blog) | 博客内容与每日新闻 Markdown 草稿 |
+
+`carekind-app` 已更名为 `carekind-api`，当前路径仍是 `06-app-development/app/`；不要自行改成 `api/`。Demo 复用护士端和机构管理端，不另建仓库；mobile 仍属路线图，不在当前清单内。建有仓库不代表功能已实现或上线。
+
+公司文档、PRD、ADR、设计规范和 AI 修改记录放在 meta repo；代码 repo 保留代码和指回这里的简短上下文。Blog repo 存放文章及写作执行说明，产品和合规规则仍以 Company OS 为准。
+
 ## Setup（第一次使用必读）
 
-> ⚠️ **本仓库包含 git submodule**：`06-app-development/app/` 是独立的私有仓库 [Metatree-AI-Lab/carekind-app](https://github.com/Metatree-AI-Lab/carekind-app)。普通的 `git clone` **不会**下载它，这个目录会是空的，必须安装 submodule。
-
 ### 前提
-- 有 `Metatree-AI-Lab/carekind` 和 `Metatree-AI-Lab/carekind-app` **两个仓库**的访问权限（找 Lightman 开通）
-- SSH key 已添加到 GitHub（submodule 用 SSH 地址）
-- 工具：`git`、`jq`（Claude Code hook 必需）、`pdftotext`（读法律 PDF）、`gh`（可选）。macOS：`brew install jq poppler gh`
+- 具有 `Metatree-AI-Lab/carekind` 和上表所需私有仓库的访问权限（找 Lightman 开通）。
+- SSH key 已添加到 GitHub。
+- 工具：`git`、`jq`、`pdftotext`；`gh` 按需使用。
 
-### 步骤
 ```bash
-# 1. 连同 submodule 一起 clone
+# 连同所有 submodule 一起 clone
 git clone --recurse-submodules git@github.com:Metatree-AI-Lab/carekind.git
 cd carekind
 
-# 2. 一键设置：初始化 submodule、两个仓库都启用 pre-commit、git 自动处理 submodule、检查工具
-scripts/setup.sh
-```
-如果 clone 时忘了加 `--recurse-submodules`（`06-app-development/app/` 是空的），直接运行 `scripts/setup.sh` 即可，它会执行 `git submodule update --init --recursive`。
+# 已有 checkout 中初始化缺失目录，或对齐 meta repo 锁定的版本
+git submodule update --init --recursive
 
-### 日常使用 submodule
-| 场景 | 命令 |
-|---|---|
-| 拉取 meta repo 和 App 的最新代码 | `git pull`（setup 已开启 `submodule.recurse`，会自动更新 submodule） |
-| App 目录是空的或版本不对 | `git submodule update --init --recursive` |
-| 把 App 更新到 carekind-app 的最新 main | `git submodule update --remote 06-app-development/app`，然后在 meta repo 提交指针 |
-| 修改 App 代码 | ① 在 `06-app-development/app/` 里提交并 `git push` ② 回到 meta repo：`git add 06-app-development/app && git commit && git push` |
-| 推送前检查 | setup 已开启 `push.recurseSubmodules=check`：如果 submodule 的提交还没推送，meta repo 会拒绝推送 |
+# 查看各 submodule 的当前版本
+git submodule status --recursive
+```
+
+当前工作区可能落后于远端清单；先保存已有改动并处理冲突，再同步 meta repo。不要在未初始化的 submodule 空目录里新建文件。
+
+`scripts/setup.sh` 当前仍以 `06-app-development/app` 为主配置 hooks；`scripts/sync-app-tooling.sh` 当前也只同步该目录。它们尚未全面适配上述所有 repo，不能据此宣称全部子仓库已完成工具配置。运行脚本前先检查其实际行为及 owner 的本机检查限制。
+
+### 日常维护
+- 拉取 meta repo 后，用 `git submodule update --init --recursive` 对齐所锁定的提交；这不等于跟随每个子仓库最新 `main`。
+- 修改某个子仓库时，在对应目录独立管理版本。只有获得提交、推送授权后，才先提交并推送子仓库，再在 meta repo 提交对应 submodule 指针。
+- 更新指针前确认目标 SHA 已存在于远端，不夹带其他子仓库版本变更。
+- 提交、推送前检查 hooks 和目标 ref 的 workflow 触发条件；普通文档修改、commit 或 push 不构成 CI/CD 或部署授权。
+- Blog 每天 Brisbane 时间 08:00 的自动任务仅保存 `07-marketing-ops/blog/articles/` 本地草稿，不自动提交、推送或发布。
 
 ## 三条铁律
 

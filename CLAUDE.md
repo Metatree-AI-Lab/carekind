@@ -1,18 +1,32 @@
 # CLAUDE.md
 
+Owner: Lightman · Status: Active · Last reviewed: 18/10/2026
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 @AGENTS.md
 
 ## 这个仓库是什么
-careKind AI 的 Company OS：Markdown + Git 管理的公司文档、规范、AI skill 和 workflow，外加 App 代码仓库：`06-app-development/app/` 是 **git submodule**，对应独立的私有仓库 `Metatree-AI-Lab/carekind-app`。App 的技术栈还没有确定（待 `06-app-development/engineering/adr/`），**目前没有 build、lint 或 test 命令**；技术栈确定后在本节补充，并更新 `06-app-development/app/CLAUDE.md`。
+careKind AI 的 Company OS / meta repo：公司文档、规则、PRD、ADR、设计规范、共用工具和 AI 修改记录放在这里；代码及博客通过下列 7 个独立私有仓库的 submodule 管理。清单已核对远端 main 的 `.gitmodules`；当前有冲突的工作区可能尚未同步全部配置。
+
+| Submodule 路径 | 独立私有仓库 | 用途 |
+|---|---|---|
+| `06-app-development/app/` | [Metatree-AI-Lab/carekind-api](https://github.com/Metatree-AI-Lab/carekind-api) | 后端 API（仓库已从 carekind-app 更名，目录仍保留 app） |
+| `06-app-development/provider-portal/` | [Metatree-AI-Lab/carekind-provider-portal](https://github.com/Metatree-AI-Lab/carekind-provider-portal) | 机构管理端 |
+| `06-app-development/super-admin/` | [Metatree-AI-Lab/carekind-super-admin](https://github.com/Metatree-AI-Lab/carekind-super-admin) | 平台管理端 |
+| `06-app-development/website/` | [Metatree-AI-Lab/carekind-website](https://github.com/Metatree-AI-Lab/carekind-website) | 官网 |
+| `06-app-development/shared/` | [Metatree-AI-Lab/carekind-shared](https://github.com/Metatree-AI-Lab/carekind-shared) | 跨端共享代码 |
+| `06-app-development/nurse-web/` | [Metatree-AI-Lab/carekind-nurse-web](https://github.com/Metatree-AI-Lab/carekind-nurse-web) | 护士 Web 端 |
+| `07-marketing-ops/blog/` | [Metatree-AI-Lab/carekind-blog](https://github.com/Metatree-AI-Lab/carekind-blog) | 博客内容与每日新闻 Markdown 草稿 |
+
+API 的仓库名已改成 `carekind-api`，目录暂时仍为 `app/`。不要把路线图中的 mobile 或单独 Demo repo 写成已存在。进入子仓库前读其上下文；技术栈和可运行命令以对应 repo 和已接受 ADR 为准，不能以建库状态推断产品完成。
 
 ## 常用命令
 ```bash
-git clone --recurse-submodules git@github.com:Metatree-AI-Lab/carekind.git   # 连同 App submodule 一起 clone
-scripts/setup.sh                                     # 第一次使用：初始化 submodule、两个仓库启用 pre-commit、submodule.recurse、检查工具
-git submodule update --init --recursive              # 06-app-development/app/ 是空的时候
-scripts/sync-app-tooling.sh                          # 把共用工具（.editorconfig、检查脚本）同步到 App 仓库
+git clone --recurse-submodules git@github.com:Metatree-AI-Lab/carekind.git   # 连同全部 submodule 一起 clone
+scripts/setup.sh                                     # 旧设置脚本：先读脚本；hooks 目前只覆盖 meta + app
+git submodule update --init --recursive              # 初始化全部 submodule 并对齐锁定 SHA
+scripts/sync-app-tooling.sh                          # 当前仅向 app 同步共用工具，尚未覆盖全部 repo
 scripts/check-file-length.sh <file>...               # 代码文件 ≤ 1000 行；也支持 --all / --staged / --hook
 scripts/check-context-docs.sh [--fix-links]          # 每层目录都要有 README.md + CLAUDE.md + AGENTS.md 软链接
 scripts/ai-changelog.sh --manual <agent> <file>...    # 手动记录 AI 编辑明细（Codex 用；Claude Code 由 hook 自动记录）
@@ -26,7 +40,7 @@ pdftotext -layout <pdf> -                            # 读取 03-legal-complianc
 - **自动检查**：`.claude/settings.json` 的 PostToolUse hook 在每次 Edit/Write 后运行 `check-file-length.sh --hook`，超过 1000 行会要求运行 `refactor-large-file` skill。`.githooks/pre-commit` 运行文件行数检查和上下文文档检查。
 - **产品 → 法律 → 代码的链路**：产品做什么以 `docs/PRD.md` 为准（§6 产品逻辑、§9 护栏 G1–G11），功能 PRD 在 `docs/prds/`。写 PRD 或做产品设计前必须运行 `legal-reference-check` skill，按 `rules/legal-reference-map.md` 查阅 `03-legal-compliance/references/` 的本地文件。PRD §6 的每个逻辑块对应 `06-app-development/app/src/domain/` 下的一个功能模块，模块的 `CLAUDE.md` 登记关键函数、不变量和测试门槛。
 - **AI 修改记录**：PostToolUse hook 把每次编辑写进 `changelog/ai-edits/YYYY-MM.jsonl`，并标记会话"待写摘要"；AI 在 `changelog/YYYY-MM.md` 写完摘要后标记清除；Stop hook 在还有待写摘要时阻止结束。
-- **App submodule**：改 App 代码时，先在 `06-app-development/app/` 里提交并推送到 carekind-app，再回到 meta repo 提交 submodule 指针（`git add 06-app-development/app`）。共用工具以 meta repo 为准，改完运行 `scripts/sync-app-tooling.sh`。AI changelog 统一写在 meta repo。
+- **各独立仓库**：只有获得相应 Git 授权后，才先在子仓库提交并推送，再在 meta repo 更新对应指针；先核对 hooks 和 workflows，不自动触发 CI/CD。共用工具以 meta repo 为准，旧同步脚本尚未覆盖全部仓库。Blog 新闻任务仅写本地草稿，AI changelog 统一记在 meta repo。
 - **两个只读区域**：`10-feedback/` 是人工录入的原始反馈（只能读）；`03-legal-compliance/references/` 的原始 PDF 不能修改，其中的模板大多只允许非商业使用。
 
 ## Claude Code 专属
